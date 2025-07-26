@@ -21,7 +21,6 @@
         gap: 4px;
         margin: 1px;
         padding: 4px 10px 4px 8px;
-        text-decoration: none;
         color: #303030;
         background-color: #BBDEFB;
         border-radius: 20px;
@@ -57,7 +56,7 @@
 
       .bibtex.show { max-height: 200px; opacity: 1; margin-top: 4px; padding: 4px; }
 
-      a { color: #1E88E5; text-decoration: none; }
+      a { color: #1E88E5; text-decoration: none !important; }
       a:hover, a:focus { color: #316CAD; text-decoration: underline; }
 
       .publications-table { margin-top: 20px; border-collapse: separate; border-spacing: 0 20px; }
@@ -205,7 +204,7 @@
             
             <div class="bio-links">
               <p>
-                <a href='data/Sagar_CV.pdf' class='btn'> <span class='material-icons'>picture_as_pdf</span> CV</a>
+                <a href='data/Sagar_CV.pdf' class='btn' target="_blank"> <span class='material-icons'>picture_as_pdf</span> CV</a>
                 <a href='https://scholar.google.com/citations?user=qWxEX0QAAAAJ&hl=en' class='btn' target='_blank'> <span class='material-icons'>school</span> Google Scholar</a>
                 <a href='https://www.linkedin.com/in/somsagar/' class='btn' target='_blank'> <span class='material-icons'>business</span> LinkedIn</a>
                 <a href='https://github.com/somsagar07' class='btn' target='_blank'> <span class='material-icons'>code</span> GitHub</a>
@@ -282,7 +281,7 @@
 
 
           <tr>
-            <h2>Publications</h2>
+            <h2>Research</h2>
             <p>Please see my CV or Google Scholar for a full list of work.</p>
             <td width="20%" class="pub-image">
               <img src="images/ICML_2.jpg" width="150">
@@ -309,6 +308,29 @@
             </td>
           </tr>
 
+          <tr>
+            <td width="20%" class="pub-image">
+              <img src="images/RSS_ood.png" width="150">
+            </td>
+            <td width="70%" valign="top" class="pub-details">
+              <papertitle>From Mystery to Mastery: Failure Diagnosis for Improving Manipulation Policies</papertitle><br>
+              <b>Som Sagar</b>, Jiafei Duan, Sreevisakh V, Yifan Zhou, Heni Ben'Amor, Dieter Fox, Ransalu Senanayake<br>
+              <em>Robotics: Science and Systems (RSS) Workshop on Out-of-Distribution Generalization in Robotics</em>, 2025
+              <div class="description">
+                We introduce a framework that maps the failure landscape of large vision and language models, addressing their shortcomings by realigning model behavior with human preferences—whether stylistic or ethical—to mitigate failures.
+              </div>
+
+              <a href="https://arxiv.org/pdf/2412.02818" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
+              <a href="https://github.com/somsagar07/FailureShiftRL" class="btn btn-publication" target="_blank"><span class="material-icons">language</span> Website</a>
+              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib5')"><span class="material-icons">format_quote</span> BibTeX</a>
+              <div id="bib5" class="bibtex"><pre>@inproceedings{sagar2024mystery,
+            title={From Mystery to Mastery: Failure Diagnosis for Improving Manipulation Policies},
+            author={Sagar, Som and Duan, Jiafei and Vasudevan, Sreevisakh and Zhou, Yifan, Ben'Amor, Heni and Fox, Dieter and Senanayake, Ransalu},
+            booktitle={RSS Workshop on Out-of-Distribution Generalization in Robotics},
+            year={2025}
+          }</pre></div>
+            </td>
+          </tr>
 
           <tr>
             <td width="20%" class="pub-image">
