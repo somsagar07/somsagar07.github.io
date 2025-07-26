@@ -2,260 +2,410 @@
 <html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
-  <style type="text/css">
-    /* Color scheme stolen from Sergey Karayev */
-    
-    a {
-      color: #1772d0;
-      text-decoration: none;
-    }
-    
-    a:focus,
-    a:hover {
-      color: #f09228;
-      text-decoration: none;
-    }
-    
-    body,
-    td,
-    th,
-    tr,
-    p,
-    a {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 14px
-    }
-    
-    strong {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 14px;
-    }
-    
-    heading {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 22px;
-    }
-    
-    papertitle {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 14px;
-      font-weight: 700
-    }
-    
-    name {
-      font-family: 'Lato', Verdana, Helvetica, sans-serif;
-      font-size: 32px;
-    }
-    
-    .one {
-      width: 160px;
-      height: 160px;
-      position: relative;
-    }
-    
-    .two {
-      width: 160px;
-      height: 160px;
-      position: absolute;
-      transition: opacity .2s ease-in-out;
-      -moz-transition: opacity .2s ease-in-out;
-      -webkit-transition: opacity .2s ease-in-out;
-    }
-    
-    .fade {
-      transition: opacity .2s ease-in-out;
-      -moz-transition: opacity .2s ease-in-out;
-      -webkit-transition: opacity .2s ease-in-out;
-    }
-    
-    span.highlight {
-      background-color: #ffffd0;
-    }
-  </style>
-  <link rel="icon" type="image/jpg" href="images/profile_old.png">
+  <meta http-equiv='Content-Type' content='text/html; charset=us-ascii'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <title>Som Sagar</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <style type='text/css'>
+      body { background-color: #FAFAFA; margin: 0; padding: 0; }
+      body, td, p, heading, name, papertitle {
+        font-family: 'Lato', 'Segoe UI', 'Helvetica Neue', sans-serif;
+        font-size: 15px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        margin: 1px;
+        padding: 4px 10px 4px 8px;
+        text-decoration: none;
+        color: #303030;
+        background-color: #BBDEFB;
+        border-radius: 20px;
+        font-weight: 500;
+        transition: background-color 0.2s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        vertical-align: middle;
+        cursor: pointer;
+      }
+
+      .btn .material-icons { font-size: 1.2em; }
+      .btn:hover {
+        background-color: #316CAD;
+        color: #fff;
+      }
+
+      .btn-publication {
+        background-color: #C8E6C9;
+      }
+
+      .btn-publication:hover { background-color: #2E7D32; color: #fff; }
+      .news-date { font-weight: 500; color: #316CAD; }
+      .news-item-title { font-weight: 600; }
+      .news-highlight-red { font-weight: 600; color: #EF5350; }
+      .description { display: block; margin: 4px 0; color: #555; font-style: italic; padding: 4px 0; }
+      .bibtex {
+        max-height: 0; opacity: 0; overflow-x: auto;
+        margin-top: 0; padding: 0 4px;
+        background-color: #fff3e0; border-left: 4px solid #ffb300;
+        font-family: monospace; white-space: pre-wrap; font-size: small;
+        transition: max-height 0.5s ease, opacity 0.5s ease;
+      }
+
+      .bibtex.show { max-height: 200px; opacity: 1; margin-top: 4px; padding: 4px; }
+
+      a { color: #1E88E5; text-decoration: none; }
+      a:hover, a:focus { color: #316CAD; text-decoration: underline; }
+
+      .publications-table { margin-top: 20px; border-collapse: separate; border-spacing: 0 20px; }
+
+      .publications-table tr td img { max-width: 150px; max-height: 125px; border-radius: 8%; transition: border-radius 0.2s ease-in-out; }
+      .publications-table tr td img:hover { border-radius: 12%; }
+
+      heading {
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      name {
+        font-size: 32px;
+        font-weight: bold;
+      }
+
+      papertitle {
+        font-weight: bold;
+        color: #316CAD;
+      }
+      
+      /* --- LAYOUT STYLES --- */
+      .bio-name, .bio-links {
+        text-align: center;
+      }
+      
+      .profile-pic-container img {
+        border-radius: 15px;
+        height: 250px;
+        display: block;
+        margin: auto; 
+      }
+      
+      /* --- DESKTOP LAYOUT (CSS GRID) --- */
+      @media screen and (min-width: 769px) {
+        .main-layout {
+          display: grid;
+          grid-template-columns: 1fr auto; /* Two columns: text | picture */
+          grid-template-areas:
+            "name    picture"
+            "bio     picture";
+          gap: 0 20px;
+          align-items: center; /* Vertically center everything */
+        }
+        /* Assign elements to grid areas */
+        .bio-name { grid-area: name; }
+        .left-column { grid-area: bio; }
+        .profile-pic-container { grid-area: picture; }
+      }
+
+
+      /* --- MOBILE STYLES (FLEXBOX) --- */
+      @media screen and (max-width: 768px) {
+        .main-layout {
+          display: flex;
+          flex-direction: column;
+        }
+        /* Explicitly order the elements for the mobile view */
+        .bio-name { order: 1; }
+        .profile-pic-container { order: 2; padding: 20px 0; }
+        .left-column { order: 3; }
+
+        .pub-image, .pub-details {
+          display: block;
+          width: 100%;
+          text-align: left;
+        }
+        
+        .pub-image img {
+          display: block;
+          margin: 0 auto 10px auto;
+        }
+      }
+
+
+      /* --- MODAL, NEWS, AND OTHER STYLES--- */
+      .modal {
+        display: none; position: fixed; z-index: 1000;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.6); justify-content: center; align-items: center;
+      }
+      .modal-content {
+        position: relative; background: #000; padding: 0; border-radius: 8px;
+        max-width: 50vw; max-height: 50vh; box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        animation: dropIn 0.3s ease-out; overflow: hidden;
+      }
+      .modal-content video { width: 100%; height: auto; display: block; }
+      .close-btn {
+        position: absolute; top: 12px; right: 12px;
+        width: 32px; height: 32px; line-height: 32px; text-align: center;
+        font-size: 20px; color: #fff; background-color: rgba(0,0,0,0.8);
+        border-radius: 6px; cursor: pointer; z-index: 10;
+      }
+      .close-btn:hover { background-color: rgba(0,0,0,1); }
+      .news-scroll-container {
+        max-height: 170px;
+        overflow-y: scroll;
+        padding-right: 5px;
+        margin-top: 4px;
+      }
+      .news-scroll-container::-webkit-scrollbar { width: 8px; }
+      .news-scroll-container::-webkit-scrollbar-track { background-color: #f0f0f0; border-radius: 4px; }
+      .news-scroll-container::-webkit-scrollbar-thumb { background-color: #c1c1c1; border-radius: 4px; }
+      .news-scroll-container::-webkit-scrollbar-thumb:hover { background-color: #a8a8a8; }
+      @keyframes dropIn {
+        from { transform: translateY(-30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+  </style>
+  <link rel='icon' type='image/jpg' href='images/profile_old.png'>
 </head>
 
 <body>
-  <table width="800" border="0" align="center" cellspacing="0" cellpadding="0">
+  <div id='videoModal' class='modal'>
+    <div class='modal-content'>
+      <span class='close-btn' onclick='closeModal()'>&times;</span>
+      <video id='modalVideo' controls>
+        <source src='' type='video/mp4'>
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <br/>
+  <table style='max-width: 900px; width: 90%; margin: auto;' border='0' cellspacing='0' cellpadding='0'>
     <tr>
       <td>
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-          <tr>
-            <td width="67%" valign="middle">
-              <p align="center">
-                <name>Som Sagar</name>
+        <div class="main-layout">
+
+            <div class="bio-name">
+              <p>
+                <name>Som Sagar</name><br>
+                <span style="font-size: 16px; color: #444;">ssagar6 at asu dot edu</span>
               </p>
-              <p>Hi! I am a second-year computer science PhD student at Arizona State University advised by Prof. <a href="https://www.ransalu.com/">Ransalu Senanayake</a> and affiliated with the <a href="https://www.ransalu.com/">Laboratory for Learning Evaluation of autoNomous Systems (LENS)</a>. 
-                My research focuses on developing robust and adaptable machine learning models, with an emphasis on reinforcement learning and uncertainty estimation. I aim to create systems that can effectively handle distribution shifts and new information in dynamic environments. By integrating foundational models, reinforcement learning, and real-world applicability, I seek to enhance model interpretability, improve generalization, and optimize decision-making processes in AI systems.
-
-              </p>
-              <p>Previously, I received a B.tech Honors. in computer scince from Indian Institute of Information Technology (IIIT), Kottayam. 
-              </p>
-              <p>I am originally from Kerala, India, and outside of research, I enjoy spending time outdoors, especially playing soccer, hiking, and swimming.   
-              </p>
-              <p>Please feel free to reach out about research or any advice I can help with!
-              </p>
-              <p  align="center">[<a href="mailto:ssagar6@asu.edu">Email</a>]
-                [<a href="data/Sagar_CV.pdf">CV</a>]
-                 [<a href="https://scholar.google.com/citations?user=qWxEX0QAAAAJ&hl=en">Google Scholar</a>]
-                 [<a href="https://www.linkedin.com/in/somsagar/">LinkedIn</a>]
-                 [<a href="https://github.com/somsagar07">GitHub</a>]
-                 [<a href="https://www.notion.so/som-sagar/Welcome-to-my-blog-12a8157ad43a80028d67d1942283f9ce">Blog</a>]
-              </p>
-            </td>
-            <td width="10%">
-              <img src="images/profile.jpg"
-              width="220" 
-              height="240">
-            </td>
-          </tr>
-        </table>
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-          <tr>
-            <td width="100%" valign="middle">
-              <heading>Selected Research</heading>
-              <p> Please see my CV or Google Scholar for a full list of work.
-              </p>
-            </td>
-          </tr>
-        </table>
-
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-
-          <tr>
-            <td width="25%">
-              <div class="one">
-                <div class="two"><img src='images/ICML_1.png' width="160" vspace="20"></div>
-              </div>
-            </td>
-            <td valign="middle" width="75%">
-            <a href="https://arxiv.org/abs/2406.07145">
-                <papertitle>Failures are fated, but can be faded: Characterizing and mitigating unwanted behaviors in large-scale vision and language models</papertitle>
-            </a>
-              <br>
-              <strong>Som Sagar</strong>, Aditya Taparia, Ransalu Senanayake
-              <br>
-              <em>International Conference on Machine Learning (ICML)</em>, 2024 <font color="red"><strong>(Spotlight (top 3%))</strong></font>
-              <br>
-              [<a href="https://arxiv.org/pdf/2406.07145.pdf">PDF</a>]
-              [<a href="https://anniesch.github.io/adapt-on-the-go">Video</a>]
-              [<a href="https://github.com/gchada/ROAM">Code</a>]
-              <br>
-              We introduce a framework that maps the failure landscape of large vision and language models, addressing their shortcomings by realigning model behavior with human preferences whether stylistic or ethical rather and mitigate failures,
-            </td>
-          </tr>
-
-          <tr>
-            <td width="25%">
-              <div class="one">
-                <div class="two"><img src='images/Neurips_SATA.png' width="160" vspace="20"></div>
-              </div>
-            </td>
-            <td valign="middle" width="75%">
-            <a href="https://arxiv.org/abs/2409.10733">
-                <papertitle>Trustworthy Conceptual Explanations for Neural Networks in Robot Decision-Making</papertitle>
-            </a>
-              <br>
-              <strong>Som Sagar*</strong>, Aditya Taparia*, Harsh Mankodiya, Pranav Bidare, Yifan Zhou, Ransalu Senanayake
-              <br>
-              <em>NeurIPS Workshop on Safe & Trustworthy Agents</em>, 2024
-              <br>
-              [<a href="https://arxiv.org/pdf/2409.10733.pdf">PDF</a>]
-              <br>
-              We introduce BaTCAV, a Bayesian TCAV framework with uncertainty estimations that enhances the interpretability of robotic actions across both simulation platforms and real-world robotic systems.
-            </td>
-          </tr>
-
-
-          <tr>
-            <td width="25%">
-              <div class="one">
-                <div class="two"><img src='images/Neurips_redteaming.png' width="160" vspace="20"></div>
-              </div>
-            </td>
-            <td valign="middle" width="75%">
-            <a href="https://arxiv.org/abs/2410.16738">
-                <papertitle>LLM-Assisted Red Teaming of Diffusion Models through "Failures Are Fated, But Can Be Faded"</papertitle>
-            </a>
-              <br>
-              <strong>Som Sagar</strong>,  Aditya Taparia, Ransalu Senanayake
-              <br>
-              <em>NeurIPS Workshop on Red Teaming GenAI: What Can We Learn from Adversaries?</em>, 2024
-              <br>
-              [<a href="https://arxiv.org/abs/2410.16738.pdf">PDF</a>]
-              <br>
-              This extension of the Failures are Fated work demonstrates how we use LLM-assisted methods to generate rewards and states in diffusion models. Additionally, we incorporate various RL search strategies to optimize the discovery process.
-            </td>
-          </tr>
-
-          <tr>
-            <td width="25%">
-              <div class="one">
-                <div class="two"><img src='images/Neurips_Interpretable.png' width="160" vspace="20"></div>
-              </div>
-            </td>
-            <td valign="middle" width="75%">
-            <a href="https://arxiv.org/abs/2408.13438">
-                <papertitle>Explainable Concept Generation through Vision-Language Preference Learning</papertitle>
-            </a>
-              <br>
-              Aditya Taparia, <strong>Som Sagar</strong>, Ransalu Senanayake
-              <br>
-              <em>NeurIPS Workshop on Interpretable AI: Past, Present and Future</em>, 2024 
-              <br>
-              [<a href="https://arxiv.org/pdf/2408.13438.pdf">PDF</a>]
-              <br>
-              We propose a Reinforcement Learning-based Preference Optimizing exploration (RLPO) method designed to generate explainable states within a classification models, enabling the discovery of interpretable states that may be difficult or impossible for humans to identify.
-            </td>
-          </tr>
-
-          <tr>
-            <td width="25%">
-              <div class="one">
-                <div class="two"><img src='images/Neurips_Behaviour.png' width="160" vspace="20"></div>
-              </div>
-            </td>
-            <td valign="middle" width="75%">
-            <a href="">
-                <papertitle>ExpressivityArena: Can LLMs Express Information Implicitly?</papertitle>
-            </a>
-              <br>
-              Joshua Tint, <strong>Som Sagar</strong>, Aditya Taparia, Caleb Liu, Kelly Raines, Bimsara Pathiraja, Ransalu Senanayake
-              <br>
-              <em>NeurIPS Workshop on Behavioral Machine Learning</em>, 2024 
-              <br>
-              [<a href="">PDF</a>]
-              <br>
-              We introduce ExpressivityArena, a framework designed to evaluate the expressiveness of large language models (LLMs), enabling systematic assessment of their ability to convey nuanced and implicit information across various contexts.
-            </td>
-          </tr>
-
+            </div>
           
+          <div class="left-column">
+            <div class="bio-text">
+              <p align='justify'>Hi! I am a second-year computer science PhD student at Arizona State University advised by Prof. <a href='https://www.ransalu.com/'>Ransalu Senanayake</a> and affiliated with the <a href='https://www.ransalu.com/'>Laboratory for Learning Evaluation of autoNomous Systems (LENS)</a>. My research focuses on developing robust and adaptable machine learning models, with an emphasis on reinforcement learning and uncertainty estimation. I aim to create systems that can effectively handle distribution shifts and new information in dynamic environments. By integrating foundational models, reinforcement learning, and real-world applicability, I seek to enhance model interpretability, improve generalization, and optimize decision-making processes in AI systems.</p>
+              <p align='justify'>Previously, I received a B.Tech Honors in Computer Science from the Indian Institute of Information Technology (IIIT), Kottayam.</p>
+              <p align='justify'>I am originally from Kerala, India, and outside of research, I enjoy spending time outdoors, especially playing soccer, hiking, and swimming.</p>
+              <p align='justify'>I'm always happy to connect about research, collaborate on ideas, or share advice. Please feel free to get in touch!</p>
+            </div>
+            
+            <div class="bio-links">
+              <p>
+                <a href='data/Sagar_CV.pdf' class='btn'> <span class='material-icons'>picture_as_pdf</span> CV</a>
+                <a href='https://scholar.google.com/citations?user=qWxEX0QAAAAJ&hl=en' class='btn' target='_blank'> <span class='material-icons'>school</span> Google Scholar</a>
+                <a href='https://www.linkedin.com/in/somsagar/' class='btn' target='_blank'> <span class='material-icons'>business</span> LinkedIn</a>
+                <a href='https://github.com/somsagar07' class='btn' target='_blank'> <span class='material-icons'>code</span> GitHub</a>
+                <a href='https://www.notion.so/som-sagar/Welcome-to-my-blog-12a8157ad43a80028d67d1942283f9ce' class='btn' target='_blank'> <span class='material-icons'>book</span> Blog</a>
+              </p>
+            </div>
+          </div> <div class="profile-pic-container">
+            <img src='images/profile.jpg' alt='Profile Picture'>
+          </div>
 
-                
-        </td>
+        </div>
+        <h2>News</h2>
+        <div class="news-scroll-container">
+          <table width='100%' border='0' cellspacing='0' cellpadding='2'>
+            <tr>
+              <td width='10%' valign='top'><span class='news-date'>Jun '25</span></td>
+              <td width='90%' valign='top'>Our paper "<a class='news-item-title' href='https://arxiv.org/abs/2409.10733' target='_blank'>Trustworthy Explanations for Robot Behaviors</a>" was accepted to IROS 2025.</td>
+            </tr>
+            <tr>
+              <td width='10%' valign='top'><span class='news-date'>May '25</span></td>
+              <td width='90%' valign='top'>Joining <a class='news-item-title' href="https://www.linkedin.com/company/linkedin/" target='_blank'><img src="images/LinkedIn_logo.png" alt="LinkedIn Logo" style="height: 1em; vertical-align: middle; margin-right: 3px;">LinkedIn</a> as a research intern this summer.</td>
+            </tr>
+            <tr>
+              <td width='10%' valign='top'><span class='news-date'>Apr '25</span></td>
+              <td width='90%' valign='top'>Our paper "<a class='news-item-title' href='https://arxiv.org/abs/2408.13438' target='_blank'>Explainable Concept Generation through Vision-Language Preference Learning for Understanding Neural Networks' Internal Representations</a>" was accepted to ICML 2025.</td>
+            </tr>
+            <tr>
+              <td width='10%' valign='top'><span class='news-date'>Dec '24</span></td>
+              <td width='90%' valign='top'>Presented four workshop papers at NeurIPS 2024.</td>
+            </tr>
+            <tr>
+              <td width='10%' valign='top'><span class='news-date'>Apr '24</span></td>
+              <td width='90%' valign='top'>Our ICML 2024 paper "<a class='news-item-title' href='https://arxiv.org/abs/2406.07145' target='_blank'>Failures Are Fated, But Can Be Faded: Characterizing and Mitigating Unwanted Behaviors in Large-Scale Vision and Language Models</a>" was accepted as a <span class='news-highlight-red'>spotlight (top 3.5%)</span>.</td>
+            </tr>
+            <tr>
+              <td width='10%' valign='top'><span class='news-date'>Aug '23</span></td>
+              <td width='90%' valign='top'>Started my PhD in Computer Science at Arizona State University, joining the LENS Lab.</td>
+            </tr>
+            <tr>
+              <td width='10%' valign='top'><span class='news-date'>May '23</span></td>
+              <td width='90%' valign='top'>Graduated from IIIT Kottayam with a B.Tech (Honors) in Computer Science.</td>
+            </tr>
+          </table>
+        </div>
+
+
+        <table style='width: 100%; table-layout: fixed;' border='0' cellspacing='0' cellpadding='5' class='publications-table'>
+
+          <tr>
+            <td width="20%" class="pub-image">
+              <img src="images/IROS_1.png" width="150">
+            </td>
+            <td width="70%" valign="top" class="pub-details">
+              <papertitle>Trustworthy Explanations for Robot Behaviors</papertitle><br>
+             <b>Som Sagar*</b>, Aditya Taparia*, Harsh Mankodiya, Pranav Bidare, Yifan Zhou, Ransalu Senanayake<br>
+              <em>IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</em>, 2025
+
+              <div class="description">
+                We introduce BaTCAV, a Bayesian TCAV framework with uncertainty estimations that enhances the interpretability of robotic actions across both simulation platforms and real-world robotic systems.
+              </div>
+
+              <a href="https://arxiv.org/abs/2409.10733" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
+              <a class="btn btn-publication" onclick="openModal('videos/BaTCAVe Video.mp4')"><span class="material-icons">play_circle</span> Video</a>
+              <a href="https://github.com/aditya-taparia/BaTCAVe" class="btn btn-publication" target="_blank"><span class="material-icons">code</span> Code</a>
+              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib2')"><span class="material-icons">format_quote</span> BibTeX</a>
+              <div id="bib2" class="bibtex"><pre>@article{sagar2024trustworthy,
+            title={Trustworthy Conceptual Explanations for Neural Networks in Robot Decision-Making},
+            author={Sagar, Som and Taparia, Aditya and Mankodiya, Harsh and Bidare, Pranav and Zhou, Yifan and Senanayake, Ransalu},
+            journal={arXiv preprint arXiv:2409.10733},
+            year={2024}
+          }</pre></div>
+            </td>
+          </tr>
+
+
+          <tr>
+            <h2>Publications</h2>
+            <p>Please see my CV or Google Scholar for a full list of work.</p>
+            <td width="20%" class="pub-image">
+              <img src="images/ICML_2.jpg" width="150">
+            </td>
+            <td width="70%" valign="top" class="pub-details">
+              <papertitle>Explainable Concept Generation through Vision-Language Preference Learning for Understanding Neural Networks' Internal Representations</papertitle><br>
+              Aditya Taparia, <b>Som Sagar</b>, Ransalu Senanayake<br>
+              <em>International Conference on Machine Learning (ICML)</em>, 2025
+
+              <div class="description">
+                We propose a Reinforcement Learning-based Preference Optimizing exploration (RLPO) method designed to generate explainable states within a classification model, enabling the discovery of interpretable states that may be difficult or impossible for humans to identify.
+              </div>
+
+              <a href="https://arxiv.org/abs/2408.13438" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
+              <a class="btn btn-publication" onclick="openModal('videos/GenXAI Video.mp4')"><span class="material-icons">play_circle</span> Video</a>
+              <a href="https://github.com/aditya-taparia/RLPO" class="btn btn-publication" target="_blank"><span class="material-icons">code</span> Code</a>
+              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib1')"><span class="material-icons">format_quote</span> BibTeX</a>
+              <div id="bib1" class="bibtex"><pre>@article{taparia2024explainable,
+                title={Explainable Concept Generation through Vision-Language Preference Learning for Understanding Neural Networks' Internal Representations},
+                author={Taparia, Aditya and Sagar, Som and Senanayake, Ransalu},
+                journal={arXiv preprint arXiv:2408.13438},
+                year={2024}
+              }</pre></div>
+            </td>
+          </tr>
+
+
+          <tr>
+            <td width="20%" class="pub-image">
+              <img src="images/ICML_1.png" width="150">
+            </td>
+            <td width="70%" valign="top" class="pub-details">
+              <papertitle>Failures Are Fated, But Can Be Faded: Characterizing and Mitigating Unwanted Behaviors in Large-Scale Vision and Language Models</papertitle><br>
+              <b>Som Sagar</b>, Aditya Taparia, Ransalu Senanayake<br>
+              <em>International Conference on Machine Learning (ICML)</em>, 2024
+              <span style="color: #EF5350; font-weight: 600;"> &mdash; spotlight (top 3.5%)</span>
+              <div class="description">
+                We introduce a framework that maps the failure landscape of large vision and language models, addressing their shortcomings by realigning model behavior with human preferences—whether stylistic or ethical—to mitigate failures.
+              </div>
+
+              <a href="https://arxiv.org/abs/2406.07145" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
+              <a class="btn btn-publication" onclick="openModal('videos/Failure Video.mp4')"><span class="material-icons">play_circle</span> Video</a>
+              <a href="https://github.com/somsagar07/FailureShiftRL" class="btn btn-publication" target="_blank"><span class="material-icons">code</span> Code</a>
+              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib5')"><span class="material-icons">format_quote</span> BibTeX</a>
+              <div id="bib5" class="bibtex"><pre>@inproceedings{sagar2024failures,
+            title={Failures are fated, but can be faded: characterizing and mitigating unwanted behaviors in large-scale vision and language models},
+            author={Sagar, Som and Taparia, Aditya and Senanayake, Ransalu},
+            booktitle={Proceedings of the 41st International Conference on Machine Learning},
+            pages={42999--43023},
+            year={2024}
+          }</pre></div>
+            </td>
+          </tr>
+
+          <tr>
+            <td width="20%" class="pub-image">
+              <img src="images/Neurips_Behaviour.png" width="150">
+            </td>
+            <td width="70%" valign="top" class="pub-details">
+              <papertitle>ExpressivityArena: Can LLMs Express Information Implicitly?</papertitle><br>
+              Joshua Tint, <b>Som Sagar</b>, Aditya Taparia, Caleb Liu, Kelly Raines, Bimsara Pathiraja, Ransalu Senanayake<br>
+              <em>NeurIPS Workshop on Behavioral Machine Learning</em>, 2024
+
+              <div class="description">
+                We introduce ExpressivityArena, a framework designed to evaluate the expressiveness of large language models (LLMs), enabling systematic assessment of their ability to convey nuanced and implicit information across various contexts.
+              </div>
+
+              <a href="https://arxiv.org/abs/2411.08010" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
+              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib3')"><span class="material-icons">format_quote</span> BibTeX</a>
+              <div id="bib3" class="bibtex"><pre>@inproceedings{tint2024expressivityarena,
+            title={ExpressivityArena: Can LLMs Express Information Implicitly?},
+            author={Tint, Joshua and Sagar, Som and Taparia, Aditya and Liu, Caleb and Raines, Kelly and Pathiraja, Bimsara and Senanayake, Ransalu},
+            booktitle={NeurIPS 2024 Workshop on Behavioral Machine Learning},
+            year={2024}
+          }</pre></div>
+            </td>
+          </tr>
+
+          <tr>
+            <td width="20%" class="pub-image">
+              <img src="images/Neurips_redteaming.png" width="150">
+            </td>
+            <td width="70%" valign="top" class="pub-details">
+              <papertitle>LLM-Assisted Red Teaming of Diffusion Models through “Failures Are Fated, But Can Be Faded”</papertitle><br>
+              <b>Som Sagar</b>, Aditya Taparia, Ransalu Senanayake<br>
+              <em>NeurIPS Workshop on Red Teaming GenAI</em>, 2024
+
+              <div class="description">
+                This extension of the Failures Are Fated work demonstrates how we use LLM-assisted methods to generate rewards and states in diffusion models, and incorporate RL search strategies to optimize the discovery process.
+              </div>
+
+              <a href="https://arxiv.org/abs/2410.16738" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
+              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib4')"><span class="material-icons">format_quote</span> BibTeX</a>
+              <div id="bib4" class="bibtex"><pre>@inproceedings{sagar2024llm,
+            title={LLM-Assisted Red Teaming of Diffusion Models through “Failures Are Fated, But Can Be Faded”},
+            author={Sagar, Som and Taparia, Aditya and Senanayake, Ransalu},
+            booktitle={Red Teaming GenAI: What Can We Learn from Adversaries?},
+            year={2024}
+          }</pre></div>
+            </td>
+          </tr>
+
+        </table>
+      </td>
     </tr>
   </table>
 
-  <table width="100%" cellspacing="0" cellpadding="20" border="0" align="center">
-      <tbody><tr>
-        <td>
-          <br>
-          <p align="center">
-            <font size="2">
-              Website template from <a href="https://github.com/jonbarron/jonbarron_website">here.</a>
-            </font>
-          </p>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
+  <script>
+    function toggleBib(id) { document.getElementById(id).classList.toggle('show'); }
+    function openModal(src) {
+      var modal = document.getElementById('videoModal');
+      var videoEl = document.getElementById('modalVideo');
+      videoEl.querySelector('source').src = src; videoEl.load(); modal.style.display = 'flex';
+    }
+    function closeModal() {
+      var modal = document.getElementById('videoModal');
+      var videoEl = document.getElementById('modalVideo');
+      videoEl.pause(); modal.style.display = 'none';
+    }
+    document.getElementById('videoModal').addEventListener('click', function (e) {
+      if (e.target === this) closeModal();
+    });
+  </script>
 </body>
 
 </html>
