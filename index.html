@@ -8,169 +8,16 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <title>Som Sagar</title>
-  <style type='text/css'>
-      body { background-color: #FAFAFA; margin: 0; padding: 0; }
-      body, td, p, heading, name, papertitle {
-        font-family: 'Lato', 'Segoe UI', 'Helvetica Neue', sans-serif;
-        font-size: 15px;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        margin: 1px;
-        padding: 4px 10px 4px 8px;
-        color: #303030;
-        background-color: #BBDEFB;
-        border-radius: 20px;
-        font-weight: 500;
-        transition: background-color 0.2s;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        vertical-align: middle;
-        cursor: pointer;
-      }
-
-      .btn .material-icons { font-size: 1.2em; }
-      .btn:hover {
-        background-color: #316CAD;
-        color: #fff;
-      }
-
-      .btn-publication {
-        background-color: #C8E6C9;
-      }
-
-      .btn-publication:hover { background-color: #2E7D32; color: #fff; }
-      .news-date { font-weight: 500; color: #316CAD; }
-      .news-item-title { font-weight: 600; }
-      .news-highlight-red { font-weight: 600; color: #EF5350; }
-      .description { display: block; margin: 4px 0; color: #555; font-style: italic; padding: 4px 0; }
-      .bibtex {
-        max-height: 0; opacity: 0; overflow-x: auto;
-        margin-top: 0; padding: 0 4px;
-        background-color: #fff3e0; border-left: 4px solid #ffb300;
-        font-family: monospace; white-space: pre-wrap; font-size: small;
-        transition: max-height 0.5s ease, opacity 0.5s ease;
-      }
-
-      .bibtex.show { max-height: 200px; opacity: 1; margin-top: 4px; padding: 4px; }
-
-      a { color: #1E88E5; text-decoration: none !important; }
-      a:hover, a:focus { color: #316CAD; text-decoration: underline; }
-
-      .publications-table { margin-top: 20px; border-collapse: separate; border-spacing: 0 20px; }
-
-      .publications-table tr td img { max-width: 150px; max-height: 125px; border-radius: 8%; transition: border-radius 0.2s ease-in-out; }
-      .publications-table tr td img:hover { border-radius: 12%; }
-
-      heading {
-        font-size: 22px;
-        font-weight: bold;
-      }
-
-      name {
-        font-size: 32px;
-        font-weight: bold;
-      }
-
-      papertitle {
-        font-weight: bold;
-        color: #316CAD;
-      }
-      
-      /* --- LAYOUT STYLES --- */
-      .bio-name, .bio-links {
-        text-align: center;
-      }
-      
-      .profile-pic-container img {
-        border-radius: 15px;
-        height: 250px;
-        display: block;
-        margin: auto; 
-      }
-      
-      /* --- DESKTOP LAYOUT (CSS GRID) --- */
-      @media screen and (min-width: 769px) {
-        .main-layout {
-          display: grid;
-          grid-template-columns: 1fr auto; /* Two columns: text | picture */
-          grid-template-areas:
-            "name    picture"
-            "bio     picture";
-          gap: 0 20px;
-          align-items: center; /* Vertically center everything */
-        }
-        /* Assign elements to grid areas */
-        .bio-name { grid-area: name; }
-        .left-column { grid-area: bio; }
-        .profile-pic-container { grid-area: picture; }
-      }
-
-
-      /* --- MOBILE STYLES (FLEXBOX) --- */
-      @media screen and (max-width: 768px) {
-        .main-layout {
-          display: flex;
-          flex-direction: column;
-        }
-        /* Explicitly order the elements for the mobile view */
-        .bio-name { order: 1; }
-        .profile-pic-container { order: 2; padding: 20px 0; }
-        .left-column { order: 3; }
-
-        .pub-image, .pub-details {
-          display: block;
-          width: 100%;
-          text-align: left;
-        }
-        
-        .pub-image img {
-          display: block;
-          margin: 0 auto 10px auto;
-        }
-      }
-
-
-      /* --- MODAL, NEWS, AND OTHER STYLES--- */
-      .modal {
-        display: none; position: fixed; z-index: 1000;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(0,0,0,0.6); justify-content: center; align-items: center;
-      }
-      .modal-content {
-        position: relative; background: #000; padding: 0; border-radius: 8px;
-        max-width: 50vw; max-height: 50vh; box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-        animation: dropIn 0.3s ease-out; overflow: hidden;
-      }
-      .modal-content video { width: 100%; height: auto; display: block; }
-      .close-btn {
-        position: absolute; top: 12px; right: 12px;
-        width: 32px; height: 32px; line-height: 32px; text-align: center;
-        font-size: 20px; color: #fff; background-color: rgba(0,0,0,0.8);
-        border-radius: 6px; cursor: pointer; z-index: 10;
-      }
-      .close-btn:hover { background-color: rgba(0,0,0,1); }
-      .news-scroll-container {
-        max-height: 170px;
-        overflow-y: scroll;
-        padding-right: 5px;
-        margin-top: 4px;
-      }
-      .news-scroll-container::-webkit-scrollbar { width: 8px; }
-      .news-scroll-container::-webkit-scrollbar-track { background-color: #f0f0f0; border-radius: 4px; }
-      .news-scroll-container::-webkit-scrollbar-thumb { background-color: #c1c1c1; border-radius: 4px; }
-      .news-scroll-container::-webkit-scrollbar-thumb:hover { background-color: #a8a8a8; }
-      @keyframes dropIn {
-        from { transform: translateY(-30px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-      }
-  </style>
+  <link rel="stylesheet" href="styles.css">
   <link rel='icon' type='image/jpg' href='images/profile_old.png'>
 </head>
 
-<body>
+<!-- Simple Dark/Light Mode Toggle -->
+<div id="theme-toggle-btn" title="Toggle dark/light mode">
+  <span class="material-icons" id="themeToggleIcon">light_mode</span>
+</div>
+
+
   <div id='videoModal' class='modal'>
     <div class='modal-content'>
       <span class='close-btn' onclick='closeModal()'>&times;</span>
@@ -196,7 +43,7 @@
           
           <div class="left-column">
             <div class="bio-text">
-              <p align='justify'>Hi! I am a third-year computer science PhD student at Arizona State University advised by Prof. <a href='https://www.ransalu.com/'>Ransalu Senanayake</a> and affiliated with the <a href='https://www.ransalu.com/'>Laboratory for Learning Evaluation of autoNomous Systems (LENS)</a>. My research focuses on developing robust and adaptable machine learning models, with an emphasis on reinforcement learning and uncertainty estimation. I aim to create systems that can effectively handle distribution shifts and new information in dynamic environments. By integrating foundational models, reinforcement learning, and real-world applicability, I seek to enhance model interpretability, improve generalization, and optimize decision-making processes in AI systems.</p>
+              <p align='justify'>Hi! I am a third-year computer science PhD student at Arizona State University advised by Prof. <a href='https://www.ransalu.com/'>Ransalu Senanayake</a> and affiliated with the <a href='https://ransml.github.io/lens-lab/'>Laboratory for Learning Evaluation and Naturalization of Systems (LENS Lab)</a>. My research focuses on developing robust and adaptable machine learning models, with an emphasis on reinforcement learning and uncertainty estimation. I aim to create systems that can effectively handle distribution shifts and new information in dynamic environments. By integrating foundational models, reinforcement learning, and real-world applicability, I seek to enhance model interpretability, improve generalization, and optimize decision-making processes in AI systems.</p>
               <p align='justify'>Previously, I received a B.Tech Honors in Computer Science from the Indian Institute of Information Technology (IIIT), Kottayam.</p>
               <p align='justify'>I am originally from Kerala, India, and outside of research, I enjoy spending time outdoors, especially playing soccer, hiking, and swimming.</p>
               <p align='justify'>I'm always happy to connect about research, collaborate on ideas, or share advice. Please feel free to get in touch!</p>
@@ -257,6 +104,35 @@
 
         <table style='width: 100%; table-layout: fixed;' border='0' cellspacing='0' cellpadding='5' class='publications-table'>
 
+          <h2>Research</h2>
+          <p>Please see my CV or Google Scholar for a full list of work.</p>
+
+          <tr>
+            <td width="20%" class="pub-image">
+                <img src="images/Neurips_PAC.png" width="130"> 
+            </td>
+            <td width="70%" valign="top" class="pub-details">
+              <papertitle>PAC Bench: Do Foundation Models Understand Prerequisites for Executing Manipulation Policies?</papertitle><br>
+              Atharva Gundawar*, <b>Som Sagar*</b>, Ransalu Senanayake<br>
+              <em>Conference on Neural Information Processing Systems (NeurIPS)</em>, 2025
+
+              <div class="description">
+                We introduce PAC Bench, a benchmark designed to evaluate the capability of foundational models in understanding and predicting prerequisite conditions necessary for the successful execution of robot manipulation tasks. 
+              </div>
+
+              <a href="https://arxiv.org/abs/2506.23725" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
+              <!-- <a class="btn btn-publication" onclick="openModal('videos/BaTCAVe Video.mp4')"><span class="material-icons">play_circle</span> Video</a> -->
+              <a href="https://huggingface.co/Pacbench" class="btn btn-publication" target="_blank"><span class="material-icons">dataset</span> Dataset</a>
+              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib1')"><span class="material-icons">format_quote</span> BibTeX</a>
+              <div id="bib1" class="bibtex"><pre>@article{gundawar2025pac,
+            title={PAC Bench: Do Foundation Models Understand Prerequisites for Executing Manipulation Policies?},
+            author={Gundawar, Atharva and Sagar, Som and Senanayake, Ransalu},
+            journal={arXiv:2506.23725},
+            year={2025}
+          }</pre></div>
+            </td>
+          </tr>
+
           <tr>
             <td width="20%" class="pub-image">
               <img src="images/IROS_1.png" width="150">
@@ -285,8 +161,7 @@
 
 
           <tr>
-            <h2>Research</h2>
-            <p>Please see my CV or Google Scholar for a full list of work.</p>
+            
             <td width="20%" class="pub-image">
               <img src="images/ICML_2.jpg" width="150">
             </td>
@@ -431,6 +306,22 @@
     document.getElementById('videoModal').addEventListener('click', function (e) {
       if (e.target === this) closeModal();
     });
+
+  const toggleBtn = document.getElementById('theme-toggle-btn');
+  const toggleIcon = document.getElementById('themeToggleIcon');
+
+  // Apply stored preference
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+    toggleIcon.textContent = 'dark_mode';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+    toggleIcon.textContent = isDark ? 'dark_mode' : 'light_mode';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
   </script>
 </body>
 

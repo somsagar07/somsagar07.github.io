@@ -1,0 +1,247 @@
+
+body { background-color: #FAFAFA; margin: 0; padding: 0; }
+body, td, p, heading, name, papertitle {
+font-family: 'Lato', 'Segoe UI', 'Helvetica Neue', sans-serif;
+font-size: 15px;
+}
+
+.btn {
+display: inline-flex;
+align-items: center;
+gap: 4px;
+margin: 1px;
+padding: 4px 10px 4px 8px;
+color: #303030;
+background-color: #BBDEFB;
+border-radius: 20px;
+font-weight: 500;
+transition: background-color 0.2s;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+vertical-align: middle;
+cursor: pointer;
+}
+
+.btn .material-icons { font-size: 1.2em; }
+.btn:hover {
+background-color: #316CAD;
+color: #fff;
+}
+
+.btn-publication {
+background-color: #C8E6C9;
+}
+
+.btn-publication:hover { background-color: #2E7D32; color: #fff; }
+.news-date { font-weight: 500; color: #316CAD; }
+.news-item-title { font-weight: 600; }
+.news-highlight-red { font-weight: 600; color: #EF5350; }
+.description { display: block; margin: 4px 0; color: #555; font-style: italic; padding: 4px 0; }
+.bibtex {
+max-height: 0; opacity: 0; overflow-x: auto;
+margin-top: 0; padding: 0 4px;
+background-color: #fff3e0; border-left: 4px solid #ffb300;
+font-family: monospace; white-space: pre-wrap; font-size: small;
+transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.bibtex.show { max-height: 200px; opacity: 1; margin-top: 4px; padding: 4px; }
+
+a { color: #1E88E5; text-decoration: none !important; }
+a:hover, a:focus { color: #316CAD; text-decoration: underline; }
+
+.publications-table { margin-top: 20px; border-collapse: separate; border-spacing: 0 20px; }
+
+.publications-table tr td img { max-width: 150px; max-height: 125px; border-radius: 8%; transition: border-radius 0.2s ease-in-out; }
+.publications-table tr td img:hover { border-radius: 12%; }
+
+heading {
+font-size: 22px;
+font-weight: bold;
+}
+
+name {
+font-size: 32px;
+font-weight: bold;
+}
+
+papertitle {
+font-weight: bold;
+color: #316CAD;
+}
+
+/* --- LAYOUT STYLES --- */
+.bio-name, .bio-links {
+text-align: center;
+}
+
+.profile-pic-container img {
+border-radius: 15px;
+height: 250px;
+display: block;
+margin: auto; 
+}
+
+/* --- DESKTOP LAYOUT (CSS GRID) --- */
+@media screen and (min-width: 769px) {
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr auto; /* Two columns: text | picture */
+    grid-template-areas:
+    "name    picture"
+    "bio     picture";
+    gap: 0 20px;
+    align-items: center; /* Vertically center everything */
+}
+/* Assign elements to grid areas */
+.bio-name { grid-area: name; }
+.left-column { grid-area: bio; }
+.profile-pic-container { grid-area: picture; }
+}
+
+
+/* --- MOBILE STYLES (FLEXBOX) --- */
+@media screen and (max-width: 768px) {
+.main-layout {
+    display: flex;
+    flex-direction: column;
+}
+/* Explicitly order the elements for the mobile view */
+.bio-name { order: 1; }
+.profile-pic-container { order: 2; padding: 20px 0; }
+.left-column { order: 3; }
+
+.pub-image, .pub-details {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.pub-image img {
+    display: block;
+    margin: 0 auto 10px auto;
+}
+}
+
+
+/* --- MODAL, NEWS, AND OTHER STYLES--- */
+.modal {
+display: none; position: fixed; z-index: 1000;
+top: 0; left: 0; right: 0; bottom: 0;
+background: rgba(0,0,0,0.6); justify-content: center; align-items: center;
+}
+.modal-content {
+position: relative; background: #000; padding: 0; border-radius: 8px;
+max-width: 50vw; max-height: 50vh; box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+animation: dropIn 0.3s ease-out; overflow: hidden;
+}
+.modal-content video { width: 100%; height: auto; display: block; }
+.close-btn {
+position: absolute; top: 12px; right: 12px;
+width: 32px; height: 32px; line-height: 32px; text-align: center;
+font-size: 20px; color: #fff; background-color: rgba(0,0,0,0.8);
+border-radius: 6px; cursor: pointer; z-index: 10;
+}
+.close-btn:hover { background-color: rgba(0,0,0,1); }
+.news-scroll-container {
+max-height: 170px;
+overflow-y: scroll;
+padding-right: 5px;
+margin-top: 4px;
+}
+.news-scroll-container::-webkit-scrollbar { width: 8px; }
+.news-scroll-container::-webkit-scrollbar-track { background-color: #f0f0f0; border-radius: 4px; }
+.news-scroll-container::-webkit-scrollbar-thumb { background-color: #c1c1c1; border-radius: 4px; }
+.news-scroll-container::-webkit-scrollbar-thumb:hover { background-color: #a8a8a8; }
+@keyframes dropIn {
+from { transform: translateY(-30px); opacity: 0; }
+to { transform: translateY(0); opacity: 1; }
+}
+
+
+/* --- DARK MODE STYLES --- */
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Restore light mode defaults when not in dark mode */
+body:not(.dark) {
+  background-color: #FAFAFA;
+  color: #000;
+}
+
+/* Links */
+body.dark a { color: #90caf9; }
+body.dark a:hover { color: #64b5f6; }
+
+/* Buttons */
+body.dark .btn {
+  background-color: #1e3a5f;
+  color: #f1f1f1;
+}
+body.dark .btn-publication {
+  background-color: #2e7d32;
+  color: #fff;
+}
+
+/* Text and details */
+body.dark .bio-text,
+body.dark .description,
+body.dark p,
+body.dark td,
+body.dark .news-item-title {
+  color: #e0e0e0;
+}
+
+/* Make the email visible in dark mode */
+body.dark .bio-name span {
+  color: #cfcfcf !important;
+}
+
+/* BibTeX blocks */
+body.dark .bibtex {
+  background-color: #333;
+  border-left-color: #ffb300;
+  color: #fff3e0;
+}
+
+/* Modal and scroll areas */
+body.dark .modal-content { background-color: #222; }
+body.dark .news-scroll-container::-webkit-scrollbar-track { background-color: #333; }
+body.dark .news-scroll-container::-webkit-scrollbar-thumb { background-color: #555; }
+
+/* Images */
+body.dark .publications-table tr td img {
+  box-shadow: 0 0 8px rgba(255,255,255,0.2);
+}
+
+/* --- SIMPLE ICON TOGGLE --- */
+#theme-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  z-index: 2000;
+  background: #e0e0e0;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#theme-toggle-btn:hover {
+  background: #bdbdbd;
+  transform: translateY(-2px);
+}
+
+#themeToggleIcon {
+  font-size: 24px;
+  color: #333;
+}
+
+body.dark #theme-toggle-btn {
+  background: #333;
+}
+body.dark #themeToggleIcon {
+  color: #f5f5f5;
+}
