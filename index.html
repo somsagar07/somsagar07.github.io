@@ -43,7 +43,7 @@
           
           <div class="left-column">
             <div class="bio-text">
-              <p align='justify'>Hi! I am a third-year computer science PhD student at Arizona State University advised by Prof. <a href='https://www.ransalu.com/'>Ransalu Senanayake</a> and affiliated with the <a href='https://ransml.github.io/lens-lab/'>Laboratory for Learning Evaluation and Naturalization of Systems (LENS Lab)</a>. My research focuses on developing robust and adaptable machine learning models, with an emphasis on reinforcement learning and uncertainty estimation. I aim to create systems that can effectively handle distribution shifts and new information in dynamic environments. By integrating foundational models, reinforcement learning, and real-world applicability, I seek to enhance model interpretability, improve generalization, and optimize decision-making processes in AI systems.</p>
+              <p align='justify'>Hi! I am a third-year computer science PhD student at Arizona State University advised by Dr. <a href='https://www.ransalu.com/'>Ransalu Senanayake</a> and affiliated with the <a href='https://ransml.github.io/lens-lab/'>Laboratory for Learning Evaluation and Naturalization of Systems (LENS Lab)</a>. My research focuses on developing robust and adaptable machine learning models, with an emphasis on reinforcement learning and uncertainty estimation. I aim to create systems that can effectively handle distribution shifts and new information in dynamic environments. By integrating foundational models, reinforcement learning, and real-world applicability, I seek to enhance model interpretability, improve generalization, and optimize decision-making processes in AI systems.</p>
               <p align='justify'>Previously, I received a B.Tech Honors in Computer Science from the Indian Institute of Information Technology (IIIT), Kottayam.</p>
               <p align='justify'>I am originally from Kerala, India, and outside of research, I enjoy spending time outdoors, especially playing soccer, hiking, and swimming.</p>
               <p align='justify'>I'm always happy to connect about research, collaborate on ideas, or share advice. Please feel free to get in touch!</p>
@@ -67,6 +67,18 @@
         <div class="news-scroll-container">
           <table width='100%' border='0' cellspacing='0' cellpadding='2'>
             <tr>
+              <td width='10%' valign='top'><span class='news-date'>Jan '26</span></td>
+              <td width='90%' valign='top'>Our paper "<a class='news-item-title' href='https://arxiv.org/abs/2506.12261' target='_blank'>Strategic Vantage Selection for Learning Viewpoint-Agnostic Manipulation Policies</a>" was accepted to ICRA 2026.</td>
+            </tr>
+            <tr>
+              <td width='10%' valign='top'><span class='news-date'>Jan '26</span></td>
+              <td width='90%' valign='top'>Our paper "<a class='news-item-title' href='https://arxiv.org/abs/2412.02818' target='_blank'>Uncovering Robot Vulnerabilities through Semantic Potential Fields</a>" was accepted to ICLR 2026.</td>
+            </tr>
+            <tr>
+              <td width='10%' valign='top'><span class='news-date'>Jan '26</span></td>
+              <td width='90%' valign='top'>Our paper "<a class='news-item-title' href='https://arxiv.org/abs/2411.08010' target='_blank'>ExpressivityArena: Can LLMs Express Information Implicitly?</a>" was accepted to EACL-Findings 2026.</td>
+            </tr>
+            <tr>
               <td width='10%' valign='top'><span class='news-date'>Sept '25</span></td>
               <td width='90%' valign='top'>Our paper "<a class='news-item-title' href='https://arxiv.org/abs/2506.23725' target='_blank'>PAC Bench: Do Foundation Models Understand Prerequisites for Executing Manipulation Policies?</a>" was accepted to NeurIPS 2025.</td>
             </tr>
@@ -76,7 +88,7 @@
             </tr>
             <tr>
               <td width='10%' valign='top'><span class='news-date'>May '25</span></td>
-              <td width='90%' valign='top'>Joining <a class='news-item-title' href="https://www.linkedin.com/company/linkedin/" target='_blank'><img src="images/LinkedIn_logo.png" alt="LinkedIn Logo" style="height: 1em; vertical-align: middle; margin-right: 3px;">LinkedIn</a> as a research intern this summer.</td>
+              <td width='90%' valign='top'>Joined <a class='news-item-title' href="https://www.linkedin.com/company/linkedin/" target='_blank'><img src="images/LinkedIn_logo.png" alt="LinkedIn Logo" style="height: 1em; vertical-align: middle; margin-right: 3px;">LinkedIn</a> as a research intern.</td>
             </tr>
             <tr>
               <td width='10%' valign='top'><span class='news-date'>Apr '25</span></td>
@@ -84,7 +96,7 @@
             </tr>
             <tr>
               <td width='10%' valign='top'><span class='news-date'>Dec '24</span></td>
-              <td width='90%' valign='top'>Presented four workshop papers at NeurIPS 2024.</td>
+              <td width='90%' valign='top'>Presented four workshop papers at NeurIPS 2024!</td>
             </tr>
             <tr>
               <td width='10%' valign='top'><span class='news-date'>Apr '24</span></td>
@@ -103,11 +115,66 @@
 
 
         <table style='width: 100%; table-layout: fixed;' border='0' cellspacing='0' cellpadding='5' class='publications-table'>
+          <br>
 
           <h2>Research</h2>
           <p>Please see my CV or Google Scholar for a full list of work.</p>
 
-          <tr>
+          <div class="research-tabs">
+            <button class="tab-btn active" onclick="filterPublications('all')">All</button>
+            <button class="tab-btn" onclick="filterPublications('conference')">Conference</button>
+            <button class="tab-btn" onclick="filterPublications('workshop')">Workshop</button>
+          </div>
+
+          <tr data-type="conference">
+            <td width="20%" class="pub-image">
+                <img src="images/RSS_ood.png" width="150"> 
+            </td>
+            <td width="70%" valign="top" class="pub-details">
+              <papertitle>Uncovering Robot Vulnerabilities through Semantic Potential Fields</papertitle><br>
+              <b>Som Sagar</b>, Jiafei Duan, Sreevisakh V, Yifan Zhou, Heni Ben'Amor, Dieter Fox, Ransalu Senanayake<br>
+              <em>International Conference on Learning Representations (ICLR)</em>, 2026
+
+              <div class="description">
+                We introduce a framework for uncovering robot vulnerabilities through semantic potential fields. 
+              </div>
+
+              <a href="https://arxiv.org/abs/2412.02818" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
+              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib0')"><span class="material-icons">format_quote</span> BibTeX</a>
+              <div id="bib0" class="bibtex"><pre>@article{sagar2024uncovering,
+            title={Uncovering Robot Vulnerabilities through Semantic Potential Fields},
+            author={Sagar, Som and Duan, Jiafei and Vasudevan, Sreevisakh and Zhou, Yifan and Ben'Amor, Heni and Fox, Dieter and Senanayake, Ransalu},
+            journal={arXiv:2412.02818},
+            year={2026}
+          }</pre></div>
+            </td>
+          </tr>
+
+          <tr data-type="conference">
+            <td width="20%" class="pub-image">
+                <img src="images/ICRA_26.png" width="150"> 
+            </td>
+            <td width="70%" valign="top" class="pub-details">
+              <papertitle>Strategic Vantage Selection for Learning Viewpoint-Agnostic Manipulation Policies</papertitle><br>
+              Sreevisakh V, <b>Som Sagar</b>, Ransalu Senanayake<br>
+              <em>International Conference on Robotics & Automation (ICRA)</em>, 2026
+
+              <div class="description">
+                We introduce a framework for learning viewpoint-agnostic manipulation policies that are robust to changes in the robot's viewpoint. 
+              </div>
+
+              <a href="https://arxiv.org/abs/2601.11410" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
+              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib0')"><span class="material-icons">format_quote</span> BibTeX</a>
+              <div id="bib0" class="bibtex"><pre>@article{gundawar2025pac,
+            title={Strategic Vantage Selection for Learning Viewpoint-Agnostic Manipulation Policies},
+            author={Vasudevan, Sreevisakh and Sagar, Som and Senanayake, Ransalu},
+            journal={arXiv:2601.11410},
+            year={2026}
+          }</pre></div>
+            </td>
+          </tr>
+
+          <tr data-type="conference">
             <td width="20%" class="pub-image">
                 <img src="images/Neurips_PAC.png" width="130"> 
             </td>
@@ -133,7 +200,7 @@
             </td>
           </tr>
 
-          <tr>
+          <tr data-type="conference">
             <td width="20%" class="pub-image">
               <img src="images/IROS_1.png" width="150">
             </td>
@@ -160,7 +227,7 @@
           </tr>
 
 
-          <tr>
+          <tr data-type="conference">
             
             <td width="20%" class="pub-image">
               <img src="images/ICML_2.jpg" width="150">
@@ -187,7 +254,7 @@
             </td>
           </tr>
 
-          <tr>
+          <tr data-type="workshop">
             <td width="20%" class="pub-image">
               <img src="images/RSS_ood.png" width="150">
             </td>
@@ -211,7 +278,7 @@
             </td>
           </tr>
 
-          <tr>
+          <tr data-type="conference">
             <td width="20%" class="pub-image">
               <img src="images/ICML_1.png" width="150">
             </td>
@@ -238,7 +305,7 @@
             </td>
           </tr>
 
-          <tr>
+          <tr data-type="workshop">
             <td width="20%" class="pub-image">
               <img src="images/Neurips_Behaviour.png" width="150">
             </td>
@@ -262,12 +329,12 @@
             </td>
           </tr>
 
-          <tr>
+          <tr data-type="workshop">
             <td width="20%" class="pub-image">
               <img src="images/Neurips_redteaming.png" width="150">
             </td>
             <td width="70%" valign="top" class="pub-details">
-              <papertitle>LLM-Assisted Red Teaming of Diffusion Models through “Failures Are Fated, But Can Be Faded”</papertitle><br>
+              <papertitle>LLM-Assisted Red Teaming of Diffusion Models through "Failures Are Fated, But Can Be Faded"</papertitle><br>
               <b>Som Sagar</b>, Aditya Taparia, Ransalu Senanayake<br>
               <em>NeurIPS Workshop on Red Teaming GenAI</em>, 2024
 
@@ -294,7 +361,7 @@
   <br>
 
   <center>
-    <p style="font-size: small;">Website template from <a href="https://github.com/aditya-taparia/aditya-taparia.github.io">here.</a></p>
+    <p style="font-size: small;">Website template from <a href="https://github.com/jonbarron/jonbarron.github.io">here.</a></p>
   </center>
   
 
@@ -329,6 +396,29 @@
     toggleIcon.textContent = isDark ? 'dark_mode' : 'light_mode';
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   });
+
+  function filterPublications(type) {
+    const rows = document.querySelectorAll('.publications-table tr[data-type]');
+    const tabs = document.querySelectorAll('.tab-btn');
+    
+    // Update active tab
+    tabs.forEach(tab => {
+      if (tab.textContent.toLowerCase() === type) {
+        tab.classList.add('active');
+      } else {
+        tab.classList.remove('active');
+      }
+    });
+    
+    // Filter publications
+    rows.forEach(row => {
+      if (type === 'all' || row.getAttribute('data-type') === type) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
   </script>
 </body>
 
