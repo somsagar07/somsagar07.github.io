@@ -67,6 +67,10 @@
         <div class="news-scroll-container">
           <table width='100%' border='0' cellspacing='0' cellpadding='2'>
             <tr>
+              <td width='10%' valign='top'><span class='news-date'>May '26</span></td>
+              <td width='90%' valign='top'>Joined <a class='news-item-title' href="https://www.google.com/" target='_blank'><img src="images/Google_logo.png" alt="Google Logo" style="height: 1em; vertical-align: middle; margin-right: 3px; margin-bottom: 2px;">Google</a> as a student researcher.</td>
+            </tr>
+            <tr>
               <td width='10%' valign='top'><span class='news-date'>Jan '26</span></td>
               <td width='90%' valign='top'>Our paper "<a class='news-item-title' href='https://arxiv.org/abs/2506.12261' target='_blank'>Strategic Vantage Selection for Learning Viewpoint-Agnostic Manipulation Policies</a>" was accepted to ICRA 2026.</td>
             </tr>
@@ -88,7 +92,7 @@
             </tr>
             <tr>
               <td width='10%' valign='top'><span class='news-date'>May '25</span></td>
-              <td width='90%' valign='top'>Joined <a class='news-item-title' href="https://www.linkedin.com/company/linkedin/" target='_blank'><img src="images/LinkedIn_logo.png" alt="LinkedIn Logo" style="height: 1em; vertical-align: middle; margin-right: 3px;">LinkedIn</a> as a research intern.</td>
+              <td width='90%' valign='top'>Joined <a class='news-item-title' href="https://www.linkedin.com/company/linkedin/" target='_blank'><img src="images/LinkedIn_logo.png" alt="LinkedIn Logo" style="height: 1em; vertical-align: middle; margin-right: 3px; margin-bottom: 2px;">LinkedIn</a> as a research intern.</td>
             </tr>
             <tr>
               <td width='10%' valign='top'><span class='news-date'>Apr '25</span></td>
@@ -131,17 +135,17 @@
                 <img src="images/RSS_ood.png" width="150"> 
             </td>
             <td width="70%" valign="top" class="pub-details">
-              <papertitle>Uncovering Robot Vulnerabilities through Semantic Potential Fields</papertitle><br>
+              <papertitle>RoboMD: Uncovering Robot Vulnerabilities through Semantic Potential Fields</papertitle><br>
               <b>Som Sagar</b>, Jiafei Duan, Sreevisakh V, Yifan Zhou, Heni Ben'Amor, Dieter Fox, Ransalu Senanayake<br>
               <em>International Conference on Learning Representations (ICLR)</em>, 2026
 
               <div class="description">
-                We introduce a framework for uncovering robot vulnerabilities through semantic potential fields. 
+                We train a deep RL policy to navigate a learned vision-language embedding space, structured as a potential field of successes and failures, to efficiently diagnose vulnerabilities in manipulation policies without costly real-world trials.
               </div>
 
               <a href="https://arxiv.org/abs/2412.02818" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
-              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib0')"><span class="material-icons">format_quote</span> BibTeX</a>
-              <div id="bib0" class="bibtex"><pre>@article{sagar2024uncovering,
+              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib_iclr26')"><span class="material-icons">format_quote</span> BibTeX</a>
+              <div id="bib_iclr26" class="bibtex"><pre>@article{sagar2024uncovering,
             title={Uncovering Robot Vulnerabilities through Semantic Potential Fields},
             author={Sagar, Som and Duan, Jiafei and Vasudevan, Sreevisakh and Zhou, Yifan and Ben'Amor, Heni and Fox, Dieter and Senanayake, Ransalu},
             journal={arXiv:2412.02818},
@@ -160,15 +164,15 @@
               <em>International Conference on Robotics & Automation (ICRA)</em>, 2026
 
               <div class="description">
-                We introduce a framework for learning viewpoint-agnostic manipulation policies that are robust to changes in the robot's viewpoint. 
+                We propose a method that strategically selects camera viewpoints during training to learn manipulation policies that generalize across novel viewpoints at deployment, without requiring multi-view data collection.
               </div>
 
-              <a href="https://arxiv.org/abs/2601.11410" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
-              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib0')"><span class="material-icons">format_quote</span> BibTeX</a>
-              <div id="bib0" class="bibtex"><pre>@article{gundawar2025pac,
+              <a href="https://arxiv.org/pdf/2506.12261" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
+              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib_icra26')"><span class="material-icons">format_quote</span> BibTeX</a>
+              <div id="bib_icra26" class="bibtex"><pre>@article{vasudevan2026strategic,
             title={Strategic Vantage Selection for Learning Viewpoint-Agnostic Manipulation Policies},
             author={Vasudevan, Sreevisakh and Sagar, Som and Senanayake, Ransalu},
-            journal={arXiv:2601.11410},
+            journal={arXiv:2506.12261},
             year={2026}
           }</pre></div>
             </td>
@@ -184,14 +188,14 @@
               <em>Conference on Neural Information Processing Systems (NeurIPS)</em>, 2025
 
               <div class="description">
-                We introduce PAC Bench, a benchmark designed to evaluate the capability of foundational models in understanding and predicting prerequisite conditions necessary for the successful execution of robot manipulation tasks. 
+                We introduce PAC Bench, a benchmark with 30,000+ annotations to evaluate whether vision-language models understand the object Properties, action Affordances, and physical Constraints needed for reliable robot manipulation.
               </div>
 
               <a href="https://arxiv.org/abs/2506.23725" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
               <!-- <a class="btn btn-publication" onclick="openModal('videos/BaTCAVe Video.mp4')"><span class="material-icons">play_circle</span> Video</a> -->
               <a href="https://huggingface.co/Pacbench" class="btn btn-publication" target="_blank"><span class="material-icons">dataset</span> Dataset</a>
-              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib0')"><span class="material-icons">format_quote</span> BibTeX</a>
-              <div id="bib0" class="bibtex"><pre>@article{gundawar2025pac,
+              <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib_neurips25')"><span class="material-icons">format_quote</span> BibTeX</a>
+              <div id="bib_neurips25" class="bibtex"><pre>@article{gundawar2025pac,
             title={PAC Bench: Do Foundation Models Understand Prerequisites for Executing Manipulation Policies?},
             author={Gundawar, Atharva and Sagar, Som and Senanayake, Ransalu},
             journal={arXiv:2506.23725},
@@ -210,7 +214,7 @@
               <em>IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</em>, 2025
 
               <div class="description">
-                We introduce BaTCAV, a Bayesian TCAV framework with uncertainty estimations that enhances the interpretability of robotic actions across both simulation platforms and real-world robotic systems.
+                We propose BaTCAVe, a Bayesian concept-based explainability method that provides human-interpretable explanations for robot decisions along with calibrated uncertainty scores, enabling trustworthy post-hoc diagnosis of neural network policies.
               </div>
 
               <a href="https://arxiv.org/abs/2409.10733" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
@@ -238,7 +242,7 @@
               <em>International Conference on Machine Learning (ICML)</em>, 2025
 
               <div class="description">
-                We propose a Reinforcement Learning-based Preference Optimizing exploration (RLPO) method designed to generate explainable states within a classification model, enabling the discovery of interpretable states that may be difficult or impossible for humans to identify.
+                We frame concept-based explanation as an image generation problem and propose RLPO, a deep RL algorithm that fine-tunes a vision-language generative model to automatically produce concept images that reveal a neural network's internal representations&mdash;including ones humans cannot anticipate.
               </div>
 
               <a href="https://arxiv.org/abs/2408.13438" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
@@ -263,7 +267,7 @@
               <b>Som Sagar</b>, Jiafei Duan, Sreevisakh V, Yifan Zhou, Heni Ben'Amor, Dieter Fox, Ransalu Senanayake<br>
               <em>Robotics: Science and Systems (RSS) Workshop on Out-of-Distribution Generalization in Robotics</em>, 2025
               <div class="description">
-                We propose a systematic framework for diagnosing failure modes in robot manipulation tasks under unseen environmental conditions. It enables robust identification of failure patterns to improve generalization in robotic systems.
+                We propose a deep RL framework that systematically diagnoses failure modes in robot manipulation policies under unseen environmental variations, and uses the discovered vulnerabilities to fine-tune and improve policy robustness.
               </div>
 
               <a href="https://arxiv.org/pdf/2412.02818" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
@@ -271,7 +275,7 @@
               <a href="javascript:void(0)" class="btn btn-publication" onclick="toggleBib('bib3')"><span class="material-icons">format_quote</span> BibTeX</a>
               <div id="bib3" class="bibtex"><pre>@inproceedings{sagar2024mystery,
             title={From Mystery to Mastery: Failure Diagnosis for Improving Manipulation Policies},
-            author={Sagar, Som and Duan, Jiafei and Vasudevan, Sreevisakh and Zhou, Yifan, Ben'Amor, Heni and Fox, Dieter and Senanayake, Ransalu},
+            author={Sagar, Som and Duan, Jiafei and Vasudevan, Sreevisakh and Zhou, Yifan and Ben'Amor, Heni and Fox, Dieter and Senanayake, Ransalu},
             booktitle={RSS Workshop on Out-of-Distribution Generalization in Robotics},
             year={2025}
           }</pre></div>
@@ -288,7 +292,7 @@
               <em>International Conference on Machine Learning (ICML)</em>, 2024
               <span style="color: #EF5350; font-weight: 600;"> &mdash; spotlight (top 3.5%)</span>
               <div class="description">
-                We introduce a framework that maps the failure landscape of large vision and language models, addressing their shortcomings by realigning model behavior with human preferences—whether stylistic or ethical—to mitigate failures.
+                We propose a deep RL method to efficiently explore and map the failure landscape of large-scale vision and language models, then restructure it using limited human feedback to mitigate unwanted behaviors such as accuracy drops, social biases, and misalignment.
               </div>
 
               <a href="https://arxiv.org/abs/2406.07145" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
@@ -315,7 +319,7 @@
               <em>NeurIPS Workshop on Behavioral Machine Learning</em>, 2024
 
               <div class="description">
-                We introduce ExpressivityArena, a framework designed to evaluate the expressiveness of large language models (LLMs), enabling systematic assessment of their ability to convey nuanced and implicit information across various contexts.
+                We introduce an information-theoretic framework for evaluating how well LLMs can implicitly communicate tone, emotion, identity, and intent without explicit mention, revealing that models excel at affective content but lag behind humans on sociolinguistic signals.
               </div>
 
               <a href="https://arxiv.org/abs/2411.08010" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
@@ -339,7 +343,7 @@
               <em>NeurIPS Workshop on Red Teaming GenAI</em>, 2024
 
               <div class="description">
-                This extension of the Failures Are Fated work demonstrates how we use LLM-assisted methods to generate rewards and states in diffusion models, and incorporate RL search strategies to optimize the discovery process.
+                We extend the Failures Are Fated framework to diffusion models by introducing LLM-generated rewards and states, action screening inspired by design of experiments, and a comparison of DQN, PPO, and A2C for red teaming text-to-image models.
               </div>
 
               <a href="https://arxiv.org/abs/2410.16738" class="btn btn-publication" target="_blank"><span class="material-icons">picture_as_pdf</span> PDF</a>
