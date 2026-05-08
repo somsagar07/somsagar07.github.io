@@ -12,11 +12,12 @@
   <link rel='icon' type='image/jpg' href='images/profile_old.png'>
 </head>
 
+<body>
+
 <!-- Simple Dark/Light Mode Toggle -->
 <div id="theme-toggle-btn" title="Toggle dark/light mode">
   <span class="material-icons" id="themeToggleIcon">light_mode</span>
 </div>
-
 
   <div id='videoModal' class='modal'>
     <div class='modal-content'>
@@ -37,7 +38,7 @@
             <div class="bio-name">
               <p>
                 <name>Som Sagar</name><br>
-                <span style="font-size: 16px; color: #444;">ssagar6 at asu dot edu</span>
+                <span class="email-text">ssagar6 at asu dot edu</span>
               </p>
             </div>
           
@@ -118,18 +119,16 @@
         </div>
 
 
+        <h2>Research</h2>
+        <p>Please see my CV or Google Scholar for a full list of work.</p>
+
+        <div class="research-tabs">
+          <button class="tab-btn active" onclick="filterPublications('all')">All</button>
+          <button class="tab-btn" onclick="filterPublications('conference')">Conference</button>
+          <button class="tab-btn" onclick="filterPublications('workshop')">Workshop</button>
+        </div>
+
         <table style='width: 100%; table-layout: fixed;' border='0' cellspacing='0' cellpadding='5' class='publications-table'>
-          <br>
-
-          <h2>Research</h2>
-          <p>Please see my CV or Google Scholar for a full list of work.</p>
-
-          <div class="research-tabs">
-            <button class="tab-btn active" onclick="filterPublications('all')">All</button>
-            <button class="tab-btn" onclick="filterPublications('conference')">Conference</button>
-            <button class="tab-btn" onclick="filterPublications('workshop')">Workshop</button>
-          </div>
-
           <tr data-type="conference">
             <td width="20%" class="pub-image">
                 <img src="images/RSS_ood.png" width="150"> 
@@ -290,7 +289,7 @@
               <papertitle>Failures Are Fated, But Can Be Faded: Characterizing and Mitigating Unwanted Behaviors in Large-Scale Vision and Language Models</papertitle><br>
               <b>Som Sagar</b>, Aditya Taparia, Ransalu Senanayake<br>
               <em>International Conference on Machine Learning (ICML)</em>, 2024
-              <span style="color: #EF5350; font-weight: 600;"> &mdash; spotlight (top 3.5%)</span>
+              <span class="news-highlight-red"> &mdash; spotlight (top 3.5%)</span>
               <div class="description">
                 We propose a deep RL method to efficiently explore and map the failure landscape of large-scale vision and language models, then restructure it using limited human feedback to mitigate unwanted behaviors such as accuracy drops, social biases, and misalignment.
               </div>
@@ -364,9 +363,9 @@
 
   <br>
 
-  <center>
-    <p style="font-size: small;">Website template from <a href="https://github.com/jonbarron/jonbarron.github.io">here.</a></p>
-  </center>
+  <footer class="site-footer">
+    <p>Website template from <a href="https://github.com/jonbarron/jonbarron.github.io">here.</a></p>
+  </footer>
   
 
   <script>
