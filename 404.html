@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — Som Sagar</title>
+<meta name="description" content="That page does not exist. Browse the homepage, publication list, or CV of Som Sagar.">
+<meta name="author" content="Som Sagar">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://somsagar07.github.io/404.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Som Sagar">
+<meta property="og:title" content="Page not found — Som Sagar">
+<meta property="og:description" content="That page does not exist. Browse the homepage, publication list, or CV of Som Sagar.">
+<meta property="og:url" content="https://somsagar07.github.io/404.html">
+<meta property="og:image" content="https://somsagar07.github.io/images/profile.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Page not found — Som Sagar">
+<meta name="twitter:description" content="That page does not exist. Browse the homepage, publication list, or CV of Som Sagar.">
+<meta name="twitter:image" content="https://somsagar07.github.io/images/profile.jpg">
+<meta property="og:image:alt" content="Som Sagar">
+<meta name="twitter:image:alt" content="Som Sagar">
+<meta name="theme-color" content="#FAFAFA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=3">
+<link rel="icon" type="image/png" href="images/profile_old.png">
+<link rel="apple-touch-icon" href="images/profile_old.png">
+
+</head>
+<body class="paper-page">
+<div id="theme-toggle-btn" title="Toggle dark/light mode"><span class="material-icons" id="themeToggleIcon">light_mode</span></div>
+<table style="max-width: 900px; width: 90%; margin: auto;" border="0" cellspacing="0" cellpadding="0"><tr><td>
+<h1 style="margin-top:60px;">Page not found</h1>
+<p>That page doesn&rsquo;t exist &mdash; it may have moved or the link may be mistyped.</p>
+<p style="margin-top:18px;">
+<a href="./" class="btn"><span class="material-icons">home</span> Homepage</a>
+<a href="papers/" class="btn"><span class="material-icons">library_books</span> Publications</a>
+<a href="cv/" class="btn"><span class="material-icons">description</span> CV</a></p>
+<p style="margin-top:24px;">If you were looking for a paper, the <a href="papers/">publication list</a>
+has every page. Otherwise, email <a href="mailto:ssagar6@asu.edu">ssagar6@asu.edu</a>.</p>
+</td></tr></table>
+<footer class="site-footer">
+<nav class="footer-nav"><a href="./">Som Sagar</a> &middot; <a href="papers/">Publications</a> &middot; <a href="cv/">CV</a></nav>
+<p class="footer-credit">Website template modified from <a href="https://github.com/jonbarron/jonbarron.github.io" target="_blank" rel="noopener">Jon Barron</a>.</p>
+</footer>
+
+<script>
+(function(){
+  var i=document.getElementById('themeToggleIcon'), b=document.getElementById('theme-toggle-btn');
+  if(localStorage.getItem('theme')==='dark'){document.body.classList.add('dark'); if(i)i.textContent='dark_mode';}
+  if(b)b.addEventListener('click',function(){document.body.classList.toggle('dark');
+    var d=document.body.classList.contains('dark'); if(i)i.textContent=d?'dark_mode':'light_mode';
+    localStorage.setItem('theme',d?'dark':'light');});
+})();
+</script>
+
+</body>
+</html>
