@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PAC Bench: Do Foundation Models Understand Prerequisites for Executing Manipulation Policies? — NeurIPS 2025 | Som Sagar</title>
+<meta name="description" content="PAC Bench is a benchmark of over 30,000 annotations that tests whether vision-language models understand the object Properties, action Affordances, and physical Constraints required for reliable robot manipulation.">
+<meta name="author" content="Som Sagar">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://somsagar07.github.io/papers/pac-bench/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Som Sagar">
+<meta property="og:title" content="PAC Bench: Do Foundation Models Understand Prerequisites for Executing Manipulation Policies? — NeurIPS 2025 | Som Sagar">
+<meta property="og:description" content="PAC Bench is a benchmark of over 30,000 annotations that tests whether vision-language models understand the object Properties, action Affordances, and physical Constraints required for reliable robot manipulation.">
+<meta property="og:url" content="https://somsagar07.github.io/papers/pac-bench/">
+<meta property="og:image" content="https://somsagar07.github.io/images/Neurips_PAC.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PAC Bench: Do Foundation Models Understand Prerequisites for Executing Manipulation Policies? — NeurIPS 2025 | Som Sagar">
+<meta name="twitter:description" content="PAC Bench is a benchmark of over 30,000 annotations that tests whether vision-language models understand the object Properties, action Affordances, and physical Constraints required for reliable robot manipulation.">
+<meta name="twitter:image" content="https://somsagar07.github.io/images/Neurips_PAC.png">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css?v=3">
+<link rel="icon" type="image/png" href="../../images/profile_old.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "@id": "https://somsagar07.github.io/papers/pac-bench/#article",
+  "name": "PAC Bench: Do Foundation Models Understand Prerequisites for Executing Manipulation Policies?",
+  "headline": "PAC Bench: Do Foundation Models Understand Prerequisites for Executing Manipulation Policies?",
+  "alternateName": "PAC Bench",
+  "url": "https://somsagar07.github.io/papers/pac-bench/",
+  "mainEntityOfPage": "https://somsagar07.github.io/papers/pac-bench/",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Atharva Gundawar"
+    },
+    {
+      "@type": "Person",
+      "name": "Som Sagar",
+      "url": "https://somsagar07.github.io/",
+      "@id": "https://somsagar07.github.io/#person"
+    },
+    {
+      "@type": "Person",
+      "name": "Ransalu Senanayake",
+      "url": "https://www.ransalu.com/"
+    }
+  ],
+  "creator": [
+    {
+      "@type": "Person",
+      "name": "Atharva Gundawar"
+    },
+    {
+      "@type": "Person",
+      "name": "Som Sagar",
+      "url": "https://somsagar07.github.io/",
+      "@id": "https://somsagar07.github.io/#person"
+    },
+    {
+      "@type": "Person",
+      "name": "Ransalu Senanayake",
+      "url": "https://www.ransalu.com/"
+    }
+  ],
+  "datePublished": "2025",
+  "copyrightYear": 2025,
+  "inLanguage": "en",
+  "abstract": "Vision-Language Models (VLMs) are increasingly pivotal for generalist robot manipulation, enabling tasks such as physical reasoning, policy generation, and failure detection. However, their proficiency in these high-level applications often assumes a deep understanding of low-level physical prerequisites, a capability that is largely unverified. To perform actions reliably, robots must comprehend intrinsic object properties (e.g., material, weight), action affordances (e.g., graspable, stackable), and physical constraints (e.g., stability, reachability, or an object's state like being closed). Despite their ubiquitous use in manipulation, we argue that off-the-shelf VLMs may lack this granular, physically-grounded understanding, as these specific prerequisites are often overlooked during training. Addressing this critical gap, we introduce PAC Bench, a comprehensive benchmark designed to systematically evaluate VLMs on their understanding of these core Properties, Affordances, and Constraints (PAC) from a task executability perspective. PAC Bench features a diverse dataset with over 30,000 annotations, comprising 673 real-world images (115 object classes, 15 property types, 1-3 affordances defined per class), 100 real-world humanoid-view scenarios and 120 unique simulated constraint scenarios across four tasks. Our evaluations reveal significant gaps in the ability of VLMs to grasp fundamental physical concepts, underscoring their current limitations for reliable robot manipulation and pointing to key areas that require targeted research. PAC Bench also serves as a standardized benchmark for rigorously evaluating VLM physical reasoning and guiding the development of more robust and physically grounded models for robot manipulation.",
+  "description": "PAC Bench is a benchmark of over 30,000 annotations that tests whether vision-language models understand the object Properties, action Affordances, and physical Constraints required for reliable robot manipulation.",
+  "keywords": [
+    "benchmark",
+    "vision-language models",
+    "robot manipulation",
+    "physical reasoning",
+    "affordances",
+    "constraints",
+    "foundation model evaluation"
+  ],
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "benchmark"
+    },
+    {
+      "@type": "Thing",
+      "name": "vision-language models"
+    },
+    {
+      "@type": "Thing",
+      "name": "robot manipulation"
+    },
+    {
+      "@type": "Thing",
+      "name": "physical reasoning"
+    },
+    {
+      "@type": "Thing",
+      "name": "affordances"
+    },
+    {
+      "@type": "Thing",
+      "name": "constraints"
+    },
+    {
+      "@type": "Thing",
+      "name": "foundation model evaluation"
+    }
+  ],
+  "identifier": [
+    {
+      "@type": "PropertyValue",
+      "propertyID": "arXiv",
+      "value": "arXiv:2506.23725"
+    }
+  ],
+  "sameAs": [
+    "https://arxiv.org/abs/2506.23725",
+    "https://pacbench.github.io/",
+    "https://huggingface.co/Pacbench"
+  ],
+  "isPartOf": {
+    "@type": "PublicationEvent",
+    "name": "Conference on Neural Information Processing Systems (NeurIPS) 2025",
+    "startDate": "2025"
+  },
+  "publication": {
+    "@type": "PublicationEvent",
+    "name": "Conference on Neural Information Processing Systems (NeurIPS) 2025"
+  },
+  "image": "https://somsagar07.github.io/images/Neurips_PAC.png",
+  "isAccessibleForFree": true
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Som Sagar",
+      "item": "https://somsagar07.github.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Publications",
+      "item": "https://somsagar07.github.io/papers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "PAC Bench",
+      "item": "https://somsagar07.github.io/papers/pac-bench/"
+    }
+  ]
+}
+</script>
+</head>
+<body class="paper-page">
+<div id="theme-toggle-btn" title="Toggle dark/light mode"><span class="material-icons" id="themeToggleIcon">light_mode</span></div>
+<table style="max-width: 900px; width: 90%; margin: auto;" border="0" cellspacing="0" cellpadding="0"><tr><td>
+<nav class="breadcrumb"><a href="../../">Som Sagar</a> &rsaquo; <a href="../../papers/">Publications</a> &rsaquo; PAC Bench</nav>
+<h1>PAC Bench: Do Foundation Models Understand Prerequisites for Executing Manipulation Policies?</h1>
+<p class="paper-meta">Atharva Gundawar*, <b>Som Sagar*</b>, Ransalu Senanayake<br>
+<em>Conference on Neural Information Processing Systems (NeurIPS)</em>, 2025</p>
+<p style="text-align:center;margin:14px 0;"><img src="../../images/thumbs/Neurips_PAC.jpg" width="331" height="367" decoding="async" alt="PAC Bench teaser figure" style="max-width:100%;height:auto;max-height:260px;width:auto;border-radius:8px;"></p>
+<p class="description" style="font-style:normal;"><strong>In one sentence.</strong> PAC Bench is a benchmark of over 30,000 annotations that tests whether vision-language models understand the object Properties, action Affordances, and physical Constraints required for reliable robot manipulation.</p>
+<p><a href="https://arxiv.org/abs/2506.23725" class="btn btn-publication" target="_blank" rel="noopener"><span class="material-icons">picture_as_pdf</span> PDF</a>
+<a href="https://pacbench.github.io/" class="btn btn-publication" target="_blank" rel="noopener"><span class="material-icons">language</span> Project Page</a>
+<a href="https://huggingface.co/Pacbench" class="btn btn-publication" target="_blank" rel="noopener"><span class="material-icons">dataset</span> Dataset</a>
+</p>
+<h2>Abstract</h2>
+<p class="abstract">Vision-Language Models (VLMs) are increasingly pivotal for generalist robot manipulation, enabling tasks such as physical reasoning, policy generation, and failure detection. However, their proficiency in these high-level applications often assumes a deep understanding of low-level physical prerequisites, a capability that is largely unverified. To perform actions reliably, robots must comprehend intrinsic object properties (e.g., material, weight), action affordances (e.g., graspable, stackable), and physical constraints (e.g., stability, reachability, or an object's state like being closed). Despite their ubiquitous use in manipulation, we argue that off-the-shelf VLMs may lack this granular, physically-grounded understanding, as these specific prerequisites are often overlooked during training. Addressing this critical gap, we introduce PAC Bench, a comprehensive benchmark designed to systematically evaluate VLMs on their understanding of these core Properties, Affordances, and Constraints (PAC) from a task executability perspective. PAC Bench features a diverse dataset with over 30,000 annotations, comprising 673 real-world images (115 object classes, 15 property types, 1-3 affordances defined per class), 100 real-world humanoid-view scenarios and 120 unique simulated constraint scenarios across four tasks. Our evaluations reveal significant gaps in the ability of VLMs to grasp fundamental physical concepts, underscoring their current limitations for reliable robot manipulation and pointing to key areas that require targeted research. PAC Bench also serves as a standardized benchmark for rigorously evaluating VLM physical reasoning and guiding the development of more robust and physically grounded models for robot manipulation.</p>
+
+<h2>BibTeX</h2>
+<pre class="bib-static">@inproceedings{gundawar2025pacbench,
+  title     = {PAC Bench: Do Foundation Models Understand Prerequisites for Executing Manipulation Policies?},
+  author    = {Gundawar, Atharva and Sagar, Som and Senanayake, Ransalu},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2025}
+}</pre>
+<h2>Topics</h2>
+<p class="topics">benchmark, vision-language models, robot manipulation, physical reasoning, affordances, constraints, foundation model evaluation</p>
+
+<div class="author-box">
+<p style="margin:0 0 6px 0;"><strong>About the author.</strong> <a href="../../">Som Sagar</a> is a computer science PhD student at
+<strong>Arizona State University</strong>, advised by <a href="https://www.ransalu.com/">Ransalu Senanayake</a> in the
+LENS Lab. He works on <strong>reinforcement learning for post-training and agentic
+LLM systems</strong>, and on <strong>failure diagnosis, red teaming, and safety evaluation of foundation models,
+vision-language models, and robot manipulation policies</strong>.</p>
+<p style="margin:0;"><a href="../../" class="btn"><span class="material-icons">home</span> Homepage</a>
+<a href="../../papers/" class="btn"><span class="material-icons">library_books</span> All publications</a>
+<a href="../../data/Sagar_CV.pdf" class="btn" target="_blank" rel="noopener"><span class="material-icons">description</span> CV</a>
+<a href="https://scholar.google.com/citations?user=qWxEX0QAAAAJ&amp;hl=en" class="btn"><span class="material-icons">school</span> Google Scholar</a></p>
+</div>
+
+</td></tr></table>
+<footer class="site-footer">
+<nav class="footer-nav"><a href="../../">Som Sagar</a> &middot; <a href="../../papers/">Publications</a> &middot; <a href="../../cv/">CV</a></nav>
+<p class="footer-credit">Website template modified from <a href="https://github.com/jonbarron/jonbarron.github.io" target="_blank" rel="noopener">Jon Barron</a>.</p>
+</footer>
+
+<script>
+(function(){
+  var i=document.getElementById('themeToggleIcon'), b=document.getElementById('theme-toggle-btn');
+  if(localStorage.getItem('theme')==='dark'){document.body.classList.add('dark'); if(i)i.textContent='dark_mode';}
+  if(b)b.addEventListener('click',function(){document.body.classList.toggle('dark');
+    var d=document.body.classList.contains('dark'); if(i)i.textContent=d?'dark_mode':'light_mode';
+    localStorage.setItem('theme',d?'dark':'light');});
+})();
+</script>
+
+</body>
+</html>

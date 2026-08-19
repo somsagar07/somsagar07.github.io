@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ExpressivityArena: Can LLMs Express Information Implicitly? — EACL Findings 2026 | Som Sagar</title>
+<meta name="description" content="ExpressivityArena is an information-theoretic framework for evaluating how well large language models communicate tone, emotion, identity, and intent implicitly, across nine tasks — revealing that models handle affective content well but lag behind human baselines on sociolinguistic signals.">
+<meta name="author" content="Som Sagar">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://somsagar07.github.io/papers/expressivity-arena/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Som Sagar">
+<meta property="og:title" content="ExpressivityArena: Can LLMs Express Information Implicitly? — EACL Findings 2026 | Som Sagar">
+<meta property="og:description" content="ExpressivityArena is an information-theoretic framework for evaluating how well large language models communicate tone, emotion, identity, and intent implicitly, across nine tasks — revealing that models handle affective content well but lag behind human baselines on sociolinguistic signals.">
+<meta property="og:url" content="https://somsagar07.github.io/papers/expressivity-arena/">
+<meta property="og:image" content="https://somsagar07.github.io/images/Neurips_Behaviour.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ExpressivityArena: Can LLMs Express Information Implicitly? — EACL Findings 2026 | Som Sagar">
+<meta name="twitter:description" content="ExpressivityArena is an information-theoretic framework for evaluating how well large language models communicate tone, emotion, identity, and intent implicitly, across nine tasks — revealing that models handle affective content well but lag behind human baselines on sociolinguistic signals.">
+<meta name="twitter:image" content="https://somsagar07.github.io/images/Neurips_Behaviour.png">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css?v=3">
+<link rel="icon" type="image/png" href="../../images/profile_old.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "@id": "https://somsagar07.github.io/papers/expressivity-arena/#article",
+  "name": "ExpressivityArena: Can LLMs Express Information Implicitly?",
+  "headline": "ExpressivityArena: Can LLMs Express Information Implicitly?",
+  "alternateName": "ExpressivityArena",
+  "url": "https://somsagar07.github.io/papers/expressivity-arena/",
+  "mainEntityOfPage": "https://somsagar07.github.io/papers/expressivity-arena/",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Joshua Tint"
+    },
+    {
+      "@type": "Person",
+      "name": "Som Sagar",
+      "url": "https://somsagar07.github.io/",
+      "@id": "https://somsagar07.github.io/#person"
+    },
+    {
+      "@type": "Person",
+      "name": "Aditya Taparia"
+    },
+    {
+      "@type": "Person",
+      "name": "Caleb Liu"
+    },
+    {
+      "@type": "Person",
+      "name": "Kelly Raines"
+    },
+    {
+      "@type": "Person",
+      "name": "Bimsara Pathiraja"
+    },
+    {
+      "@type": "Person",
+      "name": "Ransalu Senanayake",
+      "url": "https://www.ransalu.com/"
+    }
+  ],
+  "creator": [
+    {
+      "@type": "Person",
+      "name": "Joshua Tint"
+    },
+    {
+      "@type": "Person",
+      "name": "Som Sagar",
+      "url": "https://somsagar07.github.io/",
+      "@id": "https://somsagar07.github.io/#person"
+    },
+    {
+      "@type": "Person",
+      "name": "Aditya Taparia"
+    },
+    {
+      "@type": "Person",
+      "name": "Caleb Liu"
+    },
+    {
+      "@type": "Person",
+      "name": "Kelly Raines"
+    },
+    {
+      "@type": "Person",
+      "name": "Bimsara Pathiraja"
+    },
+    {
+      "@type": "Person",
+      "name": "Ransalu Senanayake",
+      "url": "https://www.ransalu.com/"
+    }
+  ],
+  "datePublished": "2026",
+  "copyrightYear": 2026,
+  "inLanguage": "en",
+  "abstract": "Human communication is often implicit, conveying tone, identity, and intent beyond literal meanings. While large language models have achieved strong performance on explicit tasks such as summarization and reasoning, their capacity for expressivity, or implicit communication, remains underexplored. We introduce a framework for evaluating the expressivity of LLMs using information-theoretic communication models. Our approach quantifies how well LLM-generated text communicates target properties without explicit mention, across nine tasks spanning emotion, identity, and tone. To enable scalable and reproducible evaluation, we employ LLM-based graders validated against human judgments. Our results reveal that while models are adept at expressing affective content, they struggle with sociolinguistic signals, lagging behind human baselines. This study provides a necessary step to evaluate human-like implicit communication, with implications for applications such as education, mental health support, and socially-aware dialogue systems.",
+  "description": "ExpressivityArena is an information-theoretic framework for evaluating how well large language models communicate tone, emotion, identity, and intent implicitly, across nine tasks — revealing that models handle affective content well but lag behind human baselines on sociolinguistic signals.",
+  "keywords": [
+    "large language model evaluation",
+    "benchmark",
+    "implicit communication",
+    "expressivity",
+    "information theory",
+    "LLM-as-a-judge"
+  ],
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "large language model evaluation"
+    },
+    {
+      "@type": "Thing",
+      "name": "benchmark"
+    },
+    {
+      "@type": "Thing",
+      "name": "implicit communication"
+    },
+    {
+      "@type": "Thing",
+      "name": "expressivity"
+    },
+    {
+      "@type": "Thing",
+      "name": "information theory"
+    },
+    {
+      "@type": "Thing",
+      "name": "LLM-as-a-judge"
+    }
+  ],
+  "identifier": [
+    {
+      "@type": "PropertyValue",
+      "propertyID": "arXiv",
+      "value": "arXiv:2411.08010"
+    }
+  ],
+  "sameAs": [
+    "https://arxiv.org/abs/2411.08010"
+  ],
+  "isPartOf": {
+    "@type": "PublicationEvent",
+    "name": "Findings of the Association for Computational Linguistics: EACL 2026",
+    "startDate": "2026"
+  },
+  "publication": {
+    "@type": "PublicationEvent",
+    "name": "Findings of the Association for Computational Linguistics: EACL 2026"
+  },
+  "image": "https://somsagar07.github.io/images/Neurips_Behaviour.png",
+  "isAccessibleForFree": true
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Som Sagar",
+      "item": "https://somsagar07.github.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Publications",
+      "item": "https://somsagar07.github.io/papers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "ExpressivityArena",
+      "item": "https://somsagar07.github.io/papers/expressivity-arena/"
+    }
+  ]
+}
+</script>
+</head>
+<body class="paper-page">
+<div id="theme-toggle-btn" title="Toggle dark/light mode"><span class="material-icons" id="themeToggleIcon">light_mode</span></div>
+<table style="max-width: 900px; width: 90%; margin: auto;" border="0" cellspacing="0" cellpadding="0"><tr><td>
+<nav class="breadcrumb"><a href="../../">Som Sagar</a> &rsaquo; <a href="../../papers/">Publications</a> &rsaquo; ExpressivityArena</nav>
+<h1>ExpressivityArena: Can LLMs Express Information Implicitly?</h1>
+<p class="paper-meta">Joshua Tint, <b>Som Sagar</b>, Aditya Taparia, Caleb Liu, Kelly Raines, Bimsara Pathiraja, Ransalu Senanayake<br>
+<em>Findings of the Association for Computational Linguistics: EACL</em>, 2026</p>
+<p style="text-align:center;margin:14px 0;"><img src="../../images/thumbs/Neurips_Behaviour.jpg" width="600" height="209" decoding="async" alt="ExpressivityArena teaser figure" style="max-width:100%;height:auto;max-height:260px;width:auto;border-radius:8px;"></p>
+<p class="description" style="font-style:normal;"><strong>In one sentence.</strong> ExpressivityArena is an information-theoretic framework for evaluating how well large language models communicate tone, emotion, identity, and intent implicitly, across nine tasks — revealing that models handle affective content well but lag behind human baselines on sociolinguistic signals.</p>
+<p><a href="https://arxiv.org/abs/2411.08010" class="btn btn-publication" target="_blank" rel="noopener"><span class="material-icons">picture_as_pdf</span> PDF</a>
+</p>
+<h2>Abstract</h2>
+<p class="abstract">Human communication is often implicit, conveying tone, identity, and intent beyond literal meanings. While large language models have achieved strong performance on explicit tasks such as summarization and reasoning, their capacity for expressivity, or implicit communication, remains underexplored. We introduce a framework for evaluating the expressivity of LLMs using information-theoretic communication models. Our approach quantifies how well LLM-generated text communicates target properties without explicit mention, across nine tasks spanning emotion, identity, and tone. To enable scalable and reproducible evaluation, we employ LLM-based graders validated against human judgments. Our results reveal that while models are adept at expressing affective content, they struggle with sociolinguistic signals, lagging behind human baselines. This study provides a necessary step to evaluate human-like implicit communication, with implications for applications such as education, mental health support, and socially-aware dialogue systems.</p>
+<p class="paper-note"><strong>Note.</strong> This work is also referred to as <strong>ExpressivityBench</strong> in the latest arXiv revision; the two names describe the same benchmark. An earlier version appeared at the NeurIPS 2024 Workshop on Behavioral Machine Learning.</p>
+<h2>BibTeX</h2>
+<pre class="bib-static">@inproceedings{tint2026expressivityarena,
+  title     = {ExpressivityArena: Can LLMs Express Information Implicitly?},
+  author    = {Tint, Joshua and Sagar, Som and Taparia, Aditya and Liu, Caleb and Raines, Kelly and Pathiraja, Bimsara and Senanayake, Ransalu},
+  booktitle = {Findings of the Association for Computational Linguistics: EACL},
+  year      = {2026}
+}</pre>
+<h2>Topics</h2>
+<p class="topics">large language model evaluation, benchmark, implicit communication, expressivity, information theory, LLM-as-a-judge</p>
+
+<div class="author-box">
+<p style="margin:0 0 6px 0;"><strong>About the author.</strong> <a href="../../">Som Sagar</a> is a computer science PhD student at
+<strong>Arizona State University</strong>, advised by <a href="https://www.ransalu.com/">Ransalu Senanayake</a> in the
+LENS Lab. He works on <strong>reinforcement learning for post-training and agentic
+LLM systems</strong>, and on <strong>failure diagnosis, red teaming, and safety evaluation of foundation models,
+vision-language models, and robot manipulation policies</strong>.</p>
+<p style="margin:0;"><a href="../../" class="btn"><span class="material-icons">home</span> Homepage</a>
+<a href="../../papers/" class="btn"><span class="material-icons">library_books</span> All publications</a>
+<a href="../../data/Sagar_CV.pdf" class="btn" target="_blank" rel="noopener"><span class="material-icons">description</span> CV</a>
+<a href="https://scholar.google.com/citations?user=qWxEX0QAAAAJ&amp;hl=en" class="btn"><span class="material-icons">school</span> Google Scholar</a></p>
+</div>
+
+</td></tr></table>
+<footer class="site-footer">
+<nav class="footer-nav"><a href="../../">Som Sagar</a> &middot; <a href="../../papers/">Publications</a> &middot; <a href="../../cv/">CV</a></nav>
+<p class="footer-credit">Website template modified from <a href="https://github.com/jonbarron/jonbarron.github.io" target="_blank" rel="noopener">Jon Barron</a>.</p>
+</footer>
+
+<script>
+(function(){
+  var i=document.getElementById('themeToggleIcon'), b=document.getElementById('theme-toggle-btn');
+  if(localStorage.getItem('theme')==='dark'){document.body.classList.add('dark'); if(i)i.textContent='dark_mode';}
+  if(b)b.addEventListener('click',function(){document.body.classList.toggle('dark');
+    var d=document.body.classList.contains('dark'); if(i)i.textContent=d?'dark_mode':'light_mode';
+    localStorage.setItem('theme',d?'dark':'light');});
+})();
+</script>
+
+</body>
+</html>

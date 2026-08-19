@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Failures Are Fated, But Can Be Faded: Characterizing and Mitigating Unwanted Behaviors in Large-Scale Vision and Language Models</title>
+<meta name="description" content="A deep reinforcement learning method that explores and maps the failure landscape of large-scale vision and language models, then restructures that landscape with limited human feedback to mitigate accuracy failures, social biases, and misalignment.">
+<meta name="author" content="Som Sagar">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://somsagar07.github.io/papers/failures-are-fated/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Som Sagar">
+<meta property="og:title" content="Failures Are Fated, But Can Be Faded: Characterizing and Mitigating Unwanted Behaviors in Large-Scale Vision and Language Models">
+<meta property="og:description" content="A deep reinforcement learning method that explores and maps the failure landscape of large-scale vision and language models, then restructures that landscape with limited human feedback to mitigate accuracy failures, social biases, and misalignment.">
+<meta property="og:url" content="https://somsagar07.github.io/papers/failures-are-fated/">
+<meta property="og:image" content="https://somsagar07.github.io/images/ICML_1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Failures Are Fated, But Can Be Faded: Characterizing and Mitigating Unwanted Behaviors in Large-Scale Vision and Language Models">
+<meta name="twitter:description" content="A deep reinforcement learning method that explores and maps the failure landscape of large-scale vision and language models, then restructures that landscape with limited human feedback to mitigate accuracy failures, social biases, and misalignment.">
+<meta name="twitter:image" content="https://somsagar07.github.io/images/ICML_1.png">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css?v=3">
+<link rel="icon" type="image/png" href="../../images/profile_old.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "@id": "https://somsagar07.github.io/papers/failures-are-fated/#article",
+  "name": "Failures Are Fated, But Can Be Faded: Characterizing and Mitigating Unwanted Behaviors in Large-Scale Vision and Language Models",
+  "headline": "Failures Are Fated, But Can Be Faded: Characterizing and Mitigating Unwanted Behaviors in Large-Scale Vision and Language Models",
+  "alternateName": "Failures Are Fated",
+  "url": "https://somsagar07.github.io/papers/failures-are-fated/",
+  "mainEntityOfPage": "https://somsagar07.github.io/papers/failures-are-fated/",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Som Sagar",
+      "url": "https://somsagar07.github.io/",
+      "@id": "https://somsagar07.github.io/#person"
+    },
+    {
+      "@type": "Person",
+      "name": "Aditya Taparia"
+    },
+    {
+      "@type": "Person",
+      "name": "Ransalu Senanayake",
+      "url": "https://www.ransalu.com/"
+    }
+  ],
+  "creator": [
+    {
+      "@type": "Person",
+      "name": "Som Sagar",
+      "url": "https://somsagar07.github.io/",
+      "@id": "https://somsagar07.github.io/#person"
+    },
+    {
+      "@type": "Person",
+      "name": "Aditya Taparia"
+    },
+    {
+      "@type": "Person",
+      "name": "Ransalu Senanayake",
+      "url": "https://www.ransalu.com/"
+    }
+  ],
+  "datePublished": "2024",
+  "copyrightYear": 2024,
+  "inLanguage": "en",
+  "abstract": "In large deep neural networks that seem to perform surprisingly well on many tasks, we also observe a few failures related to accuracy, social biases, and alignment with human values, among others. Therefore, before deploying these models, it is crucial to characterize this failure landscape for engineers to debug and legislative bodies to audit models. Nevertheless, it is infeasible to exhaustively test for all possible combinations of factors that could lead to a model's failure. In this paper, we introduce a post-hoc method that utilizes deep reinforcement learning to explore and construct the landscape of failure modes in pre-trained discriminative and generative models. With the aid of limited human feedback, we then demonstrate how to restructure the failure landscape to be more desirable by moving away from the discovered failure modes. We empirically show the effectiveness of the proposed method across common Computer Vision, Natural Language Processing, and Vision-Language tasks.",
+  "description": "A deep reinforcement learning method that explores and maps the failure landscape of large-scale vision and language models, then restructures that landscape with limited human feedback to mitigate accuracy failures, social biases, and misalignment.",
+  "keywords": [
+    "failure diagnosis",
+    "red teaming",
+    "model auditing",
+    "reinforcement learning",
+    "vision-language models",
+    "AI safety evaluation",
+    "social bias"
+  ],
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "failure diagnosis"
+    },
+    {
+      "@type": "Thing",
+      "name": "red teaming"
+    },
+    {
+      "@type": "Thing",
+      "name": "model auditing"
+    },
+    {
+      "@type": "Thing",
+      "name": "reinforcement learning"
+    },
+    {
+      "@type": "Thing",
+      "name": "vision-language models"
+    },
+    {
+      "@type": "Thing",
+      "name": "AI safety evaluation"
+    },
+    {
+      "@type": "Thing",
+      "name": "social bias"
+    }
+  ],
+  "identifier": [
+    {
+      "@type": "PropertyValue",
+      "propertyID": "arXiv",
+      "value": "arXiv:2406.07145"
+    }
+  ],
+  "sameAs": [
+    "https://arxiv.org/abs/2406.07145",
+    "https://github.com/somsagar07/FailureShiftRL",
+    "https://www.youtube.com/watch?v=PJkqT2btEmE"
+  ],
+  "isPartOf": {
+    "@type": "PublicationEvent",
+    "name": "International Conference on Machine Learning (ICML) 2024",
+    "startDate": "2024"
+  },
+  "publication": {
+    "@type": "PublicationEvent",
+    "name": "International Conference on Machine Learning (ICML) 2024"
+  },
+  "image": "https://somsagar07.github.io/images/ICML_1.png",
+  "isAccessibleForFree": true,
+  "award": "Spotlight (top 3.5%)"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Som Sagar",
+      "item": "https://somsagar07.github.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Publications",
+      "item": "https://somsagar07.github.io/papers/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Failures Are Fated",
+      "item": "https://somsagar07.github.io/papers/failures-are-fated/"
+    }
+  ]
+}
+</script>
+</head>
+<body class="paper-page">
+<div id="theme-toggle-btn" title="Toggle dark/light mode"><span class="material-icons" id="themeToggleIcon">light_mode</span></div>
+<table style="max-width: 900px; width: 90%; margin: auto;" border="0" cellspacing="0" cellpadding="0"><tr><td>
+<nav class="breadcrumb"><a href="../../">Som Sagar</a> &rsaquo; <a href="../../papers/">Publications</a> &rsaquo; Failures Are Fated</nav>
+<h1>Failures Are Fated, But Can Be Faded: Characterizing and Mitigating Unwanted Behaviors in Large-Scale Vision and Language Models</h1>
+<p class="paper-meta"><b>Som Sagar</b>, Aditya Taparia, Ransalu Senanayake<br>
+<em>International Conference on Machine Learning (ICML)</em>, 2024<span class="news-highlight-red"> &mdash; Spotlight (top 3.5%)</span></p>
+<p style="text-align:center;margin:14px 0;"><img src="../../images/thumbs/ICML_1.jpg" width="600" height="478" decoding="async" alt="Failures Are Fated teaser figure" style="max-width:100%;height:auto;max-height:260px;width:auto;border-radius:8px;"></p>
+<p class="description" style="font-style:normal;"><strong>In one sentence.</strong> A deep reinforcement learning method that explores and maps the failure landscape of large-scale vision and language models, then restructures that landscape with limited human feedback to mitigate accuracy failures, social biases, and misalignment.</p>
+<p><a href="https://arxiv.org/abs/2406.07145" class="btn btn-publication" target="_blank" rel="noopener"><span class="material-icons">picture_as_pdf</span> PDF</a>
+<a href="https://github.com/somsagar07/FailureShiftRL" class="btn btn-publication" target="_blank" rel="noopener"><span class="material-icons">code</span> Code</a>
+<a href="https://www.youtube.com/watch?v=PJkqT2btEmE" class="btn btn-publication" target="_blank" rel="noopener"><span class="material-icons">play_circle</span> Video</a>
+</p>
+<h2>Abstract</h2>
+<p class="abstract">In large deep neural networks that seem to perform surprisingly well on many tasks, we also observe a few failures related to accuracy, social biases, and alignment with human values, among others. Therefore, before deploying these models, it is crucial to characterize this failure landscape for engineers to debug and legislative bodies to audit models. Nevertheless, it is infeasible to exhaustively test for all possible combinations of factors that could lead to a model's failure. In this paper, we introduce a post-hoc method that utilizes deep reinforcement learning to explore and construct the landscape of failure modes in pre-trained discriminative and generative models. With the aid of limited human feedback, we then demonstrate how to restructure the failure landscape to be more desirable by moving away from the discovered failure modes. We empirically show the effectiveness of the proposed method across common Computer Vision, Natural Language Processing, and Vision-Language tasks.</p>
+<p class="paper-note"><strong>Note.</strong> A follow-up applying this framework to text-to-image diffusion models appeared as <a href="../../papers/red-teaming-diffusion/">LLM-Assisted Red Teaming of Diffusion Models</a> at the NeurIPS 2024 Workshop on Red Teaming GenAI.</p>
+<h2>BibTeX</h2>
+<pre class="bib-static">@inproceedings{sagar2024failures,
+  title     = {Failures Are Fated, But Can Be Faded: Characterizing and Mitigating Unwanted Behaviors in Large-Scale Vision and Language Models},
+  author    = {Sagar, Som and Taparia, Aditya and Senanayake, Ransalu},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning (ICML)},
+  pages     = {42999--43023},
+  year      = {2024}
+}</pre>
+<h2>Topics</h2>
+<p class="topics">failure diagnosis, red teaming, model auditing, reinforcement learning, vision-language models, AI safety evaluation, social bias</p>
+
+<div class="author-box">
+<p style="margin:0 0 6px 0;"><strong>About the author.</strong> <a href="../../">Som Sagar</a> is a computer science PhD student at
+<strong>Arizona State University</strong>, advised by <a href="https://www.ransalu.com/">Ransalu Senanayake</a> in the
+LENS Lab. He works on <strong>reinforcement learning for post-training and agentic
+LLM systems</strong>, and on <strong>failure diagnosis, red teaming, and safety evaluation of foundation models,
+vision-language models, and robot manipulation policies</strong>.</p>
+<p style="margin:0;"><a href="../../" class="btn"><span class="material-icons">home</span> Homepage</a>
+<a href="../../papers/" class="btn"><span class="material-icons">library_books</span> All publications</a>
+<a href="../../data/Sagar_CV.pdf" class="btn" target="_blank" rel="noopener"><span class="material-icons">description</span> CV</a>
+<a href="https://scholar.google.com/citations?user=qWxEX0QAAAAJ&amp;hl=en" class="btn"><span class="material-icons">school</span> Google Scholar</a></p>
+</div>
+
+</td></tr></table>
+<footer class="site-footer">
+<nav class="footer-nav"><a href="../../">Som Sagar</a> &middot; <a href="../../papers/">Publications</a> &middot; <a href="../../cv/">CV</a></nav>
+<p class="footer-credit">Website template modified from <a href="https://github.com/jonbarron/jonbarron.github.io" target="_blank" rel="noopener">Jon Barron</a>.</p>
+</footer>
+
+<script>
+(function(){
+  var i=document.getElementById('themeToggleIcon'), b=document.getElementById('theme-toggle-btn');
+  if(localStorage.getItem('theme')==='dark'){document.body.classList.add('dark'); if(i)i.textContent='dark_mode';}
+  if(b)b.addEventListener('click',function(){document.body.classList.toggle('dark');
+    var d=document.body.classList.contains('dark'); if(i)i.textContent=d?'dark_mode':'light_mode';
+    localStorage.setItem('theme',d?'dark':'light');});
+})();
+</script>
+
+</body>
+</html>

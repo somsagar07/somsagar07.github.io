@@ -1,0 +1,44 @@
+# Som Sagar
+
+> Som Sagar is a computer science PhD student at Arizona State University (LENS Lab), advised by Ransalu Senanayake,
+> He was a student researcher at Google in summer 2026, working on agentic workflow
+> routing, and a machine learning research intern at LinkedIn in 2025, working on preference RL for LLM agents.
+> His research is on reinforcement learning for post-training and agentic LLM systems, and on failure diagnosis,
+> red teaming, and safety evaluation of foundation models, vision-language models, and robot manipulation policies.
+> He holds a B.Tech (Honors) in Computer Science from IIIT Kottayam. Contact: ssagar6@asu.edu
+
+## Research focus
+
+- Reinforcement learning for post-training: RLHF, preference optimization, supervised fine-tuning
+- Agentic and multi-agent LLM systems: domain-specialized agents, agent-to-agent protocols, alignment
+- Failure diagnosis and mitigation in foundation models and agentic AI systems
+- Red teaming and adversarial evaluation of vision-language and text-to-image models
+- Reinforcement learning methods for searching failure landscapes
+- Benchmarking whether foundation models understand physical prerequisites for acting
+- Interpretability and uncertainty-aware explanation of neural network policies
+- Robustness of robot manipulation policies under distribution and viewpoint shift
+
+## Pages
+
+- [Homepage](https://somsagar07.github.io/): biography, research overview, news, selected publications
+- [Publications](https://somsagar07.github.io/papers/): full list of conference and workshop papers
+- [CV](https://somsagar07.github.io/cv/): education, experience, awards, service, teaching, skills
+
+## Publications
+
+- [RoboMD: Uncovering Robot Vulnerabilities through Semantic Potential Fields](https://somsagar07.github.io/papers/robomd/) — ICLR 2026. RoboMD trains a deep reinforcement learning policy to navigate a vision-language embedding space, structured as a potential field of successes and failures, to discover vulnerabilities in robot manipulation policies without real-world trials — up to 23% more unique vulnerabilities than vision-language baselines.
+- [PAC Bench: Do Foundation Models Understand Prerequisites for Executing Manipulation Policies?](https://somsagar07.github.io/papers/pac-bench/) — NeurIPS 2025. PAC Bench is a benchmark of over 30,000 annotations that tests whether vision-language models understand the object Properties, action Affordances, and physical Constraints required for reliable robot manipulation.
+- [Failures Are Fated, But Can Be Faded: Characterizing and Mitigating Unwanted Behaviors in Large-Scale Vision and Language Models](https://somsagar07.github.io/papers/failures-are-fated/) — ICML 2024. A deep reinforcement learning method that explores and maps the failure landscape of large-scale vision and language models, then restructures that landscape with limited human feedback to mitigate accuracy failures, social biases, and misalignment.
+- [Trustworthy Explanations for Robot Behaviors](https://somsagar07.github.io/papers/batcave/) — IROS 2025. BaTCAVe is a Bayesian concept-based explainability method that produces human-interpretable explanations of robot decisions together with calibrated uncertainty scores, enabling trustworthy post-hoc diagnosis of neural network policies.
+- [Explainable Concept Generation through Vision-Language Preference Learning for Understanding Neural Networks' Internal Representations](https://somsagar07.github.io/papers/rlpo/) — ICML 2025. RLPO frames concept-based explanation as an image generation problem and uses reinforcement learning preference optimization to fine-tune a vision-language generative model, automatically producing concept images that reveal what a neural network has internally learned.
+- [ExpressivityArena: Can LLMs Express Information Implicitly?](https://somsagar07.github.io/papers/expressivity-arena/) — EACL Findings 2026. ExpressivityArena is an information-theoretic framework for evaluating how well large language models communicate tone, emotion, identity, and intent implicitly, across nine tasks — revealing that models handle affective content well but lag behind human baselines on sociolinguistic signals.
+- [Strategic Vantage Selection for Learning Viewpoint-Agnostic Manipulation Policies](https://somsagar07.github.io/papers/vantage/) — ICRA 2026. Vantage selects a small, strategic set of camera poses for fine-tuning, formulating camera placement as an information-gain optimization so that pre-trained manipulation policies become robust to viewpoint shifts at deployment — raising task success by 25% for diffusion policies.
+- [From Mystery to Mastery: Failure Diagnosis for Improving Manipulation Policies](https://somsagar07.github.io/papers/failure-diagnosis-manipulation/) — RSS Workshop 2025. A deep reinforcement learning framework that systematically diagnoses failure modes of robot manipulation policies under unseen environmental variations, and uses the discovered vulnerabilities to fine-tune and improve policy robustness.
+- [LLM-Assisted Red Teaming of Diffusion Models through “Failures Are Fated, But Can Be Faded”](https://somsagar07.github.io/papers/red-teaming-diffusion/) — NeurIPS Workshop 2024. An extension of the Failures Are Fated framework to text-to-image diffusion models with LLM-generated rewards and states, action screening inspired by design of experiments, and a comparison of DQN, PPO, and A2C for red teaming.
+
+## Profiles
+
+- Google Scholar: https://scholar.google.com/citations?user=qWxEX0QAAAAJ
+- GitHub: https://github.com/somsagar07
+- LinkedIn: https://www.linkedin.com/in/somsagar/
+- OpenReview: https://openreview.net/profile?id=~Som_Sagar1
