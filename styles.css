@@ -574,3 +574,9 @@ a:focus-visible, .btn:focus-visible, .tab-btn:focus-visible,
 details.bib > summary:focus-visible, #theme-toggle-btn:focus-visible {
   outline: 2px solid #1E88E5; outline-offset: 2px;
 }
+
+/* Experience: small org marks */
+.exp-logo {
+  height: 15px; width: auto; vertical-align: -2px; margin-right: 6px;
+  object-fit: contain;
+}
