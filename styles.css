@@ -37,7 +37,7 @@ background-color: #C8E6C9;
 .news-date { font-weight: 500; color: #316CAD; transition: color 0.3s ease; }
 .news-item-title { font-weight: 600; color: #1E88E5; }
 .news-highlight-red { font-weight: 600; color: #EF5350; }
-.description { display: block; margin: 4px 0; color: #555; font-style: italic; padding: 4px 0; transition: color 0.3s ease; }
+.description { display: block; margin: 4px 0; color: #555; font-style: italic; padding: 4px 0; text-align: justify; transition: color 0.3s ease; }
 .bibtex {
 max-height: 0; opacity: 0; overflow-x: auto;
 margin-top: 0; padding: 0 4px;
@@ -497,8 +497,14 @@ body.dark .theme-block h3 { color: #90caf9; }
 .theme-block p { margin: 0; }
 
 /* Crawlable BibTeX (no JavaScript required) */
-details.bib { display: inline-block; vertical-align: middle; width: auto; }
-details.bib[open] { display: block; width: 100%; }
+/* The button row is a wrapping flex line. `display: contents` dissolves the
+   <details> box so its <summary> sits inline with the other buttons while the
+   <pre> becomes its own full-width row — instead of the whole element going
+   block-width and dragging its button onto a second line. */
+.pub-links { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 0; }
+details.bib { display: contents; }
+details.bib > summary { flex: 0 0 auto; }
+details.bib > pre { flex: 1 0 100%; width: 100%; margin-top: 6px; }
 details.bib > summary {
   list-style: none; display: inline-flex; align-items: center; gap: 4px;
   margin: 1px; padding: 4px 10px 4px 8px; color: #303030; background-color: #C8E6C9;
@@ -579,4 +585,15 @@ details.bib > summary:focus-visible, #theme-toggle-btn:focus-visible {
 .exp-logo {
   height: 15px; width: auto; vertical-align: -2px; margin-right: 6px;
   object-fit: contain;
+}
+
+/* BibTeX accordion: height/opacity transition driven by the toggle handler.
+   bib accordion transition */
+details.bib pre {
+  overflow: hidden;
+  box-sizing: border-box;   /* so scrollHeight and height agree (padding included) */
+  transition: height 0.32s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.28s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  details.bib pre { transition: none; }
 }

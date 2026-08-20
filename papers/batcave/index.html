@@ -18,8 +18,8 @@
 <meta name="twitter:title" content="Trustworthy Explanations for Robot Behaviors — IROS 2025 | Som Sagar">
 <meta name="twitter:description" content="BaTCAVe is a Bayesian concept-based explainability method that produces human-interpretable explanations of robot decisions together with calibrated uncertainty scores, enabling trustworthy post-hoc diagnosis of neural network policies.">
 <meta name="twitter:image" content="https://somsagar07.github.io/images/IROS_1.png">
-<meta property="og:image:alt" content="BaTCAVe: teaser figure">
-<meta name="twitter:image:alt" content="BaTCAVe: teaser figure">
+<meta property="og:image:alt" content="BaTCAVe answers why a robot&#x27;s end-effector moved down, scoring human-interpretable concepts with uncertainty bars over the policy network.">
+<meta name="twitter:image:alt" content="BaTCAVe answers why a robot&#x27;s end-effector moved down, scoring human-interpretable concepts with uncertainty bars over the policy network.">
 <meta name="theme-color" content="#FAFAFA">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -209,7 +209,7 @@
 <h1>Trustworthy Explanations for Robot Behaviors</h1>
 <p class="paper-meta"><b>Som Sagar*</b>, Aditya Taparia*, Harsh Mankodiya, Pranav Bidare, Yifan Zhou, Ransalu Senanayake<br>
 <em>IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</em>, 2025</p>
-<p style="text-align:center;margin:14px 0;"><img src="../../images/thumbs/IROS_1.jpg" width="600" height="453" decoding="async" alt="BaTCAVe teaser figure" style="max-width:100%;height:auto;max-height:260px;width:auto;border-radius:8px;"></p>
+<p style="text-align:center;margin:14px 0;"><img src="../../images/thumbs/IROS_1.jpg" width="600" height="453" decoding="async" alt="BaTCAVe answers why a robot&#x27;s end-effector moved down, scoring human-interpretable concepts with uncertainty bars over the policy network." style="max-width:100%;height:auto;max-height:260px;width:auto;border-radius:8px;"></p>
 <p class="description" style="font-style:normal;"><strong>In one sentence.</strong> BaTCAVe is a Bayesian concept-based explainability method that produces human-interpretable explanations of robot decisions together with calibrated uncertainty scores, enabling trustworthy post-hoc diagnosis of neural network policies.</p>
 <p><a href="https://arxiv.org/abs/2409.10733" class="btn btn-publication" target="_blank" rel="noopener"><span class="material-icons">picture_as_pdf</span> PDF</a>
 <a href="https://github.com/aditya-taparia/BaTCAVe" class="btn btn-publication" target="_blank" rel="noopener"><span class="material-icons">code</span> Code</a>
@@ -253,6 +253,44 @@ vision-language models, and robot manipulation policies</strong>.</p>
   if(b)b.addEventListener('click',function(){document.body.classList.toggle('dark');
     var d=document.body.classList.contains('dark'); if(i)i.textContent=d?'dark_mode':'light_mode';
     localStorage.setItem('theme',d?'dark':'light');});
+
+  // BibTeX accordion: <details> alone snaps open with no transition. Animate the
+  // height on toggle. Without JS the element still opens — just instantly — and the
+  // BibTeX stays in the DOM either way, so crawlers are unaffected.
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('details.bib').forEach(function (d) {
+    var body = d.querySelector('pre');
+    if (!body) return;
+    d.addEventListener('click', function (e) {
+      if (!e.target.closest('summary')) return;
+      if (reduce.matches) return;            // honour the OS setting
+      e.preventDefault();
+      if (d.dataset.animating) return;       // ignore clicks mid-animation
+      d.dataset.animating = '1';
+
+      var opening = !d.open;
+      if (opening) d.open = true;            // must be open to measure
+      var full = body.scrollHeight;          // border-box, so this includes padding
+      body.style.height = (opening ? 0 : full) + 'px';
+      body.style.opacity = opening ? '0' : '1';
+      void body.offsetHeight;                // force reflow so the start value commits
+      body.style.height = (opening ? full : 0) + 'px';
+      body.style.opacity = opening ? '1' : '0';
+
+      var timer;
+      var finish = function () {
+        clearTimeout(timer);
+        body.removeEventListener('transitionend', onEnd);
+        body.style.height = '';
+        body.style.opacity = '';
+        if (!opening) d.open = false;
+        delete d.dataset.animating;
+      };
+      var onEnd = function (ev) { if (ev.propertyName === 'height') finish(); };
+      body.addEventListener('transitionend', onEnd);
+      timer = setTimeout(finish, 600);       // fallback: state can never get stuck
+    });
+  });
 })();
 </script>
 

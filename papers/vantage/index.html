@@ -18,8 +18,8 @@
 <meta name="twitter:title" content="Strategic Vantage Selection for Learning Viewpoint-Agnostic Manipulation Policies — ICRA 2026 | Som Sagar">
 <meta name="twitter:description" content="Vantage selects a small, strategic set of camera poses for fine-tuning, formulating camera placement as an information-gain optimization so that pre-trained manipulation policies become robust to viewpoint shifts at deployment — raising task success by 25% for diffusion policies.">
 <meta name="twitter:image" content="https://somsagar07.github.io/images/ICRA_26.png">
-<meta property="og:image:alt" content="Vantage: teaser figure">
-<meta name="twitter:image:alt" content="Vantage: teaser figure">
+<meta property="og:image:alt" content="Camera poses in 3D: Vantage picks informative viewpoints and avoids occluded views where the cube is hidden and ambiguous ones where 5 cm and 10 cm look alike.">
+<meta name="twitter:image:alt" content="Camera poses in 3D: Vantage picks informative viewpoints and avoids occluded views where the cube is hidden and ambiguous ones where 5 cm and 10 cm look alike.">
 <meta name="theme-color" content="#FAFAFA">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -181,7 +181,7 @@
 <h1>Strategic Vantage Selection for Learning Viewpoint-Agnostic Manipulation Policies</h1>
 <p class="paper-meta">Sreevishakh Vasudevan, <b>Som Sagar</b>, Ransalu Senanayake<br>
 <em>IEEE International Conference on Robotics and Automation (ICRA)</em>, 2026</p>
-<p style="text-align:center;margin:14px 0;"><img src="../../images/thumbs/ICRA_26.jpg" width="600" height="397" decoding="async" alt="Vantage teaser figure" style="max-width:100%;height:auto;max-height:260px;width:auto;border-radius:8px;"></p>
+<p style="text-align:center;margin:14px 0;"><img src="../../images/thumbs/ICRA_26.jpg" width="600" height="397" decoding="async" alt="Camera poses in 3D: Vantage picks informative viewpoints and avoids occluded views where the cube is hidden and ambiguous ones where 5 cm and 10 cm look alike." style="max-width:100%;height:auto;max-height:260px;width:auto;border-radius:8px;"></p>
 <p class="description" style="font-style:normal;"><strong>In one sentence.</strong> Vantage selects a small, strategic set of camera poses for fine-tuning, formulating camera placement as an information-gain optimization so that pre-trained manipulation policies become robust to viewpoint shifts at deployment — raising task success by 25% for diffusion policies.</p>
 <p><a href="https://arxiv.org/abs/2506.12261" class="btn btn-publication" target="_blank" rel="noopener"><span class="material-icons">picture_as_pdf</span> PDF</a>
 <a href="https://www.youtube.com/watch?v=SkH3oqzxEqg" class="btn btn-publication" target="_blank" rel="noopener"><span class="material-icons">play_circle</span> Video</a>
@@ -224,6 +224,44 @@ vision-language models, and robot manipulation policies</strong>.</p>
   if(b)b.addEventListener('click',function(){document.body.classList.toggle('dark');
     var d=document.body.classList.contains('dark'); if(i)i.textContent=d?'dark_mode':'light_mode';
     localStorage.setItem('theme',d?'dark':'light');});
+
+  // BibTeX accordion: <details> alone snaps open with no transition. Animate the
+  // height on toggle. Without JS the element still opens — just instantly — and the
+  // BibTeX stays in the DOM either way, so crawlers are unaffected.
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('details.bib').forEach(function (d) {
+    var body = d.querySelector('pre');
+    if (!body) return;
+    d.addEventListener('click', function (e) {
+      if (!e.target.closest('summary')) return;
+      if (reduce.matches) return;            // honour the OS setting
+      e.preventDefault();
+      if (d.dataset.animating) return;       // ignore clicks mid-animation
+      d.dataset.animating = '1';
+
+      var opening = !d.open;
+      if (opening) d.open = true;            // must be open to measure
+      var full = body.scrollHeight;          // border-box, so this includes padding
+      body.style.height = (opening ? 0 : full) + 'px';
+      body.style.opacity = opening ? '0' : '1';
+      void body.offsetHeight;                // force reflow so the start value commits
+      body.style.height = (opening ? full : 0) + 'px';
+      body.style.opacity = opening ? '1' : '0';
+
+      var timer;
+      var finish = function () {
+        clearTimeout(timer);
+        body.removeEventListener('transitionend', onEnd);
+        body.style.height = '';
+        body.style.opacity = '';
+        if (!opening) d.open = false;
+        delete d.dataset.animating;
+      };
+      var onEnd = function (ev) { if (ev.propertyName === 'height') finish(); };
+      body.addEventListener('transitionend', onEnd);
+      timer = setTimeout(finish, 600);       // fallback: state can never get stuck
+    });
+  });
 })();
 </script>
 

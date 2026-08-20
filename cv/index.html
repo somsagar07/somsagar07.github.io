@@ -241,6 +241,44 @@ Diffusers, Captum.<br>
   if(b)b.addEventListener('click',function(){document.body.classList.toggle('dark');
     var d=document.body.classList.contains('dark'); if(i)i.textContent=d?'dark_mode':'light_mode';
     localStorage.setItem('theme',d?'dark':'light');});
+
+  // BibTeX accordion: <details> alone snaps open with no transition. Animate the
+  // height on toggle. Without JS the element still opens — just instantly — and the
+  // BibTeX stays in the DOM either way, so crawlers are unaffected.
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('details.bib').forEach(function (d) {
+    var body = d.querySelector('pre');
+    if (!body) return;
+    d.addEventListener('click', function (e) {
+      if (!e.target.closest('summary')) return;
+      if (reduce.matches) return;            // honour the OS setting
+      e.preventDefault();
+      if (d.dataset.animating) return;       // ignore clicks mid-animation
+      d.dataset.animating = '1';
+
+      var opening = !d.open;
+      if (opening) d.open = true;            // must be open to measure
+      var full = body.scrollHeight;          // border-box, so this includes padding
+      body.style.height = (opening ? 0 : full) + 'px';
+      body.style.opacity = opening ? '0' : '1';
+      void body.offsetHeight;                // force reflow so the start value commits
+      body.style.height = (opening ? full : 0) + 'px';
+      body.style.opacity = opening ? '1' : '0';
+
+      var timer;
+      var finish = function () {
+        clearTimeout(timer);
+        body.removeEventListener('transitionend', onEnd);
+        body.style.height = '';
+        body.style.opacity = '';
+        if (!opening) d.open = false;
+        delete d.dataset.animating;
+      };
+      var onEnd = function (ev) { if (ev.propertyName === 'height') finish(); };
+      body.addEventListener('transitionend', onEnd);
+      timer = setTimeout(finish, 600);       // fallback: state can never get stuck
+    });
+  });
 })();
 </script>
 
