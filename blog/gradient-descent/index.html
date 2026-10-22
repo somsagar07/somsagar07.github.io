@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gradient Descent — Som Sagar</title>
+<meta name="description" content="This blog explains the workings of gradient descent.">
+<meta name="author" content="Som Sagar">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FAFAFA">
+<link rel="canonical" href="https://somsagar07.github.io/blog/gradient-descent/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Som Sagar">
+<meta property="og:title" content="Gradient Descent">
+<meta property="og:description" content="This blog explains the workings of gradient descent.">
+<meta property="og:url" content="https://somsagar07.github.io/blog/gradient-descent/">
+<meta property="og:image" content="https://somsagar07.github.io/images/profile.jpg">
+<meta property="og:image:alt" content="Som Sagar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gradient Descent">
+<meta name="twitter:description" content="This blog explains the workings of gradient descent.">
+<meta name="twitter:image" content="https://somsagar07.github.io/images/profile.jpg">
+<link rel="icon" type="image/png" href="/images/profile_old.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=4">
+<link rel="stylesheet" href="/blog/assets/katex/katex.min.css">
+<link rel="stylesheet" href="/blog/blog.css?v=4">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https://somsagar07.github.io/blog/gradient-descent/#article",
+  "headline": "Gradient Descent",
+  "description": "This blog explains the workings of gradient descent.",
+  "datePublished": "2024-08-06",
+  "url": "https://somsagar07.github.io/blog/gradient-descent/",
+  "mainEntityOfPage": "https://somsagar07.github.io/blog/gradient-descent/",
+  "inLanguage": "en",
+  "articleSection": "Learning",
+  "keywords": [
+    "Foundations"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Som Sagar",
+    "url": "https://somsagar07.github.io/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "Som Sagar — Blog",
+    "url": "https://somsagar07.github.io/blog/"
+  }
+}</script>
+<script defer src="/blog/blog.js?v=3"></script>
+<script data-goatcounter="https://somsagar.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body class="blog-page paper-page">
+<script>try{if(localStorage.getItem('theme')==='dark')document.body.classList.add('dark')}catch(e){}</script>
+<a class="skip-link" href="#main">Skip to content</a>
+<button type="button" id="theme-toggle-btn" title="Toggle dark/light mode" aria-label="Switch color theme" aria-pressed="false"><span class="material-icons" id="themeToggleIcon" aria-hidden="true">light_mode</span></button>
+<div class="blog-shell">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Som Sagar</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Gradient Descent</nav>
+<main id="main" class="post-main">
+  <article>
+    <header class="post-heading"><h1>Gradient Descent</h1><p class="paper-meta post-meta"><span>Som Sagar</span><time datetime="2024-08-06">Aug 6, 2024</time><span>Learning</span><span>2 min read</span></p><div class="topics topic-tags"><span class="topic-tag">Foundations</span></div></header>
+    
+    <div class="post-content"><p>At its core, <code>gradient descent</code> is an <code>iterative optimization algorithm</code> used to find the minimum of a function. In the context of machine learning, it is often used to <strong>minimize the cost (or loss) function, which measures how well a model fits the data.</strong></p>
+<blockquote class="paper-note">
+<p>The primary goal of gradient descent is to find the set of parameters <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span></span></span></span> that minimize a given cost function <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">J(\theta)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0962em;">J</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span><span class="mclose">)</span></span></span></span>. This cost function quantifies the error, loss, or energy associated with a particular set of parameters. By minimizing <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">J(\theta)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0962em;">J</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span><span class="mclose">)</span></span></span></span>, we optimize the system or model represented by the parameters.</p>
+</blockquote>
+<h2 id="components-of-gradient-descent">Components of gradient descent</h2>
+<ul>
+<li><p><code>Gradient</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">∇</mi><mi>J</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\nabla J(\theta))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">∇</span><span class="mord mathnormal" style="margin-right:0.0962em;">J</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span><span class="mclose">))</span></span></span></span>: Represents the direction of the steepest ascent of the function <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">J(\theta)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0962em;">J</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span><span class="mclose">)</span></span></span></span>. The gradient is a vector of partial derivatives of the cost function with respect to each parameter. Moving in the opposite direction of the gradient (i.e., the negative gradient) leads us towards the minimum of the function is the Negative Gradient.</p>
+</li>
+<li><p><code>Learning rate</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\alpha)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span></span></span></span>: A hyperparameter that determines the size of the steps we take towards the minimum during each iteration. It controls how much we adjust the parameters in the direction of the negative gradient.</p>
+</li>
+</ul>
+<h2 id="the-iterative-process-of-gradient-descent">The Iterative Process of Gradient Descent</h2>
+<ul>
+<li><p>Initialize Parameters: Start with an initial guess for the parameters <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>θ</mi><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">\theta^{(0)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.888em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">0</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span></span></span></span>.</p>
+</li>
+<li><p>Compute the Gradient: Calculate the gradient of the cost function at the current parameters <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∇</mi><mi>J</mi><mo stretchy="false">(</mo><msup><mi>θ</mi><mi>t</mi></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\nabla J(\theta^{t})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.0436em;vertical-align:-0.25em;"></span><span class="mord">∇</span><span class="mord mathnormal" style="margin-right:0.0962em;">J</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7936em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>. </p>
+</li>
+<li><p>Update Parameters: Adjust the parameters in the direction that most reduces the cost function: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>θ</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>=</mo><msup><mi>θ</mi><mi>t</mi></msup><mo>−</mo><mi>α</mi><mi mathvariant="normal">∇</mi><mi>J</mi><mo stretchy="false">(</mo><msup><mi>θ</mi><mi>t</mi></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\theta^{t+1}=\theta^t-\alpha \nabla J(\theta^t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.8769em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7936em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.0436em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord">∇</span><span class="mord mathnormal" style="margin-right:0.0962em;">J</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7936em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+</li>
+<li><p>Check for Convergence: Determine if the changes in the cost function or parameters are below a predefined threshold.</p>
+</li>
+<li><p>Iterate: Repeat the process until the algorithm converges to a minimum.</p>
+</li>
+</ul>
+<p>Through iterative updates, gradient descent gradually moves the parameters towards values that minimize the cost function. This process continues until convergence, where further updates result in negligible changes to the cost function or parameters.</p>
+</div>
+  </article>
+  <aside class="related-notes" aria-labelledby="related-heading"><h2 id="related-heading">Related posts</h2><ul><li><a href="/blog/low-rank-adaptation/">Low-Rank Adaptation</a></li><li><a href="/blog/word2vec/">Word2Vec</a></li><li><a href="/blog/fine-tuning-llms/">Fine-Tuning LLMs</a></li></ul></aside>
+  <p><a class="btn" href="/blog/"><span class="material-icons" aria-hidden="true">arrow_back</span> All posts</a></p>
+</main></div>
+</body>
+</html>

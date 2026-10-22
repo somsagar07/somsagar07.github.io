@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attention — Som Sagar</title>
+<meta name="description" content="This blog explains self-attention and its role in modern AI models.">
+<meta name="author" content="Som Sagar">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FAFAFA">
+<link rel="canonical" href="https://somsagar07.github.io/blog/attention/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Som Sagar">
+<meta property="og:title" content="Attention">
+<meta property="og:description" content="This blog explains self-attention and its role in modern AI models.">
+<meta property="og:url" content="https://somsagar07.github.io/blog/attention/">
+<meta property="og:image" content="https://somsagar07.github.io/images/profile.jpg">
+<meta property="og:image:alt" content="Som Sagar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Attention">
+<meta name="twitter:description" content="This blog explains self-attention and its role in modern AI models.">
+<meta name="twitter:image" content="https://somsagar07.github.io/images/profile.jpg">
+<link rel="icon" type="image/png" href="/images/profile_old.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=4">
+<link rel="stylesheet" href="/blog/assets/katex/katex.min.css">
+<link rel="stylesheet" href="/blog/blog.css?v=4">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https://somsagar07.github.io/blog/attention/#article",
+  "headline": "Attention",
+  "description": "This blog explains self-attention and its role in modern AI models.",
+  "datePublished": "2024-08-21",
+  "url": "https://somsagar07.github.io/blog/attention/",
+  "mainEntityOfPage": "https://somsagar07.github.io/blog/attention/",
+  "inLanguage": "en",
+  "articleSection": "Learning",
+  "keywords": [
+    "Foundations",
+    "Deep Learning",
+    "LLMs"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Som Sagar",
+    "url": "https://somsagar07.github.io/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "Som Sagar — Blog",
+    "url": "https://somsagar07.github.io/blog/"
+  }
+}</script>
+<script defer src="/blog/blog.js?v=3"></script>
+<script data-goatcounter="https://somsagar.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body class="blog-page paper-page">
+<script>try{if(localStorage.getItem('theme')==='dark')document.body.classList.add('dark')}catch(e){}</script>
+<a class="skip-link" href="#main">Skip to content</a>
+<button type="button" id="theme-toggle-btn" title="Toggle dark/light mode" aria-label="Switch color theme" aria-pressed="false"><span class="material-icons" id="themeToggleIcon" aria-hidden="true">light_mode</span></button>
+<div class="blog-shell">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Som Sagar</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Attention</nav>
+<main id="main" class="post-main">
+  <article>
+    <header class="post-heading"><h1>Attention</h1><p class="paper-meta post-meta"><span>Som Sagar</span><time datetime="2024-08-21">Aug 21, 2024</time><span>Learning</span><span>6 min read</span></p><div class="topics topic-tags"><span class="topic-tag">Foundations</span><span class="topic-tag">Deep Learning</span><span class="topic-tag">LLMs</span></div></header>
+    <details class="post-toc"><summary>On this page</summary><ol><li data-depth="2"><a href="#the-basics-of-self-attention">The Basics of Self-Attention</a></li><li data-depth="2"><a href="#computing-attention-weights">Computing Attention Weights</a></li><li data-depth="2"><a href="#multi-head-attention">Multi-head Attention</a></li><li data-depth="2"><a href="#putting-it-all-together">Putting It All Together</a></li><li data-depth="2"><a href="#conclusion">Conclusion</a></li></ol></details>
+    <div class="post-content"><p>In recent years, <code>self-attention</code> has revolutionized the way we approach natural language processing, computer vision, and other fields of artificial intelligence. This powerful mechanism, first popularized by the <code>Transformer</code> model, enables networks to weigh the importance of each part of the input in relation to every other part.</p>
+<p>In this blog, we’ll break down the fundamentals of self-attention, explore how it works under the hood.</p>
+<h2 id="the-basics-of-self-attention">The Basics of Self-Attention</h2>
+<p>Self-attention starts by representing each input (e.g., each word) as an<code> embedding vector</code>. These vectors are essential because they contain the contextual information for each input, which we’ll use in the following steps to compute attention scores.</p>
+<figure>
+  <img src="/blog/assets/images/attention-01.png" alt="Word embeddings for the sentence Attention is all you need." width="480" loading="lazy" decoding="async">
+</figure><p>In Fig 1 we chose a sentence “Attention is all you need”. Assume v1, v2, v3, v4, v5 represents word embeddings of each word in the sentence. This setup illustrates the core idea of self-attention: every input can &quot;pay attention&quot; to every other input based on the relevance computed through vector operations.</p>
+<h2 id="computing-attention-weights">Computing Attention Weights</h2>
+<p>Now lets get into the actual computation. Here’s the flow:</p>
+<ol>
+<li><p><strong>Dot Product</strong>: Each vector <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">v</span></span></span></span> is compared with every key vector to compute a <code>dot product</code>. This gives a <code>similarity score</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">D_{ij}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> for each pair, showing how much one token relates to another.</p>
+</li>
+<li><p><strong>Normalization</strong>: The similarity scores are <code>normalized </code>(often with <code>softmax</code>) to ensure they sum up to 1, creating the weights <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">W_{ij}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>.</p>
+</li>
+<li><p><strong>Weighted Sum</strong>: Each input’s vector (value) is weighted by these attention scores to produce the output for that position.</p>
+</li>
+</ol>
+<figure>
+  <img src="/blog/assets/images/attention-02.png" alt="Dot products, normalized attention weights, and weighted sums of word embeddings." width="480" loading="lazy" decoding="async">
+</figure><blockquote class="paper-note">
+<p>In simple terms, self-attention scores the importance of other tokens for each specific token in the sequence. </p>
+</blockquote>
+<p>After normalizing, we use these scores to compute a weighted average, effectively transforming the input in a way that emphasizes the most relevant parts.</p>
+<p>The weighted sum output highlights how attention allows each token to adjust its focus based on context, enabling richer representations.</p>
+<p>This works but there are no weights in the above figure we are not ideally learning anything, there is no proximity influence and it shape independent. To  solve this we introduce weights and the only place we can introduce them are with v because they are not used in intermediate compute. We call them using the terms key <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">M_K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0715em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, query <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>Q</mi></msub></mrow><annotation encoding="application/x-tex">M_Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">Q</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> and value <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>V</mi></msub></mrow><annotation encoding="application/x-tex">M_V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.2222em;">V</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> as shown below.</p>
+<figure>
+  <img src="/blog/assets/images/attention-03.png" alt="Self-attention using learned query, key, and value projections." width="432" loading="lazy" decoding="async">
+</figure><p>The core process of self-attention is shown above, where each input interacts with every other input in the sequence. The goal of self-attention is to create a representation of each token (e.g., a word in a sentence) that captures its relationships with other tokens. </p>
+<p>Here’s how it works, step by step similar to how we computer earlier but this time in much more detail:</p>
+<ol>
+<li><p><strong>Creating Queries (Q), Keys (K), and Values (V):</strong></p>
+<ul>
+<li><p>Each input vector Vi (such as a word embedding) is linearly transformed using weight matrices <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>K</mi></msub><mo separator="true">,</mo><msub><mi>M</mi><mi>Q</mi></msub><mo separator="true">,</mo><msub><mi>M</mi><mi>V</mi></msub></mrow><annotation encoding="application/x-tex">M_K, M_Q, M_V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0715em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">Q</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.2222em;">V</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</p>
+</li>
+<li><p>These transformations produce:</p>
+<ul>
+<li><p><strong><code>Query vectors</code></strong> <strong>(Q)</strong>: Representing what each token is “looking for.”</p>
+</li>
+<li><p><strong><code>Key vectors</code></strong> <strong>(K)</strong>: Representing what each token “contains” that others may want to focus on.</p>
+</li>
+<li><p><strong><code>Value vectors</code></strong> <strong>(V)</strong>: Containing the actual content or information that will be passed along.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Calculating Attention Scores:</strong></p>
+<ul>
+<li><p>The query vector for each token is compared with the key vectors of all tokens by computing dot products. This produces a similarity score for each token pair, represented as , <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">D_{ij}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> which indicates how relevant one token is to another.</p>
+</li>
+<li><p>For example, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>12</mn></msub></mrow><annotation encoding="application/x-tex">D_{12}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">12</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> would be the similarity score between the first token and the second token.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Normalization:</strong></p>
+<ul>
+<li>The scores are then normalized (often with softmax), resulting in attention weights <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">W_{ij}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> that sum up to 1. This step ensures the attention distribution is balanced, allowing each token to focus on the most relevant parts of the input.</li>
+</ul>
+</li>
+<li><p><strong>Weighted Sum Using Values:</strong></p>
+<ul>
+<li><p>The attention weights are applied to the value vectors. Each value vector is weighted according to its corresponding attention score, and the weighted values are summed to produce the output representation <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Y</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">Y_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> for each token.</p>
+</li>
+<li><p>This output Y1​ represents the token’s contextualized information, with contributions from all other tokens based on their relevance.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="multi-head-attention">Multi-head Attention</h2>
+<p><code>Multi-head attention</code> is an extension of self-attention where multiple attention heads (i.e., parallel self-attention mechanisms) are applied to the input. Each head learns different transformations of Q, K, and V, allowing it to focus on various relationships within the data.</p>
+<p>In multi-head attention, <code>the input embeddings are projected into multiple sets of queries, keys, and values</code>, each corresponding to a different &quot;head.&quot; Each head independently performs self-attention, capturing different patterns or aspects of the data. The outputs of all heads are then concatenated and combined to form the final output.</p>
+<p>By having multiple heads, the model can focus on <code>multiple types of relationships</code> simultaneously. For example, one head might focus on syntactic dependencies (like subject-verb pairs), while another might focus on semantic relationships (like topic coherence). This parallel processing makes the representation more expressive and comprehensive.</p>
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+<ul>
+<li><p><strong>Recap of Process</strong>:</p>
+<ul>
+<li><p>Start with embeddings of each token.</p>
+</li>
+<li><p>Compute dot products between queries and keys to get attention scores.</p>
+</li>
+<li><p>Normalize scores and apply them to the value vectors.</p>
+</li>
+<li><p>Aggregate the results across multiple attention heads.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Example</strong>: Suppose we have a sentence with words “Attention is all you need.” The attention mechanism allows the model to relate each word to every other word. Multi-head attention can let the model identify multiple layers of meaning (e.g., subject-verb relationships, semantic emphasis on “all”).</p>
+</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Self-attention, combined with multi-head attention, is a cornerstone of modern AI, enabling models to capture complex dependencies within sequences. Through queries (Q), keys (K), and values (V), self-attention allows each token to dynamically focus on others, creating context-aware representations. Multi-head attention enhances this by running multiple attention mechanisms in parallel, allowing the model to learn different types of relationships within the data simultaneously. Together, self-attention and multi-head attention provide the flexibility and power that drive breakthroughs in NLP, computer vision, and beyond, setting a new standard for intelligent, adaptable AI models.</p>
+</div>
+  </article>
+  <aside class="related-notes" aria-labelledby="related-heading"><h2 id="related-heading">Related posts</h2><ul><li><a href="/blog/low-rank-adaptation/">Low-Rank Adaptation</a></li><li><a href="/blog/fine-tuning-llms/">Fine-Tuning LLMs</a></li><li><a href="/blog/word2vec/">Word2Vec</a></li></ul></aside>
+  <p><a class="btn" href="/blog/"><span class="material-icons" aria-hidden="true">arrow_back</span> All posts</a></p>
+</main></div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fine-Tuning LLMs — Som Sagar</title>
+<meta name="description" content="This blog discusses basics of finetuning and finetuning methods in LLMs.">
+<meta name="author" content="Som Sagar">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FAFAFA">
+<link rel="canonical" href="https://somsagar07.github.io/blog/fine-tuning-llms/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Som Sagar">
+<meta property="og:title" content="Fine-Tuning LLMs">
+<meta property="og:description" content="This blog discusses basics of finetuning and finetuning methods in LLMs.">
+<meta property="og:url" content="https://somsagar07.github.io/blog/fine-tuning-llms/">
+<meta property="og:image" content="https://somsagar07.github.io/images/profile.jpg">
+<meta property="og:image:alt" content="Som Sagar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fine-Tuning LLMs">
+<meta name="twitter:description" content="This blog discusses basics of finetuning and finetuning methods in LLMs.">
+<meta name="twitter:image" content="https://somsagar07.github.io/images/profile.jpg">
+<link rel="icon" type="image/png" href="/images/profile_old.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=4">
+
+<link rel="stylesheet" href="/blog/blog.css?v=4">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https://somsagar07.github.io/blog/fine-tuning-llms/#article",
+  "headline": "Fine-Tuning LLMs",
+  "description": "This blog discusses basics of finetuning and finetuning methods in LLMs.",
+  "datePublished": "2024-09-03",
+  "url": "https://somsagar07.github.io/blog/fine-tuning-llms/",
+  "mainEntityOfPage": "https://somsagar07.github.io/blog/fine-tuning-llms/",
+  "inLanguage": "en",
+  "articleSection": "Learning",
+  "keywords": [
+    "Foundations",
+    "Deep Learning",
+    "LLMs"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Som Sagar",
+    "url": "https://somsagar07.github.io/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "Som Sagar — Blog",
+    "url": "https://somsagar07.github.io/blog/"
+  }
+}</script>
+<script defer src="/blog/blog.js?v=3"></script>
+<script data-goatcounter="https://somsagar.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body class="blog-page paper-page">
+<script>try{if(localStorage.getItem('theme')==='dark')document.body.classList.add('dark')}catch(e){}</script>
+<a class="skip-link" href="#main">Skip to content</a>
+<button type="button" id="theme-toggle-btn" title="Toggle dark/light mode" aria-label="Switch color theme" aria-pressed="false"><span class="material-icons" id="themeToggleIcon" aria-hidden="true">light_mode</span></button>
+<div class="blog-shell">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Som Sagar</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Fine-Tuning LLMs</nav>
+<main id="main" class="post-main">
+  <article>
+    <header class="post-heading"><h1>Fine-Tuning LLMs</h1><p class="paper-meta post-meta"><span>Som Sagar</span><time datetime="2024-09-03">Sep 3, 2024</time><span>Learning</span><span>3 min read</span></p><div class="topics topic-tags"><span class="topic-tag">Foundations</span><span class="topic-tag">Deep Learning</span><span class="topic-tag">LLMs</span></div></header>
+    <details class="post-toc"><summary>On this page</summary><ol><li data-depth="2"><a href="#basics-of-fine-tuning">Basics of Fine-Tuning</a></li><li data-depth="2"><a href="#fine-tuning-in-language-models-llms">Fine-Tuning in Language Models (LLMs)</a></li><li data-depth="3"><a href="#types-of-fine-tuning">Types of Fine-Tuning</a></li><li data-depth="4"><a href="#parameter-efficient-fine-tuning">Parameter-Efficient Fine-Tuning</a></li></ol></details>
+    <div class="post-content"><p><code>Fine-tuning</code> is a process in machine learning where a pre-trained model is adapted to a new, specific task. Instead of training a model from scratch, which is resource-intensive, fine-tuning leverages the learned patterns from a general-purpose model and adjusts them for a narrower, more specific purpose.</p>
+<h2 id="basics-of-fine-tuning">Basics of Fine-Tuning</h2>
+<ul>
+<li><p><strong>Pre-Trained Models</strong>: These models are initially trained on vast amounts of data for general purposes. For example, image models might be pre-trained on ImageNet, while language models could be trained on diverse text corpora.</p>
+</li>
+<li><p><strong>New Task Data</strong>: Fine-tuning requires task-specific data that might be smaller than the data used for pre-training. For example, if you want a language model to answer legal questions, you’d fine-tune it on a dataset containing legal Q&amp;A or relevant documents.</p>
+</li>
+<li><p><strong>Adjusting Parameters</strong>: Fine-tuning typically involves adjusting only some of the model’s layers, often the last few, to adapt the model to new patterns and associations. This process requires lower computational power than training a model from scratch.</p>
+</li>
+<li><p><strong>Hyperparameters and Regularization</strong>: Fine-tuning requires careful selection of hyperparameters like learning rate and may also involve techniques like dropout to prevent overfitting. Overfitting occurs when a model learns specific details of the fine-tuning data too closely, reducing its generalization ability on new data.</p>
+</li>
+</ul>
+<h2 id="fine-tuning-in-language-models-llms">Fine-Tuning in Language Models (LLMs)</h2>
+<p>Fine-tuning becomes complex yet powerful with LLMs due to the model&#39;s scale and the diversity of potential tasks (e.g., text classification, translation, question answering, etc.). </p>
+<p>Fine-tuning LLMs adapts them to particular styles, domains, or applications, enabling them to perform specific tasks more effectively than a general-purpose model.</p>
+<h3 id="types-of-fine-tuning">Types of Fine-Tuning</h3>
+<ul>
+<li><p>Supervised finetuning: Directly feeding the model <code>task-specific pairs</code> (input, desired output). For example, training a language model to write customer support responses with input-output examples of customer queries and ideal responses.</p>
+</li>
+<li><p>Reinforcement Learning with Human or AI feedback: This involves using <code>reinforcement learning</code>, often with <code>human feedback</code> (RLHF) or <code>AI feedback</code> (RLAIF). Human or AI evaluators rank model responses, and the model adjusts based on the <code>reward signal</code>, i<strong>mproving performance based on quality, relevance, or specific criteria</strong> (e.g., politeness).</p>
+</li>
+<li><p>Instruction Fine-Tuning: Fine-tuning on datasets with explicit instructions to make models follow commands, beneficial for task-oriented models.</p>
+</li>
+</ul>
+<h4 id="parameter-efficient-fine-tuning">Parameter-Efficient Fine-Tuning</h4>
+<ul>
+<li><p><code>Adapters</code>: Small modules added to each layer of the model, tuned specifically to the task while keeping the main model frozen.</p>
+</li>
+<li><p><code>Low-Rank Adaptation</code> (LoRA): Reduces the number of parameters by representing weight matrices as the product of smaller matrices.</p>
+</li>
+<li><p><code>Prompt-Tuning</code>: The model remains unchanged, but specific prompts are added to the inputs, guiding the model’s response style without altering its weights.</p>
+</li>
+</ul>
+</div>
+  </article>
+  <aside class="related-notes" aria-labelledby="related-heading"><h2 id="related-heading">Related posts</h2><ul><li><a href="/blog/low-rank-adaptation/">Low-Rank Adaptation</a></li><li><a href="/blog/attention/">Attention</a></li><li><a href="/blog/word2vec/">Word2Vec</a></li></ul></aside>
+  <p><a class="btn" href="/blog/"><span class="material-icons" aria-hidden="true">arrow_back</span> All posts</a></p>
+</main></div>
+</body>
+</html>

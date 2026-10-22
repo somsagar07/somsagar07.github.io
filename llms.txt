@@ -23,6 +23,7 @@
 - [Homepage](https://somsagar07.github.io/): biography, research overview, news, selected publications
 - [Publications](https://somsagar07.github.io/papers/): full list of conference and workshop papers
 - [CV](https://somsagar07.github.io/cv/): education, experience, awards, service, teaching, skills
+- [Blog](https://somsagar07.github.io/blog/): articles grouped into Research, Learning, and Conferences & Travel, with overlapping topic tags for reinforcement learning, robotics, LLMs, and other areas
 
 ## Publications
 

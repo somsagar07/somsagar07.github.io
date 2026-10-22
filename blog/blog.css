@@ -1,0 +1,66 @@
+/* Shared styles.css owns typography, colors, buttons, icons, and the theme. */
+.blog-page [hidden] { display: none !important; }
+.blog-shell { max-width: 900px; width: 90%; margin: auto; padding-bottom: 36px; }
+.blog-page #theme-toggle-btn { border: 0; font: inherit; }
+.blog-page .skip-link { position: absolute; top: -80px; left: 20px; z-index: 2100; }
+.blog-page .skip-link:focus { top: 10px; }
+.blog-intro { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 18px 0 12px; }
+.blog-intro h1, .blog-count { margin: 0; }
+.blog-group { display: grid; grid-template-columns: 175px minmax(0, 1fr); gap: 32px; padding: 30px 0; border-top: 1px solid rgba(128,128,128,.2); scroll-margin-top: 20px; }
+.group-heading { display: block; }
+.group-heading h2 { font-size: 21px; line-height: 1.3; margin: 0 0 8px; }
+.group-count { font-size: 13px; }
+.post-entry { padding: 20px 0; border-bottom: 1px solid rgba(128,128,128,.2); }
+.post-entry:first-child { padding-top: 0; }
+.post-entry:last-child { padding-bottom: 0; border-bottom: 0; }
+.post-entry h3.pub-title { font-size: 18px; line-height: 1.35; margin: 5px 0 8px; }
+.post-excerpt { line-height: 1.5; margin: 0 0 10px; }
+.entry-meta { display: flex; align-items: baseline; gap: 12px; margin: 4px 0 7px; font-size: 13px; }
+.entry-meta > span::before { content: '·'; margin-right: 12px; }
+.topic-tags { display: flex; flex-wrap: wrap; margin: 0; }
+.topic-tag { font-size: 12px; }
+.topic-tag + .topic-tag::before { content: "·"; margin: 0 7px; }
+.collection-empty p { margin: 0 0 14px; }
+.post-main { margin-top: 20px; }
+.post-heading { margin-bottom: 22px; }
+.post-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; }
+.post-meta > :not(:first-child)::before { content: '·'; margin-right: 12px; }
+.post-toc { margin: 18px 0; }
+.post-toc summary { cursor: pointer; }
+.post-toc ol { list-style: none; padding-left: 0; }
+.post-toc li { margin: 6px 0; }
+.post-toc li[data-depth='3'] { padding-left: 15px; }
+.post-toc li[data-depth='4'] { padding-left: 30px; }
+.post-content { overflow-wrap: break-word; }
+.post-content p { text-align: justify; }
+.post-content h2, .post-content h3, .post-content h4 { scroll-margin-top: 24px; }
+.post-content h3 { font-size: 16px; margin: 20px 0 6px; }
+.post-content h4 { font-size: 15px; margin: 18px 0 6px; }
+.post-content > :first-child { margin-top: 0; }
+.post-content li { margin: 6px 0; }
+.post-content li p { margin: 0 0 8px; }
+.post-content code { font-family: monospace; font-size: 13px; }
+.post-content pre { white-space: pre; tab-size: 4; }
+.post-content pre code { font-size: inherit; }
+.post-content blockquote { margin: 18px 0; }
+.post-content blockquote p:last-child { margin-bottom: 0; }
+.post-content figure { margin: 24px 0; text-align: center; }
+.post-content img { display: block; max-width: 100%; height: auto; margin: auto; background: white; border-radius: 8px; }
+.post-content figcaption { font-size: 13px; margin: 8px auto 0; max-width: 600px; }
+.post-content .math-block { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: 6px 0; margin: 16px 0; }
+.post-content .katex { font-size: 1.08em; }
+.post-content .katex-display { margin: .5em 0; }
+.post-content table { border-collapse: collapse; width: 100%; margin: 18px 0; }
+.post-content th, .post-content td { padding: 8px; text-align: left; }
+.related-notes { margin-top: 28px; }
+.related-notes li { margin-bottom: 8px; }
+@media (max-width: 768px) {
+  .blog-page .breadcrumb { padding-right: 48px; }
+  .blog-group { grid-template-columns: 1fr; gap: 18px; padding: 24px 0; }
+  .group-heading { display: flex; align-items: baseline; gap: 12px; }
+  .group-heading h2 { font-size: 20px; margin: 0; }
+  .post-meta { gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html:has(.blog-page) { scroll-behavior: auto; }
+}

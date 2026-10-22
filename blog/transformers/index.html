@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transformers — Som Sagar</title>
+<meta name="description" content="This blog discusses the transformer architecture and its significance in deep learning.">
+<meta name="author" content="Som Sagar">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FAFAFA">
+<link rel="canonical" href="https://somsagar07.github.io/blog/transformers/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Som Sagar">
+<meta property="og:title" content="Transformers">
+<meta property="og:description" content="This blog discusses the transformer architecture and its significance in deep learning.">
+<meta property="og:url" content="https://somsagar07.github.io/blog/transformers/">
+<meta property="og:image" content="https://somsagar07.github.io/images/profile.jpg">
+<meta property="og:image:alt" content="Som Sagar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Transformers">
+<meta name="twitter:description" content="This blog discusses the transformer architecture and its significance in deep learning.">
+<meta name="twitter:image" content="https://somsagar07.github.io/images/profile.jpg">
+<link rel="icon" type="image/png" href="/images/profile_old.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=4">
+
+<link rel="stylesheet" href="/blog/blog.css?v=4">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https://somsagar07.github.io/blog/transformers/#article",
+  "headline": "Transformers",
+  "description": "This blog discusses the transformer architecture and its significance in deep learning.",
+  "datePublished": "2024-09-05",
+  "url": "https://somsagar07.github.io/blog/transformers/",
+  "mainEntityOfPage": "https://somsagar07.github.io/blog/transformers/",
+  "inLanguage": "en",
+  "articleSection": "Learning",
+  "keywords": [
+    "Deep Learning",
+    "LLMs"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Som Sagar",
+    "url": "https://somsagar07.github.io/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "Som Sagar — Blog",
+    "url": "https://somsagar07.github.io/blog/"
+  }
+}</script>
+<script defer src="/blog/blog.js?v=3"></script>
+<script data-goatcounter="https://somsagar.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body class="blog-page paper-page">
+<script>try{if(localStorage.getItem('theme')==='dark')document.body.classList.add('dark')}catch(e){}</script>
+<a class="skip-link" href="#main">Skip to content</a>
+<button type="button" id="theme-toggle-btn" title="Toggle dark/light mode" aria-label="Switch color theme" aria-pressed="false"><span class="material-icons" id="themeToggleIcon" aria-hidden="true">light_mode</span></button>
+<div class="blog-shell">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Som Sagar</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Transformers</nav>
+<main id="main" class="post-main">
+  <article>
+    <header class="post-heading"><h1>Transformers</h1><p class="paper-meta post-meta"><span>Som Sagar</span><time datetime="2024-09-05">Sep 5, 2024</time><span>Learning</span><span>3 min read</span></p><div class="topics topic-tags"><span class="topic-tag">Deep Learning</span><span class="topic-tag">LLMs</span></div></header>
+    <details class="post-toc"><summary>On this page</summary><ol><li data-depth="2"><a href="#introduction">Introduction</a></li><li data-depth="2"><a href="#encoder-left-side">Encoder (Left Side)</a></li><li data-depth="2"><a href="#decoder-right-side">Decoder (Right Side)</a></li><li data-depth="2"><a href="#output-layer">Output Layer</a></li></ol></details>
+    <div class="post-content"><h2 id="introduction">Introduction</h2>
+<p>The transformer architecture has transformed the landscape of deep learning, particularly in fields like natural language processing (NLP) and computer vision. Transformers departed from the traditional recurrent neural networks (RNNs) by using a unique “self-attention.&quot;  This innovation allows transformers to process data in parallel, rather than sequentially, which made models faster and more scalable. Today, they power some of the most popular language models, like BERT and GPT, redefining what’s possible in machine understanding and generation tasks.</p>
+<blockquote class="paper-note">
+<p>Unlike RNNs, which process one word or token at a time, transformers look at the entire input simultaneously. This is made possible through the self-attention mechanism, which assigns importance weights to each token based on its relationship with other tokens. This mechanism allows transformers to &quot;attend&quot; to relevant parts of the input, irrespective of their position, making them well-suited for understanding context and long-range dependencies in language.</p>
+</blockquote>
+<figure>
+  <img src="/blog/assets/images/transformers-01.png" alt="The encoder-decoder Transformer architecture from Attention Is All You Need by Vaswani and colleagues." width="480" loading="lazy" decoding="async">
+  <figcaption>Figure 1: Transformers Architecture From ‘Attention Is All You Need’ by Vaswani et al.</figcaption>
+</figure><p>Fig 1 shows the Transformer model architecture, illustrating the encoder-decoder structure commonly used in NLP tasks. </p>
+<h2 id="encoder-left-side">Encoder (Left Side)</h2>
+<p>The encoder consists of a stack of layers, where each layer has two main components:</p>
+<ul>
+<li><p><strong>Multi-Head Attention:</strong> This layer allows the encoder to focus on different parts of the input sequence by learning multiple attention scores. It applies attention mechanisms in parallel (multiple heads), allowing it to capture various relationships in the input.</p>
+</li>
+<li><p><strong>Feed Forward Layer:</strong> A fully connected neural network applied to each position in the sequence independently, adding a non-linearity to the output.</p>
+</li>
+</ul>
+<p>Each of these sub-layers is followed by an <strong>Add &amp; Norm</strong> operation, which consists of residual connections (adding the input to the output of the layer) and layer normalization. This helps stabilize and speed up training.</p>
+<h2 id="decoder-right-side">Decoder (Right Side)</h2>
+<p>The decoder has a similar structure but includes an additional layer to process the encoder&#39;s output.</p>
+<ul>
+<li><p><strong>Masked Multi-Head Attention:</strong> The first attention layer in the decoder is masked so that each position can only attend to previous positions, preserving the autoregressive property (i.e., generating tokens one step at a time).</p>
+</li>
+<li><p><strong>Multi-Head Attention with Encoder Outputs:</strong> The decoder has a second attention layer, where it attends to the encoder’s output. This allows the decoder to use information from the input sequence, essential for tasks like translation.</p>
+</li>
+<li><p><strong>Feed Forward Layer:</strong> Similar to the encoder, this layer adds a fully connected network for additional non-linearity.</p>
+</li>
+</ul>
+<p>Each of these sub-layers also has <strong>Add &amp; Norm</strong> operations for residual connections and layer normalization.</p>
+<blockquote class="paper-note">
+<p>Positional Encoding: Transformers don’t have an inherent notion of sequence order, so positional encoding is added to each input embedding to give the model a sense of token positions.</p>
+</blockquote>
+<h2 id="output-layer">Output Layer</h2>
+<p>The final layer transforms the decoder&#39;s output into probabilities for each token using a Linear layer followed by a Softmax. This generates output probabilities, allowing the model to predict the most likely next word or token in a sequence.</p>
+</div>
+  </article>
+  <aside class="related-notes" aria-labelledby="related-heading"><h2 id="related-heading">Related posts</h2><ul><li><a href="/blog/low-rank-adaptation/">Low-Rank Adaptation</a></li><li><a href="/blog/fine-tuning-llms/">Fine-Tuning LLMs</a></li><li><a href="/blog/attention/">Attention</a></li></ul></aside>
+  <p><a class="btn" href="/blog/"><span class="material-icons" aria-hidden="true">arrow_back</span> All posts</a></p>
+</main></div>
+</body>
+</html>

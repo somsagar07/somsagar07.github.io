@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bias vs Variance — Som Sagar</title>
+<meta name="description" content="This blog explains bias-variance tradeoff in machine learning model performance.">
+<meta name="author" content="Som Sagar">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FAFAFA">
+<link rel="canonical" href="https://somsagar07.github.io/blog/bias-vs-variance/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Som Sagar">
+<meta property="og:title" content="Bias vs Variance">
+<meta property="og:description" content="This blog explains bias-variance tradeoff in machine learning model performance.">
+<meta property="og:url" content="https://somsagar07.github.io/blog/bias-vs-variance/">
+<meta property="og:image" content="https://somsagar07.github.io/images/profile.jpg">
+<meta property="og:image:alt" content="Som Sagar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bias vs Variance">
+<meta name="twitter:description" content="This blog explains bias-variance tradeoff in machine learning model performance.">
+<meta name="twitter:image" content="https://somsagar07.github.io/images/profile.jpg">
+<link rel="icon" type="image/png" href="/images/profile_old.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=4">
+
+<link rel="stylesheet" href="/blog/blog.css?v=4">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https://somsagar07.github.io/blog/bias-vs-variance/#article",
+  "headline": "Bias vs Variance",
+  "description": "This blog explains bias-variance tradeoff in machine learning model performance.",
+  "datePublished": "2024-02-13",
+  "url": "https://somsagar07.github.io/blog/bias-vs-variance/",
+  "mainEntityOfPage": "https://somsagar07.github.io/blog/bias-vs-variance/",
+  "inLanguage": "en",
+  "articleSection": "Learning",
+  "keywords": [
+    "Foundations"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Som Sagar",
+    "url": "https://somsagar07.github.io/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "Som Sagar — Blog",
+    "url": "https://somsagar07.github.io/blog/"
+  }
+}</script>
+<script defer src="/blog/blog.js?v=3"></script>
+<script data-goatcounter="https://somsagar.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body class="blog-page paper-page">
+<script>try{if(localStorage.getItem('theme')==='dark')document.body.classList.add('dark')}catch(e){}</script>
+<a class="skip-link" href="#main">Skip to content</a>
+<button type="button" id="theme-toggle-btn" title="Toggle dark/light mode" aria-label="Switch color theme" aria-pressed="false"><span class="material-icons" id="themeToggleIcon" aria-hidden="true">light_mode</span></button>
+<div class="blog-shell">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Som Sagar</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Bias vs Variance</nav>
+<main id="main" class="post-main">
+  <article>
+    <header class="post-heading"><h1>Bias vs Variance</h1><p class="paper-meta post-meta"><span>Som Sagar</span><time datetime="2024-02-13">Feb 13, 2024</time><span>Learning</span><span>2 min read</span></p><div class="topics topic-tags"><span class="topic-tag">Foundations</span></div></header>
+    <details class="post-toc"><summary>On this page</summary><ol><li data-depth="2"><a href="#bias">Bias</a></li><li data-depth="2"><a href="#variance">Variance</a></li><li data-depth="2"><a href="#the-bias-variance-tradeoff">The Bias-Variance Tradeoff</a></li><li data-depth="3"><a href="#managing-bias-and-variance">Managing Bias and Variance</a></li></ol></details>
+    <div class="post-content"><p><code>Bias and variance</code> are two key sources of error in machine learning models that affect their accuracy and generalization.</p>
+<h2 id="bias">Bias</h2>
+<ul>
+<li><p><strong>Definition</strong>: Bias is the error that arises when a model is too simplistic, unable to capture the underlying patterns in the data. High bias usually leads to <strong>underfitting</strong>.</p>
+</li>
+<li><p><strong>Characteristics</strong>:</p>
+<ul>
+<li><p>Model assumptions are too strong, often leading to systematic errors.</p>
+</li>
+<li><p>The model makes broad generalizations and may ignore important patterns.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Example</strong>: A linear regression model applied to highly nonlinear data will have high bias because it cannot capture the complexity of the data&#39;s pattern.</p>
+</li>
+</ul>
+<h2 id="variance">Variance</h2>
+<ul>
+<li><p><strong>Definition</strong>: Variance is the error that arises when a model is too complex, fitting too closely to the training data, and becoming sensitive to noise. High variance leads to <strong>overfitting</strong>.</p>
+</li>
+<li><p><strong>Characteristics</strong>:</p>
+<ul>
+<li><p>Model performs well on training data but poorly on unseen data.</p>
+</li>
+<li><p>The model captures noise and details that don’t generalize to new data.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Example</strong>: A deep neural network with many layers trained on a small dataset is likely to have high variance, memorizing the data but failing to generalize.</p>
+</li>
+</ul>
+<h2 id="the-bias-variance-tradeoff"><strong>The Bias-Variance Tradeoff</strong></h2>
+<ul>
+<li><p><strong>Goal</strong>: The aim is to find a balance where the model is neither too simple (high bias) nor too complex (high variance).</p>
+</li>
+<li><p><strong>Tradeoff</strong>:</p>
+<ul>
+<li><p>Decreasing bias often increases variance, as more complex models can capture finer details.</p>
+</li>
+<li><p>Decreasing variance often increases bias, as simpler models generalize better but might miss details.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="managing-bias-and-variance"><strong>Managing Bias and Variance</strong></h3>
+<ul>
+<li><p><strong>Choose the Right Model</strong>: Use simpler models for simpler tasks and complex models for tasks with rich patterns.</p>
+</li>
+<li><p><strong>Regularization</strong>: Techniques like L2 regularization can help reduce variance by penalizing model complexity.</p>
+</li>
+<li><p><strong>Cross-Validation</strong>: This helps estimate model performance and find the right complexity level.</p>
+</li>
+<li><p><strong>Feature Selection</strong>: Limiting features reduces variance, while adding important features can reduce bias.</p>
+</li>
+</ul>
+</div>
+  </article>
+  <aside class="related-notes" aria-labelledby="related-heading"><h2 id="related-heading">Related posts</h2><ul><li><a href="/blog/low-rank-adaptation/">Low-Rank Adaptation</a></li><li><a href="/blog/word2vec/">Word2Vec</a></li><li><a href="/blog/fine-tuning-llms/">Fine-Tuning LLMs</a></li></ul></aside>
+  <p><a class="btn" href="/blog/"><span class="material-icons" aria-hidden="true">arrow_back</span> All posts</a></p>
+</main></div>
+</body>
+</html>

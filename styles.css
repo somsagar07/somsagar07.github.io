@@ -37,7 +37,7 @@ background-color: #C8E6C9;
 .news-date { font-weight: 500; color: #316CAD; transition: color 0.3s ease; }
 .news-item-title { font-weight: 600; color: #1E88E5; }
 .news-highlight-red { font-weight: 600; color: #EF5350; }
-.description { display: block; margin: 4px 0; color: #555; font-style: italic; padding: 4px 0; text-align: justify; transition: color 0.3s ease; }
+.description { display: block; margin: 4px 0; color: #555; font-style: normal; padding: 4px 0; text-align: justify; transition: color 0.3s ease; }
 .bibtex {
 max-height: 0; opacity: 0; overflow-x: auto;
 margin-top: 0; padding: 0 4px;

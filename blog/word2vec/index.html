@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Word2Vec — Som Sagar</title>
+<meta name="description" content="This blog explains a method to represent words as vectors.">
+<meta name="author" content="Som Sagar">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FAFAFA">
+<link rel="canonical" href="https://somsagar07.github.io/blog/word2vec/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Som Sagar">
+<meta property="og:title" content="Word2Vec">
+<meta property="og:description" content="This blog explains a method to represent words as vectors.">
+<meta property="og:url" content="https://somsagar07.github.io/blog/word2vec/">
+<meta property="og:image" content="https://somsagar07.github.io/images/profile.jpg">
+<meta property="og:image:alt" content="Som Sagar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Word2Vec">
+<meta name="twitter:description" content="This blog explains a method to represent words as vectors.">
+<meta name="twitter:image" content="https://somsagar07.github.io/images/profile.jpg">
+<link rel="icon" type="image/png" href="/images/profile_old.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=4">
+<link rel="stylesheet" href="/blog/assets/katex/katex.min.css">
+<link rel="stylesheet" href="/blog/blog.css?v=4">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https://somsagar07.github.io/blog/word2vec/#article",
+  "headline": "Word2Vec",
+  "description": "This blog explains a method to represent words as vectors.",
+  "datePublished": "2024-09-10",
+  "url": "https://somsagar07.github.io/blog/word2vec/",
+  "mainEntityOfPage": "https://somsagar07.github.io/blog/word2vec/",
+  "inLanguage": "en",
+  "articleSection": "Learning",
+  "keywords": [
+    "Foundations",
+    "Deep Learning"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Som Sagar",
+    "url": "https://somsagar07.github.io/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "Som Sagar — Blog",
+    "url": "https://somsagar07.github.io/blog/"
+  }
+}</script>
+<script defer src="/blog/blog.js?v=3"></script>
+<script data-goatcounter="https://somsagar.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body class="blog-page paper-page">
+<script>try{if(localStorage.getItem('theme')==='dark')document.body.classList.add('dark')}catch(e){}</script>
+<a class="skip-link" href="#main">Skip to content</a>
+<button type="button" id="theme-toggle-btn" title="Toggle dark/light mode" aria-label="Switch color theme" aria-pressed="false"><span class="material-icons" id="themeToggleIcon" aria-hidden="true">light_mode</span></button>
+<div class="blog-shell">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Som Sagar</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Word2Vec</nav>
+<main id="main" class="post-main">
+  <article>
+    <header class="post-heading"><h1>Word2Vec</h1><p class="paper-meta post-meta"><span>Som Sagar</span><time datetime="2024-09-10">Sep 10, 2024</time><span>Learning</span><span>3 min read</span></p><div class="topics topic-tags"><span class="topic-tag">Foundations</span><span class="topic-tag">Deep Learning</span></div></header>
+    <details class="post-toc"><summary>On this page</summary><ol><li data-depth="2"><a href="#model-architecture">Model Architecture</a></li><li data-depth="2"><a href="#training-process">Training process</a></li><li data-depth="3"><a href="#model-architecture-2">Model Architecture</a></li><li data-depth="3"><a href="#training-process-2">Training Process</a></li><li data-depth="3"><a href="#loss">Loss</a></li><li data-depth="3"><a href="#negative-sampling">Negative Sampling</a></li><li data-depth="3"><a href="#training-steps">Training Steps</a></li></ol></details>
+    <div class="post-content"><p>Word2Vec is a popular <code>word embedding technique</code> developed by Google that captures the semantic meaning of words in a vector format. It transforms words into <code>continuous-valued vectors</code>, with each <u>vector&#39;s dimensions encoding various features of word meanings</u>. The main idea behind Word2Vec is <u>to represent similar words in similar ways so that they appear close together in vector space.</u></p>
+<h2 id="model-architecture">Model Architecture</h2>
+<p>Word2Vec has two main architecture:</p>
+<ul>
+<li><p>Skip-gram: The model predicts the context words given a target word.</p>
+</li>
+<li><p>Continous bag of words (CBOW): This model does the opposite it predicts the target word based on the surrounding context words.</p>
+</li>
+</ul>
+<h2 id="training-process">Training process</h2>
+<p>Word2Vec learns by maximizing the likelihood of observing a context word given a target word (Skip-gram) or observing a target word given context words (CBOW). The training is achieved using neural networks, typically with just one hidden layer.</p>
+<h3 id="model-architecture-2">Model Architecture</h3>
+<p>The Word2Vec neural network consists of:</p>
+<ol>
+<li><p>Input layer: This layer is a one-hot encoded vector representing the target word.</p>
+</li>
+<li><p>Hidden layer: A dense layer with no activation function, where the weights represent the word embeddings we aim to learn.</p>
+</li>
+<li><p>Output layer: A layer that outputs probabilities for each word in the vocabulary (the likelihood of each word being a context word).</p>
+</li>
+</ol>
+<h3 id="training-process-2">Training Process</h3>
+<ul>
+<li><p><strong>Skip-gram</strong>: For each word in a sentence, the model tries to predict the surrounding words within a certain window size. For example, with the sentence “the king sits on the throne,” if the target word is &quot;king&quot; and the window size is 2, then the model will attempt to predict &quot;the&quot; and &quot;sits&quot; as context words.</p>
+</li>
+<li><p><strong>CBOW</strong>: The model takes the context words within a window around the target word and tries to predict the target word itself. Using the same sentence and a window size of 2, if we target &quot;king,&quot; the model will use &quot;the&quot; and &quot;sits&quot; as inputs to predict &quot;king.&quot;</p>
+</li>
+</ul>
+<h3 id="loss">Loss</h3>
+<p>The model uses a loss function based on the probabilities of the context words, typically a cross-entropy loss. For Skip-gram, this is:</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>L</mi><mi>o</mi><mi>s</mi><mi>s</mi><mo>=</mo><mo>−</mo><mo>∑</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>P</mi><mo stretchy="false">(</mo><mi>c</mi><mi mathvariant="normal">∣</mi><mi>t</mi><mi>a</mi><mi>r</mi><mi>g</mi><mi>e</mi><mi>t</mi><mtext> </mtext><mi>w</mi><mi>o</mi><mi>r</mi><mi>d</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Loss= -\sum logP(c|target\ word)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal">oss</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.6em;vertical-align:-0.55em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="mord mathnormal" style="margin-right:0.1389em;">P</span><span class="mopen">(</span><span class="mord mathnormal">c</span><span class="mord">∣</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mord mathnormal" style="margin-right:0.0359em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="mord mathnormal" style="margin-right:0.0278em;">or</span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span></span></span></div>
+<p>here P(c| target word) is the probability of the context word c given the target word.</p>
+<h3 id="negative-sampling">Negative Sampling</h3>
+<p>To make the training faster and more efficient, Word2Vec often uses a method called <em>negative sampling</em>. Instead of updating the weights of all the words in the vocabulary, the model only updates the weights of a few randomly selected “negative” words that didn’t appear in the context.</p>
+<ul>
+<li><p>Instead of calculating and updating weights for all words in the vocabulary, the model only updates for a few randomly chosen “negative” words that do not appear in the context of the target word.</p>
+</li>
+<li><p>This reduces computation by focusing on distinguishing actual context words from randomly chosen, unrelated words.</p>
+</li>
+</ul>
+<h3 id="training-steps">Training Steps</h3>
+<p>For each target word in a corpus:</p>
+<ul>
+<li><p>Select context words within the defined window.</p>
+</li>
+<li><p>Input the target word (one-hot encoded) into the neural network.</p>
+</li>
+<li><p>Calculate the probabilities of context words at the output layer.</p>
+</li>
+<li><p>Use negative sampling to update the weights only for the positive (true context) and a few negative (randomly chosen unrelated) words.</p>
+</li>
+<li><p>Adjust the weights in the hidden layer based on the error to minimize the loss.</p>
+</li>
+<li><p>These steps are repeated for all words in the corpus across multiple epochs.</p>
+</li>
+</ul>
+</div>
+  </article>
+  <aside class="related-notes" aria-labelledby="related-heading"><h2 id="related-heading">Related posts</h2><ul><li><a href="/blog/low-rank-adaptation/">Low-Rank Adaptation</a></li><li><a href="/blog/fine-tuning-llms/">Fine-Tuning LLMs</a></li><li><a href="/blog/attention/">Attention</a></li></ul></aside>
+  <p><a class="btn" href="/blog/"><span class="material-icons" aria-hidden="true">arrow_back</span> All posts</a></p>
+</main></div>
+</body>
+</html>

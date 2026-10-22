@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regularization — Som Sagar</title>
+<meta name="description" content="Regularization adds a penalty to a model’s complexity, helping prevent overfitting.">
+<meta name="author" content="Som Sagar">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FAFAFA">
+<link rel="canonical" href="https://somsagar07.github.io/blog/regularization/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Som Sagar">
+<meta property="og:title" content="Regularization">
+<meta property="og:description" content="Regularization adds a penalty to a model’s complexity, helping prevent overfitting.">
+<meta property="og:url" content="https://somsagar07.github.io/blog/regularization/">
+<meta property="og:image" content="https://somsagar07.github.io/images/profile.jpg">
+<meta property="og:image:alt" content="Som Sagar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Regularization">
+<meta name="twitter:description" content="Regularization adds a penalty to a model’s complexity, helping prevent overfitting.">
+<meta name="twitter:image" content="https://somsagar07.github.io/images/profile.jpg">
+<link rel="icon" type="image/png" href="/images/profile_old.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=4">
+<link rel="stylesheet" href="/blog/assets/katex/katex.min.css">
+<link rel="stylesheet" href="/blog/blog.css?v=4">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https://somsagar07.github.io/blog/regularization/#article",
+  "headline": "Regularization",
+  "description": "Regularization adds a penalty to a model’s complexity, helping prevent overfitting.",
+  "datePublished": "2024-02-20",
+  "url": "https://somsagar07.github.io/blog/regularization/",
+  "mainEntityOfPage": "https://somsagar07.github.io/blog/regularization/",
+  "inLanguage": "en",
+  "articleSection": "Learning",
+  "keywords": [
+    "Foundations"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Som Sagar",
+    "url": "https://somsagar07.github.io/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "Som Sagar — Blog",
+    "url": "https://somsagar07.github.io/blog/"
+  }
+}</script>
+<script defer src="/blog/blog.js?v=3"></script>
+<script data-goatcounter="https://somsagar.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body class="blog-page paper-page">
+<script>try{if(localStorage.getItem('theme')==='dark')document.body.classList.add('dark')}catch(e){}</script>
+<a class="skip-link" href="#main">Skip to content</a>
+<button type="button" id="theme-toggle-btn" title="Toggle dark/light mode" aria-label="Switch color theme" aria-pressed="false"><span class="material-icons" id="themeToggleIcon" aria-hidden="true">light_mode</span></button>
+<div class="blog-shell">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Som Sagar</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Regularization</nav>
+<main id="main" class="post-main">
+  <article>
+    <header class="post-heading"><h1>Regularization</h1><p class="paper-meta post-meta"><span>Som Sagar</span><time datetime="2024-02-20">Feb 20, 2024</time><span>Learning</span><span>2 min read</span></p><div class="topics topic-tags"><span class="topic-tag">Foundations</span></div></header>
+    <details class="post-toc"><summary>On this page</summary><ol><li data-depth="2"><a href="#l2-regularization">L2 Regularization</a></li><li data-depth="2"><a href="#l1-regularization">L1 Regularization</a></li><li data-depth="2"><a href="#elastic-net">Elastic Net</a></li><li data-depth="2"><a href="#conclusion">Conclusion</a></li></ol></details>
+    <div class="post-content"><p><code>Regularization </code>is a technique that penalizes a model for being too complex. This helps prevent <strong><code>overfitting</code></strong>—where the model performs perfectly on the training data but struggles to generalize to new data. Regularization works by <code>adding a penalty term to the model’s loss function</code>, discouraging it from fitting noise in the data. This penalty term ultimately makes the model simpler and more generalizable.</p>
+<h2 id="l2-regularization">L2 Regularization</h2>
+<p>L2 regularization, also known as <code>Ridge Regression</code>, adds the sum of squared weights as a penalty term to the loss function. Mathematically, this term is represented as  ,  <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>∑</mo><msubsup><mi>w</mi><mi>i</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\lambda\sum w_i^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1.0728em;vertical-align:-0.2587em;"></span><span class="mord mathnormal">λ</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.4413em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2587em;"><span></span></span></span></span></span></span></span></span></span> where w are the weights of the model and λ is a hyperparameter controlling the regularization strength.</p>
+<p>By penalizing large weights, L2 regularization pushes the model to distribute its learning across multiple features rather than relying heavily on a few.</p>
+<p>Models with L2 regularization tend to be smoother and less sensitive to noise, resulting in better generalization.</p>
+<h2 id="l1-regularization">L1 Regularization</h2>
+<p>L1 regularization, also known as Lasso Regression, adds the sum of the absolute values of the weights as a penalty term. This term is represented as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>∑</mo><mi mathvariant="normal">∣</mi><msub><mi>w</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">\lambda\sum|w_i|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">λ</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span></span></span></span>. </p>
+<p>Unlike L2, L1 regularization drives some weights exactly to zero, effectively performing feature selection.<br>L1 regularization leads to <strong><code>sparser models</code></strong><code> </code>that can be  less computationally intensive, as it excludes irrelevant features.</p>
+<h2 id="elastic-net">Elastic Net</h2>
+<p>Elastic Net combines both L1 and L2 regularization terms. It’s useful when there are many correlated features, which may cause issues in both Ridge and Lasso alone.</p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>E</mi><mi>l</mi><mi>a</mi><mi>s</mi><mi>t</mi><mi>i</mi><mi>c</mi><mi>N</mi><mi>e</mi><mi>t</mi><mi>P</mi><mi>e</mi><mi>n</mi><mi>a</mi><mi>l</mi><mi>t</mi><mi>y</mi><mo>=</mo><mi>α</mi><mo stretchy="false">(</mo><msub><mi>p</mi><mi>i</mi></msub><mo>∑</mo><mo>∣</mo><mi>w</mi><mi>i</mi><mo>∣</mo><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>ρ</mi><msub><mo stretchy="false">)</mo><mi>i</mi></msub><mo>∑</mo><msubsup><mi>w</mi><mi>i</mi><mn>2</mn></msubsup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Elastic Net Penalty = \alpha(p_i\sum ∣wi∣+(1−ρ)_i\sum w_i^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0576em;">E</span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mord mathnormal">a</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.1389em;">tP</span><span class="mord mathnormal">e</span><span class="mord mathnormal">na</span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.6em;vertical-align:-0.55em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">+</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.6em;vertical-align:-0.55em;"></span><span class="mord mathnormal">ρ</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0269em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-2.453em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></div>
+<p>w are the model weights, α is the overall regularization strength, ρ controls the balance between L1 and L2 regularization terms, and</p>
+<p>By balancing the penalties from L1 and L2, Elastic Net can handle complex data with redundancy, leading to better performance than using only one regularization type.</p>
+<p>Elastic Net can be a good choice for datasets with high-dimensional or highly correlated features, leveraging both the sparsity of L1 and the smoothness of L2.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>By adding a penalty term to the loss function, regularization helps prevent overfitting and underfitting, balancing the bias-variance tradeoff. While L2 regularization encourages smoothness, L1 regularization promotes sparsity, and Elastic Net combines the strengths of both. With the right regularization, you can ensure your model performs well on new data, making it more reliable and effective.</p>
+</div>
+  </article>
+  <aside class="related-notes" aria-labelledby="related-heading"><h2 id="related-heading">Related posts</h2><ul><li><a href="/blog/low-rank-adaptation/">Low-Rank Adaptation</a></li><li><a href="/blog/word2vec/">Word2Vec</a></li><li><a href="/blog/fine-tuning-llms/">Fine-Tuning LLMs</a></li></ul></aside>
+  <p><a class="btn" href="/blog/"><span class="material-icons" aria-hidden="true">arrow_back</span> All posts</a></p>
+</main></div>
+</body>
+</html>

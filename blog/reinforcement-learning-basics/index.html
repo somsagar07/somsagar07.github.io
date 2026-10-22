@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reinforcement Learning Basics — Som Sagar</title>
+<meta name="description" content="This blog explains the basics of RL.">
+<meta name="author" content="Som Sagar">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FAFAFA">
+<link rel="canonical" href="https://somsagar07.github.io/blog/reinforcement-learning-basics/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Som Sagar">
+<meta property="og:title" content="Reinforcement Learning Basics">
+<meta property="og:description" content="This blog explains the basics of RL.">
+<meta property="og:url" content="https://somsagar07.github.io/blog/reinforcement-learning-basics/">
+<meta property="og:image" content="https://somsagar07.github.io/images/profile.jpg">
+<meta property="og:image:alt" content="Som Sagar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reinforcement Learning Basics">
+<meta name="twitter:description" content="This blog explains the basics of RL.">
+<meta name="twitter:image" content="https://somsagar07.github.io/images/profile.jpg">
+<link rel="icon" type="image/png" href="/images/profile_old.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=4">
+<link rel="stylesheet" href="/blog/assets/katex/katex.min.css">
+<link rel="stylesheet" href="/blog/blog.css?v=4">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https://somsagar07.github.io/blog/reinforcement-learning-basics/#article",
+  "headline": "Reinforcement Learning Basics",
+  "description": "This blog explains the basics of RL.",
+  "datePublished": "2024-04-08",
+  "url": "https://somsagar07.github.io/blog/reinforcement-learning-basics/",
+  "mainEntityOfPage": "https://somsagar07.github.io/blog/reinforcement-learning-basics/",
+  "inLanguage": "en",
+  "articleSection": "Learning",
+  "keywords": [
+    "Foundations",
+    "Reinforcement Learning"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Som Sagar",
+    "url": "https://somsagar07.github.io/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "Som Sagar — Blog",
+    "url": "https://somsagar07.github.io/blog/"
+  }
+}</script>
+<script defer src="/blog/blog.js?v=3"></script>
+<script data-goatcounter="https://somsagar.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body class="blog-page paper-page">
+<script>try{if(localStorage.getItem('theme')==='dark')document.body.classList.add('dark')}catch(e){}</script>
+<a class="skip-link" href="#main">Skip to content</a>
+<button type="button" id="theme-toggle-btn" title="Toggle dark/light mode" aria-label="Switch color theme" aria-pressed="false"><span class="material-icons" id="themeToggleIcon" aria-hidden="true">light_mode</span></button>
+<div class="blog-shell">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Som Sagar</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Reinforcement Learning Basics</nav>
+<main id="main" class="post-main">
+  <article>
+    <header class="post-heading"><h1>Reinforcement Learning Basics</h1><p class="paper-meta post-meta"><span>Som Sagar</span><time datetime="2024-04-08">Apr 8, 2024</time><span>Learning</span><span>5 min read</span></p><div class="topics topic-tags"><span class="topic-tag">Foundations</span><span class="topic-tag">Reinforcement Learning</span></div></header>
+    <details class="post-toc"><summary>On this page</summary><ol><li data-depth="2"><a href="#core-components">Core Components</a></li><li data-depth="2"><a href="#progress-flow">Progress Flow</a></li><li data-depth="2"><a href="#policy-and-value-functions">Policy and Value Functions</a></li><li data-depth="2"><a href="#learning-approaches">Learning Approaches</a></li><li data-depth="2"><a href="#exploration-vs-exploitaiton">Exploration vs. Exploitaiton</a></li><li data-depth="2"><a href="#type-of-rl-problems">Type of RL problems</a></li></ol></details>
+    <div class="post-content"><p>Reinforcement Learining (RL) is a type of machine learning where an agent learning to make a decision by interacting with an environment to achieve a goal.</p>
+<h2 id="core-components">Core Components</h2>
+<ul>
+<li><p>Agent: The decision maker. Its aim is to take actions that maximize its long-term rewards, ultimately learning a strategy (policy) that tells it which actions to take in different situations.</p>
+</li>
+<li><p>Environment: The space in which the agent operates.</p>
+</li>
+<li><p>Actions (a): The set of possible moves an agent can do. The set of actions varies depending on the state and the nature of the environment (e.g., continuous or discrete).</p>
+</li>
+<li><p>States (s): The various situations the agent can be in within an environment. States can be a simple variable (like a location) or a complex set of variables (such as an image in robotics). Each state provides the context in which the agent decides its next move.</p>
+</li>
+<li><p>Reward (R): A feedback signal that indicates the success of the agents actions.  The reward is a numerical signal given to the agent after each action, showing the immediate impact of that action</p>
+</li>
+</ul>
+<h2 id="progress-flow">Progress Flow</h2>
+<ul>
+<li><p>The agent starts in an initial state.</p>
+</li>
+<li><p>Based on its current policy, the agent chooses an action.</p>
+</li>
+<li><p>The environment reacts to this action, transitioning the agent to a new state and providing a reward.</p>
+</li>
+<li><p>The agent updates its policy based on the received reward and transitions to the next state.</p>
+</li>
+<li><p>This process continues until the agent learns an optimal policy, meaning it knows the best action to take in every state to maximize cumulative rewards.</p>
+</li>
+</ul>
+<p>This loop can continue for many episodes, where each episode consists of a sequence of actions from a starting state to a terminal state.</p>
+<h2 id="policy-and-value-functions">Policy and Value Functions</h2>
+<ul>
+<li><p>Policy (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">π</span></span></span></span>):  The policy is essentially a function or a mapping from states to actions. It dictates the behavior of the agent by specifying what action to take in each state. Policies can be:</p>
+<ul>
+<li><p><strong>Deterministic</strong>: Always choosing the same action for a given state.</p>
+</li>
+<li><p><strong>Stochastic</strong>: Providing a probability distribution over actions for each state.</p>
+</li>
+</ul>
+</li>
+<li><p>Value Function (V): The value function V(s), estimates how good it is for the agent to be in a certain state. It provides the expected cumulative reward starting from that state and following the policy until the end of the episode.</p>
+</li>
+</ul>
+<h2 id="learning-approaches">Learning Approaches</h2>
+<ul>
+<li><p>Model-Free RL: In model-free approaches, the agent learns directly from interactions without a model of the environment. It relies on trial and error and includes algorithms like Q-learning, SARSA, and Deep Q-Networks (DQN).</p>
+<ul>
+<li><p>Q-Learning: One of the most popular model-free methods, Q-learning is an off-policy algorithm where the agent learns Q-values, updating its estimates based on rewards received after taking actions. The agent then chooses actions that maximize its Q-values, learning an optimal policy over time.</p>
+</li>
+<li><p>Policy Gradient Methods: These are methods where the agent directly optimizes the policy by adjusting parameters to increase the expected rewards. Policy gradient methods are popular for continuous action spaces and are used in algorithms like REINFORCE, PPO (Proximal Policy Optimization), and A3C (Asynchronous Advantage Actor-Critic).</p>
+</li>
+</ul>
+</li>
+<li><p>Model-Based RL:  In model-based approaches, the agent tries to learn a model of the environment that predicts state transitions and rewards. The agent can then use this model to plan actions ahead, either through simulations or analytical methods, as seen in algorithms like Dyna-Q.</p>
+</li>
+</ul>
+<h2 id="exploration-vs-exploitaiton">Exploration vs. Exploitaiton</h2>
+<ul>
+<li><p>Exploration: Exploration is the process of trying new actions, even if they don’t yield high rewards immediately, to discover potentially better strategies. This helps the agent avoid getting stuck in suboptimal solutions.</p>
+</li>
+<li><p>Exploitation: Exploitation is choosing the best-known action in a state to maximize rewards based on current knowledge. This is efficient for short-term rewards but can prevent the agent from discovering better strategies.</p>
+</li>
+<li><p>While learning a policy the we have to find the right balance between exploration and exploitation for the agent to learn effectively.</p>
+<ul>
+<li><p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">ϵ</span></span></span></span>-greedy: The agent chooses a random action witht he probabailty <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">ϵ</span></span></span></span> and the best know action with probability <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">1-\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">ϵ</span></span></span></span>.</p>
+</li>
+<li><p>Decay Strategies: Gradually reducing exploration (lowering <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.4306em;"></span><span class="mord mathnormal">ϵ</span></span></span></span> over time) as the agent learns more about the environment.</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote class="paper-note">
+<p>RL is a powerful framework for building intelligent agents that learn from experience, but it often requires careful tuning and experimentation to achieve desirable results. Each step, from defining states and rewards to balancing exploration and exploitation, plays a critical role in shaping the agent’s learning journey.</p>
+</blockquote>
+<h2 id="type-of-rl-problems">Type of RL problems</h2>
+<ul>
+<li><p>Markov Decision Processes (MDPs): The standard Framewrk where the next state depends on the current state and action. MDPs are defined by the tuple ( 𝑆 , 𝐴 , 𝑃 , 𝑅 , <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0556em;">γ</span></span></span></span> ), where: S is the set of states, A is the set of actions, P is the transistion probability, R is the reward function, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0556em;">γ</span></span></span></span> is the discount factor.</p>
+</li>
+<li><p>Partially Observable MDPs (POMDPs): The agent doesn’t have full visibility of the environment and receives only partial observations, not the full state. This adds complexity, as the agent must make decisions based on uncertain information.</p>
+</li>
+</ul>
+</div>
+  </article>
+  <aside class="related-notes" aria-labelledby="related-heading"><h2 id="related-heading">Related posts</h2><ul><li><a href="/blog/low-rank-adaptation/">Low-Rank Adaptation</a></li><li><a href="/blog/word2vec/">Word2Vec</a></li><li><a href="/blog/fine-tuning-llms/">Fine-Tuning LLMs</a></li></ul></aside>
+  <p><a class="btn" href="/blog/"><span class="material-icons" aria-hidden="true">arrow_back</span> All posts</a></p>
+</main></div>
+</body>
+</html>

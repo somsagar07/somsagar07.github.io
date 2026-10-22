@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linear Regression — Som Sagar</title>
+<meta name="description" content="Linear regression is a statistical method for predicting outcomes.">
+<meta name="author" content="Som Sagar">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FAFAFA">
+<link rel="canonical" href="https://somsagar07.github.io/blog/linear-regression/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Som Sagar">
+<meta property="og:title" content="Linear Regression">
+<meta property="og:description" content="Linear regression is a statistical method for predicting outcomes.">
+<meta property="og:url" content="https://somsagar07.github.io/blog/linear-regression/">
+<meta property="og:image" content="https://somsagar07.github.io/images/profile.jpg">
+<meta property="og:image:alt" content="Som Sagar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Linear Regression">
+<meta name="twitter:description" content="Linear regression is a statistical method for predicting outcomes.">
+<meta name="twitter:image" content="https://somsagar07.github.io/images/profile.jpg">
+<link rel="icon" type="image/png" href="/images/profile_old.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=4">
+<link rel="stylesheet" href="/blog/assets/katex/katex.min.css">
+<link rel="stylesheet" href="/blog/blog.css?v=4">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https://somsagar07.github.io/blog/linear-regression/#article",
+  "headline": "Linear Regression",
+  "description": "Linear regression is a statistical method for predicting outcomes.",
+  "datePublished": "2023-12-22",
+  "url": "https://somsagar07.github.io/blog/linear-regression/",
+  "mainEntityOfPage": "https://somsagar07.github.io/blog/linear-regression/",
+  "inLanguage": "en",
+  "articleSection": "Learning",
+  "keywords": [
+    "Classical ML"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Som Sagar",
+    "url": "https://somsagar07.github.io/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "Som Sagar — Blog",
+    "url": "https://somsagar07.github.io/blog/"
+  }
+}</script>
+<script defer src="/blog/blog.js?v=3"></script>
+<script data-goatcounter="https://somsagar.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body class="blog-page paper-page">
+<script>try{if(localStorage.getItem('theme')==='dark')document.body.classList.add('dark')}catch(e){}</script>
+<a class="skip-link" href="#main">Skip to content</a>
+<button type="button" id="theme-toggle-btn" title="Toggle dark/light mode" aria-label="Switch color theme" aria-pressed="false"><span class="material-icons" id="themeToggleIcon" aria-hidden="true">light_mode</span></button>
+<div class="blog-shell">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Som Sagar</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Linear Regression</nav>
+<main id="main" class="post-main">
+  <article>
+    <header class="post-heading"><h1>Linear Regression</h1><p class="paper-meta post-meta"><span>Som Sagar</span><time datetime="2023-12-22">Dec 22, 2023</time><span>Learning</span><span>2 min read</span></p><div class="topics topic-tags"><span class="topic-tag">Classical ML</span></div></header>
+    
+    <div class="post-content"><p>Linear regression is used to understand the pattern in a dataset. Given a set of data points, we try to find a line, <code>y=ax+b</code>, that minimizes the error between the data points and the line. Specifically, we aim to find a line with the<code> least mean squared error (MSE) over all data points.</code></p>
+<p>To achieve this, we assume our line equation is y=ax+b, and we calculate the MSE. To minimize the error, <strong>we take the derivative of the MSE with respect to the parameters a and b and set it to zero</strong>. We use gradient descent to iteratively update these parameters to find the optimal values for the linear line.</p>
+<blockquote class="paper-note">
+<p>In regression, &quot;linear&quot; refers to the relationship between inputs and weights, not necessarily a straight line. Models can handle curves by including polynomial terms or transforming data, which allows for fitting more complex, non-linear patterns.</p>
+<p>Even though basic linear regression might look like a simple line, we can transform input variables to model curves and more complex relationships. By including <strong>polynomial terms</strong> we effectively change the shape of the line that linear regression is fitting</p>
+<p>Suppose we have a simple model: y=ax+b If we add polynomial terms, like x^2 or  x^3 , the model becomes:  </p>
+<div class="math-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo>=</mo><msub><mi>a</mi><mn>1</mn></msub><mi>x</mi><mo>+</mo><msub><mi>a</mi><mn>2</mn></msub><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msub><mi>a</mi><mn>3</mn></msub><msup><mi>x</mi><mn>3</mn></msup><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">y = a_1x + a_2x^2 + a_3x^3 + b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.0141em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1.0141em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span></div>
+<p> Now, the model can capture curves, such as parabolas or cubic shapes.</p>
+</blockquote>
+<h2 id="code">Code</h2>
+<pre class="bib-static"><code class="language-python">import numpy
+
+class LinearRegression:
+	def __init__(self, lr=0.001, n_iter=10000):
+		self.lr = lr
+		self.n_iter = n_iter
+		self.weights = None
+		self.bias = None
+	
+	def fit(self, x, y):
+		n_samples, n_features = x.shape
+		self.weights = np.zeros(n_features ) # initialize all weights to 0
+		self.bias = 0
+		
+		for i in range(self.n_iter):
+			y_pred = np.dot(x, self.weights) + bias
+			
+			dw = (1/n_samples) * np.dot(x.T, (y_pred-y))
+			db = (1/n_samples) * np.sum(y_pred-y)
+			
+			# update weights and bias
+			
+			self.weights = self.weights - self.lr*dw
+			self.bias = self.bias - self.lr*db
+	
+	def predict(self, x):
+		y_pred = np.dot(x, self.weights) + self.bias
+		return y_pred
+</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>Through linear regressin we can capture trends and make informed predictions based on past observations. While linear regression has its limitations such as assuming a linear relationship and being sensitive to outliers it&#39;s a statistical tool that serves as the basis for many complex models.</p>
+</div>
+  </article>
+  <aside class="related-notes" aria-labelledby="related-heading"><h2 id="related-heading">Related posts</h2><ul><li><a href="/blog/gaussian-mixture-models/">Gaussian Mixture Models</a></li><li><a href="/blog/support-vector-machine/">Support Vector Machine (SVM)</a></li><li><a href="/blog/naive-bayes/">Naive Bayes</a></li></ul></aside>
+  <p><a class="btn" href="/blog/"><span class="material-icons" aria-hidden="true">arrow_back</span> All posts</a></p>
+</main></div>
+</body>
+</html>

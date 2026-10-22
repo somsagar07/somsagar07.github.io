@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logistic Regression — Som Sagar</title>
+<meta name="description" content="Logistic regression is a statistical method for binary classification problems.">
+<meta name="author" content="Som Sagar">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FAFAFA">
+<link rel="canonical" href="https://somsagar07.github.io/blog/logistic-regression/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Som Sagar">
+<meta property="og:title" content="Logistic Regression">
+<meta property="og:description" content="Logistic regression is a statistical method for binary classification problems.">
+<meta property="og:url" content="https://somsagar07.github.io/blog/logistic-regression/">
+<meta property="og:image" content="https://somsagar07.github.io/images/profile.jpg">
+<meta property="og:image:alt" content="Som Sagar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Logistic Regression">
+<meta name="twitter:description" content="Logistic regression is a statistical method for binary classification problems.">
+<meta name="twitter:image" content="https://somsagar07.github.io/images/profile.jpg">
+<link rel="icon" type="image/png" href="/images/profile_old.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=4">
+
+<link rel="stylesheet" href="/blog/blog.css?v=4">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "https://somsagar07.github.io/blog/logistic-regression/#article",
+  "headline": "Logistic Regression",
+  "description": "Logistic regression is a statistical method for binary classification problems.",
+  "datePublished": "2024-01-09",
+  "url": "https://somsagar07.github.io/blog/logistic-regression/",
+  "mainEntityOfPage": "https://somsagar07.github.io/blog/logistic-regression/",
+  "inLanguage": "en",
+  "articleSection": "Learning",
+  "keywords": [
+    "Classical ML"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Som Sagar",
+    "url": "https://somsagar07.github.io/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "name": "Som Sagar — Blog",
+    "url": "https://somsagar07.github.io/blog/"
+  }
+}</script>
+<script defer src="/blog/blog.js?v=3"></script>
+<script data-goatcounter="https://somsagar.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body class="blog-page paper-page">
+<script>try{if(localStorage.getItem('theme')==='dark')document.body.classList.add('dark')}catch(e){}</script>
+<a class="skip-link" href="#main">Skip to content</a>
+<button type="button" id="theme-toggle-btn" title="Toggle dark/light mode" aria-label="Switch color theme" aria-pressed="false"><span class="material-icons" id="themeToggleIcon" aria-hidden="true">light_mode</span></button>
+<div class="blog-shell">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Som Sagar</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Logistic Regression</nav>
+<main id="main" class="post-main">
+  <article>
+    <header class="post-heading"><h1>Logistic Regression</h1><p class="paper-meta post-meta"><span>Som Sagar</span><time datetime="2024-01-09">Jan 9, 2024</time><span>Learning</span><span>2 min read</span></p><div class="topics topic-tags"><span class="topic-tag">Classical ML</span></div></header>
+    
+    <div class="post-content"><p>In <code>logistic regression</code>, we create probabilities by applying the <code>sigmoid function</code>, which converts outputs into a probability distribution between 0 and 1. Like in linear regression, we use gradient descent to optimize the model, but here we minimize the <code>cross-entropy</code> loss instead.</p>
+<blockquote class="paper-note">
+<p>Logistic regression is based on maximizing the likelihood of observing the given data under certain assumptions. This leads to minimizing the log loss (cross-entropy) during training</p>
+</blockquote>
+<h2 id="code">Code</h2>
+<pre class="bib-static"><code class="language-python">import numpy as np
+
+def sigmoid(x):
+	return 1/(1+np.exp(-x))
+
+class LogisticRegression():
+	def __init__(self, lr=0.001, n_iter=100):
+		self.lr = lr
+		self.n_iter = n_iter
+		self.weights = None
+		self.bias = None
+	
+	def fit(self, x, y):
+		n_samples, n_features = x.shape
+		self.weights = np.zeros(n_features)
+		self.bias = 0
+		
+		for i in range(self.n_iter):
+			lpred = np.dot(x, self.weights) + self.bias
+			pred = sigmoid(lpred)
+			
+			dw = (1/n_samples) * np.dot(x.T, (pred - y))
+			db = (1/n_samples) * np.sum(pred-y)
+			
+			self.weights = self.weights - self.lr*dw
+			self.bias = self.bias - self.lr*db
+	
+	def predict(self, x):
+		lpred = np.dot(x, self.weights) + self.bias
+		pred = sigmoid(lpred)
+		
+		# Return binary predictions based on threshold
+    final_pred = [1 if p &gt;= 0.5 else 0 for p in pred]
+    return final_pred
+</code></pre>
+<blockquote class="paper-note">
+<p><strong>Despite the Name, It&#39;s Not &quot;Regression&quot; in the Usual Sense</strong>: Logistic regression is technically a classification algorithm, not a regression algorithm. Unlike linear regression, which predicts continuous values, logistic regression predicts probabilities and assigns inputs to categories.</p>
+</blockquote>
+<h2 id="conclusion">Conclusion</h2>
+<p>Logistic regression transforms the outputs into probabilities, it allows us to understand the likelihood of outcomes.</p>
+</div>
+  </article>
+  <aside class="related-notes" aria-labelledby="related-heading"><h2 id="related-heading">Related posts</h2><ul><li><a href="/blog/gaussian-mixture-models/">Gaussian Mixture Models</a></li><li><a href="/blog/support-vector-machine/">Support Vector Machine (SVM)</a></li><li><a href="/blog/naive-bayes/">Naive Bayes</a></li></ul></aside>
+  <p><a class="btn" href="/blog/"><span class="material-icons" aria-hidden="true">arrow_back</span> All posts</a></p>
+</main></div>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://somsagar07.github.io/</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -77,5 +77,81 @@
     <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/</loc>
+    <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/low-rank-adaptation/</loc>
+    <lastmod>2024-09-26</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/word2vec/</loc>
+    <lastmod>2024-09-10</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/transformers/</loc>
+    <lastmod>2024-09-05</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/fine-tuning-llms/</loc>
+    <lastmod>2024-09-03</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/proximal-policy-optimization/</loc>
+    <lastmod>2024-09-03</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/q-learning-and-dqns/</loc>
+    <lastmod>2024-08-27</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/attention/</loc>
+    <lastmod>2024-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/my-experience-at-icml-2024/</loc>
+    <lastmod>2024-08-11</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/gradient-descent/</loc>
+    <lastmod>2024-08-06</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/reinforcement-learning-basics/</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/gaussian-mixture-models/</loc>
+    <lastmod>2024-03-19</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/regularization/</loc>
+    <lastmod>2024-02-20</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/bias-vs-variance/</loc>
+    <lastmod>2024-02-13</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/support-vector-machine/</loc>
+    <lastmod>2024-02-02</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/naive-bayes/</loc>
+    <lastmod>2024-01-25</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/logistic-regression/</loc>
+    <lastmod>2024-01-09</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/linear-regression/</loc>
+    <lastmod>2023-12-22</lastmod>
+  </url>
+  <url>
+    <loc>https://somsagar07.github.io/blog/k-nearest-neighbors/</loc>
+    <lastmod>2023-12-07</lastmod>
   </url>
 </urlset>
